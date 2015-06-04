@@ -8,11 +8,15 @@ import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.SlickException;
 
+import com.github.apixandru.pokemon.ui.GameMap;
+
 /**
  * @author Alexandru Bledea
  * @since Jun 3, 2015
  */
 public class PokemonGame extends BasicGame {
+
+	private GameMap gameMap;
 
 	/**
 	 *
@@ -26,6 +30,7 @@ public class PokemonGame extends BasicGame {
 	 */
 	@Override
 	public void init(final GameContainer container) throws SlickException {
+		gameMap = new GameMap();
 	}
 
 	/* (non-Javadoc)
@@ -33,6 +38,7 @@ public class PokemonGame extends BasicGame {
 	 */
 	@Override
 	public void render(final GameContainer container, final Graphics g) throws SlickException {
+		gameMap.render(g);
 	}
 
 	/* (non-Javadoc)

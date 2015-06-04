@@ -10,15 +10,16 @@ import com.github.apixandru.pokemon.ui.util.CanUpdate;
 
 /**
  * @author Alexandru Bledea
- * @since Jun 3, 2015
+ * @since Jun 4, 2015
  */
-public final class Player implements CanRender, CanUpdate {
+public class GameMap implements CanRender, CanUpdate {
 
 	/* (non-Javadoc)
 	 * @see com.github.apixandru.pokemon.ui.util.CanUpdate#update(int)
 	 */
 	@Override
 	public void update(final int delta) {
+
 	}
 
 	/* (non-Javadoc)
@@ -26,6 +27,9 @@ public final class Player implements CanRender, CanUpdate {
 	 */
 	@Override
 	public void render(final Graphics g) {
+		for (int i = 0; i < 10; i++) {
+			g.drawRect(i * 32, 0, 32, 32);
+		}
 	}
 
 }

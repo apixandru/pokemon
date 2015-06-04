@@ -1,5 +1,7 @@
 package com.github.apixandru.pokemon.ui.util;
 
+import org.newdawn.slick.Graphics;
+
 /**
  *
  */
@@ -8,11 +10,15 @@ package com.github.apixandru.pokemon.ui.util;
  * @author Alexandru Bledea
  * @since May 28, 2015
  */
+/**
+ * @author Alexandru Bledea
+ * @since Jun 4, 2015
+ */
 public interface CanRender {
 
 	/**
-	 *
+	 * @param g
 	 */
-	void render();
+	void render(Graphics g);
 
 }
