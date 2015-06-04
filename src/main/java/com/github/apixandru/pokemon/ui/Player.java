@@ -4,6 +4,8 @@
 package com.github.apixandru.pokemon.ui;
 
 import org.newdawn.slick.Graphics;
+import org.newdawn.slick.geom.Circle;
+import org.newdawn.slick.geom.Vector2f;
 
 import com.github.apixandru.pokemon.ui.util.CanRender;
 import com.github.apixandru.pokemon.ui.util.CanUpdate;
@@ -14,11 +16,21 @@ import com.github.apixandru.pokemon.ui.util.CanUpdate;
  */
 public final class Player implements CanRender, CanUpdate {
 
+	private final Vector2f position;
+
+	/**
+	 * @param position
+	 */
+	public Player(final Vector2f position) {
+		this.position = position;
+	}
+
 	/* (non-Javadoc)
 	 * @see com.github.apixandru.pokemon.ui.util.CanUpdate#update(int)
 	 */
 	@Override
 	public void update(final int delta) {
+
 	}
 
 	/* (non-Javadoc)
@@ -26,6 +38,7 @@ public final class Player implements CanRender, CanUpdate {
 	 */
 	@Override
 	public void render(final Graphics g) {
+		g.fill(new Circle(position.x, position.y, 10));
 	}
 
 }
