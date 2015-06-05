@@ -1,5 +1,7 @@
 package com.github.apixandru.pokemon.ui.util;
 
+import org.newdawn.slick.GameContainer;
+
 /**
  *
  */
@@ -13,6 +15,6 @@ public interface CanUpdate {
 	/**
 	 * @param delta
 	 */
-	void update(int delta);
+	void update(final GameContainer container, int delta);
 
 }
