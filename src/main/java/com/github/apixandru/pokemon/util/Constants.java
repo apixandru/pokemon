@@ -9,6 +9,9 @@ package com.github.apixandru.pokemon.util;
  */
 public interface Constants {
 
+	byte TILE_WIDTH = 32;
+	byte TILE_HEIGHT = 32;
+
 	byte DIRECTION_UP = 0;
 	byte DIRECTION_RIGHT = 1;
 	byte DIRECTION_DOWN = 2;
