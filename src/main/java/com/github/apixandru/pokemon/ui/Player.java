@@ -56,9 +56,10 @@ public final class Player implements CanRender, CanUpdate {
 	 */
 	@Override
 	public void update(final GameContainer container, final int delta) {
+		final MoveInput adapt = MoveInputAdapter.adapt(container.getInput());
+		final boolean nowMoving = adapt.isMove();
 		if (!moving) {
-			final MoveInput adapt = MoveInputAdapter.adapt(container.getInput());
-			if (adapt.isMove()) {
+			if (nowMoving) {
 				moveDirection = adapt.getMoveDirection();
 				directionModifiers = DIRECTION_MODIFIERS[moveDirection];
 				moveTo.x = DIRECTION_MODIFIERS_NO_SIGN[moveDirection][POS_X] * BLOCK_WIDTH;
@@ -66,6 +67,7 @@ public final class Player implements CanRender, CanUpdate {
 				moving = true;
 			}
 		} else {
+			sprites.moving.get(moveDirection).update(delta);
 			final float changeX = speed * delta;
 			final float changeY = speed * delta;
 
@@ -77,7 +79,9 @@ public final class Player implements CanRender, CanUpdate {
 
 			if (moveTo.x <= 0 && moveTo.y <= 0) {
 				PositionUtil.round(position);
-				moving = false;
+				if (!nowMoving) {
+					moving = false;
+				}
 			}
 		}
 	}
