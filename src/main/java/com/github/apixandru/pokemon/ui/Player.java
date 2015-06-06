@@ -3,6 +3,7 @@
  */
 package com.github.apixandru.pokemon.ui;
 
+import static com.github.apixandru.pokemon.util.Constants.DIRECTION_DOWN;
 import static com.github.apixandru.pokemon.util.Constants.DIRECTION_MODIFIERS;
 import static com.github.apixandru.pokemon.util.Constants.DIRECTION_MODIFIERS_NO_SIGN;
 import static com.github.apixandru.pokemon.util.Constants.POS_X;
@@ -10,7 +11,7 @@ import static com.github.apixandru.pokemon.util.Constants.POS_Y;
 
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
-import org.newdawn.slick.geom.Circle;
+import org.newdawn.slick.Renderable;
 import org.newdawn.slick.geom.Vector2f;
 
 import com.github.apixandru.pokemon.ui.util.CanRender;
@@ -18,6 +19,7 @@ import com.github.apixandru.pokemon.ui.util.CanUpdate;
 import com.github.apixandru.pokemon.ui.util.MoveInput;
 import com.github.apixandru.pokemon.ui.util.MoveInputAdapter;
 import com.github.apixandru.pokemon.ui.util.PositionUtil;
+import com.github.apixandru.pokemon.ui.util.sprites.CharacterSprites;
 
 /**
  * @author Alexandru Bledea
@@ -25,20 +27,26 @@ import com.github.apixandru.pokemon.ui.util.PositionUtil;
  */
 public final class Player implements CanRender, CanUpdate {
 
+	private final CharacterSprites sprites;
+
+	private final Vector2f moveTo = new Vector2f();
 	private final Vector2f position;
-	private final Vector2f moveTo;
 
 	private final float speed = .1f;
 
 	private boolean moving;
 	private byte[] directionModifiers;
 
+	private final Renderable renderable;
+
 	/**
-	 * @param position
+	 * @param vector2f
+	 * @param redSprites
 	 */
-	public Player(final Vector2f position) {
+	public Player(final Vector2f position, final CharacterSprites sprites) {
 		this.position = position;
-		this.moveTo = position.copy();
+		this.sprites = sprites;
+		this.renderable = sprites.notMoving.get(DIRECTION_DOWN);
 	}
 
 	/* (non-Javadoc)
@@ -77,7 +85,7 @@ public final class Player implements CanRender, CanUpdate {
 	 */
 	@Override
 	public void render(final Graphics g) {
-		g.fill(new Circle(position.x + 16, position.y + 16, 10));
+		renderable.draw(position.x, position.y);
 	}
 
 }

@@ -11,6 +11,7 @@ import org.newdawn.slick.geom.Vector2f;
 
 import com.github.apixandru.pokemon.ui.GameMap;
 import com.github.apixandru.pokemon.ui.Player;
+import com.github.apixandru.pokemon.ui.util.sprites.CharacterSprites;
 
 /**
  * @author Alexandru Bledea
@@ -33,8 +34,9 @@ public class PokemonGame extends BasicGame {
 	 */
 	@Override
 	public void init(final GameContainer container) throws SlickException {
+		final CharacterSprites redSprites = CharacterSprites.load("resources/sprites/red.png");
 		gameMap = new GameMap();
-		player = new Player(new Vector2f(32, 32));
+		player = new Player(new Vector2f(32, 32), redSprites);
 	}
 
 	/* (non-Javadoc)
