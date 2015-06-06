@@ -49,9 +49,9 @@ public final class CharacterSprites {
 
 
 		this.moving = Arrays.asList(animation(moveUp, sittingUp),
-				new Animation(new Image[]{moveRight, sittingRight}, 200, false),
+				new Animation(new Image[]{moveRight, sittingRight}, 150, false),
 				animation(moveDown, sittingDown),
-				new Animation(new Image[]{moveLeft, sittingLeft}, 200, false));
+				new Animation(new Image[]{moveLeft, sittingLeft}, 150, false));
 	}
 
 	/**
@@ -61,7 +61,7 @@ public final class CharacterSprites {
 	 */
 	private static Animation animation(final Image frameMoving, final Image frameSitting) {
 		final Image[] image = {frameMoving, frameSitting, frameMoving.getFlippedCopy(true, false), frameSitting};
-		final Animation animation = new Animation(image, 200);
+		final Animation animation = new Animation(image, 150);
 		animation.setAutoUpdate(false);
 		return animation;
 	}
