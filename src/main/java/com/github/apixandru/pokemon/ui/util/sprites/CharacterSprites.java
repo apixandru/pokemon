@@ -61,7 +61,7 @@ public final class CharacterSprites {
 	 */
 	private static Animation animation(final Image frameMoving, final Image frameSitting) {
 		final Image[] image = {frameMoving, frameSitting, frameMoving.getFlippedCopy(true, false), frameSitting};
-		final Animation animation = new Animation(image, 500);
+		final Animation animation = new Animation(image, 200);
 		animation.setAutoUpdate(false);
 		return animation;
 	}
