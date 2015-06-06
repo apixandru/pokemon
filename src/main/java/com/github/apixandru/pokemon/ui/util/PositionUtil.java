@@ -26,8 +26,21 @@ public final class PositionUtil {
 	 * @param height
 	 */
 	public static void round(final Vector2f position) {
-		position.x = (int) (position.x / TILE_WIDTH) * TILE_WIDTH;
-		position.y = (int) (position.y / TILE_HEIGHT) * TILE_HEIGHT;
+		position.x = round(position.x, TILE_WIDTH);
+		position.y = round(position.y, TILE_HEIGHT);
 	}
 
+	/**
+	 * @param currentPosition
+	 * @param maxDimension
+	 * @return
+	 */
+	private static int round(final float currentPosition, final int maxDimension) {
+		float i = currentPosition / maxDimension;
+		final float remainder = i % 1.0f;
+		if (remainder > 0.5f) {
+			i++;
+		}
+		return (int) i * maxDimension;
+	}
 }

@@ -27,4 +27,11 @@ public interface Constants {
 			{-1, +0},
 	};
 
+	byte[][] DIRECTION_MODIFIERS_NO_SIGN = {
+			{0, 1},
+			{1, 0},
+			{0, 1},
+			{1, 0},
+	};
+
 }
