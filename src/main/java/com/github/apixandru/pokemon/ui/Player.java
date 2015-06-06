@@ -60,11 +60,7 @@ public final class Player implements CanRender, CanUpdate {
 		final boolean nowMoving = adapt.isMove();
 		if (!moving) {
 			if (nowMoving) {
-				moveDirection = adapt.getMoveDirection();
-				directionModifiers = DIRECTION_MODIFIERS[moveDirection];
-				moveTo.x = DIRECTION_MODIFIERS_NO_SIGN[moveDirection][POS_X] * BLOCK_WIDTH;
-				moveTo.y = DIRECTION_MODIFIERS_NO_SIGN[moveDirection][POS_Y] * BLOCK_HEIGHT;
-				moving = true;
+				move(adapt);
 			}
 		} else {
 			sprites.moving.get(moveDirection).update(delta);
@@ -79,11 +75,25 @@ public final class Player implements CanRender, CanUpdate {
 
 			if (moveTo.x <= 0 && moveTo.y <= 0) {
 				PositionUtil.round(position);
-				if (!nowMoving) {
+				if (nowMoving) {
+					move(adapt);
+				} else {
+					sprites.moving.get(moveDirection).restart();
 					moving = false;
 				}
 			}
 		}
+	}
+
+	/**
+	 * @param adapt
+	 */
+	private void move(final MoveInput adapt) {
+		moveDirection = adapt.getMoveDirection();
+		directionModifiers = DIRECTION_MODIFIERS[moveDirection];
+		moveTo.x = DIRECTION_MODIFIERS_NO_SIGN[moveDirection][POS_X] * BLOCK_WIDTH;
+		moveTo.y = DIRECTION_MODIFIERS_NO_SIGN[moveDirection][POS_Y] * BLOCK_HEIGHT;
+		moving = true;
 	}
 
 	/* (non-Javadoc)
