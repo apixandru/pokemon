@@ -5,16 +5,16 @@ package com.github.apixandru.pokemon.ui;
 
 import static com.github.apixandru.pokemon.util.Constants.BLOCK_HEIGHT;
 import static com.github.apixandru.pokemon.util.Constants.BLOCK_WIDTH;
-import static com.github.apixandru.pokemon.util.Constants.DIRECTION_DOWN;
 import static com.github.apixandru.pokemon.util.Constants.DIRECTION_MODIFIERS;
 import static com.github.apixandru.pokemon.util.Constants.DIRECTION_MODIFIERS_NO_SIGN;
 import static com.github.apixandru.pokemon.util.Constants.POS_X;
 import static com.github.apixandru.pokemon.util.Constants.POS_Y;
-import static com.github.apixandru.pokemon.util.Constants.SCALE;
+
+import java.util.List;
 
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
-import org.newdawn.slick.Image;
+import org.newdawn.slick.Renderable;
 import org.newdawn.slick.geom.Vector2f;
 
 import com.github.apixandru.pokemon.ui.util.CanRender;
@@ -40,7 +40,7 @@ public final class Player implements CanRender, CanUpdate {
 	private boolean moving;
 	private byte[] directionModifiers;
 
-	private final Image renderable;
+	private byte moveDirection;
 
 	/**
 	 * @param vector2f
@@ -49,7 +49,6 @@ public final class Player implements CanRender, CanUpdate {
 	public Player(final Vector2f position, final CharacterSprites sprites) {
 		this.position = position;
 		this.sprites = sprites;
-		this.renderable = sprites.notMoving.get(DIRECTION_DOWN);
 	}
 
 	/* (non-Javadoc)
@@ -60,7 +59,7 @@ public final class Player implements CanRender, CanUpdate {
 		if (!moving) {
 			final MoveInput adapt = MoveInputAdapter.adapt(container.getInput());
 			if (adapt.isMove()) {
-				final byte moveDirection = adapt.getMoveDirection();
+				moveDirection = adapt.getMoveDirection();
 				directionModifiers = DIRECTION_MODIFIERS[moveDirection];
 				moveTo.x = DIRECTION_MODIFIERS_NO_SIGN[moveDirection][POS_X] * BLOCK_WIDTH;
 				moveTo.y = DIRECTION_MODIFIERS_NO_SIGN[moveDirection][POS_Y] * BLOCK_HEIGHT;
@@ -88,7 +87,13 @@ public final class Player implements CanRender, CanUpdate {
 	 */
 	@Override
 	public void render(final Graphics g) {
-		renderable.draw(position.x, position.y, SCALE);
+		final List<? extends Renderable> renderables;
+		if (moving) {
+			renderables = sprites.moving;
+		} else {
+			renderables = sprites.notMoving;
+		}
+		renderables.get(moveDirection).draw(position.x, position.y, BLOCK_WIDTH, BLOCK_HEIGHT);
 	}
 
 }
