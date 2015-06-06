@@ -3,6 +3,9 @@
  */
 package com.github.apixandru.pokemon.game;
 
+import static com.github.apixandru.pokemon.util.Constants.BLOCK_HEIGHT;
+import static com.github.apixandru.pokemon.util.Constants.BLOCK_WIDTH;
+
 import org.newdawn.slick.BasicGame;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
@@ -36,7 +39,7 @@ public class PokemonGame extends BasicGame {
 	public void init(final GameContainer container) throws SlickException {
 		final CharacterSprites redSprites = CharacterSprites.load("resources/sprites/red.png");
 		gameMap = new GameMap();
-		player = new Player(new Vector2f(32, 32), redSprites);
+		player = new Player(new Vector2f(BLOCK_WIDTH, BLOCK_HEIGHT), redSprites);
 	}
 
 	/* (non-Javadoc)

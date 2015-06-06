@@ -3,6 +3,8 @@
  */
 package com.github.apixandru.pokemon.ui;
 
+import static com.github.apixandru.pokemon.util.Constants.BLOCK_HEIGHT;
+import static com.github.apixandru.pokemon.util.Constants.BLOCK_WIDTH;
 import static com.github.apixandru.pokemon.util.Constants.DIRECTION_DOWN;
 import static com.github.apixandru.pokemon.util.Constants.DIRECTION_MODIFIERS;
 import static com.github.apixandru.pokemon.util.Constants.DIRECTION_MODIFIERS_NO_SIGN;
@@ -59,8 +61,8 @@ public final class Player implements CanRender, CanUpdate {
 			if (adapt.isMove()) {
 				final byte moveDirection = adapt.getMoveDirection();
 				directionModifiers = DIRECTION_MODIFIERS[moveDirection];
-				moveTo.x = DIRECTION_MODIFIERS_NO_SIGN[moveDirection][POS_X] * 32;
-				moveTo.y = DIRECTION_MODIFIERS_NO_SIGN[moveDirection][POS_Y] * 32;
+				moveTo.x = DIRECTION_MODIFIERS_NO_SIGN[moveDirection][POS_X] * BLOCK_WIDTH;
+				moveTo.y = DIRECTION_MODIFIERS_NO_SIGN[moveDirection][POS_Y] * BLOCK_HEIGHT;
 				moving = true;
 			}
 		} else {

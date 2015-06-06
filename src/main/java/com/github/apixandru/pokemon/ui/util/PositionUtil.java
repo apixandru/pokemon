@@ -3,8 +3,8 @@
  */
 package com.github.apixandru.pokemon.ui.util;
 
-import static com.github.apixandru.pokemon.util.Constants.TILE_HEIGHT;
-import static com.github.apixandru.pokemon.util.Constants.TILE_WIDTH;
+import static com.github.apixandru.pokemon.util.Constants.BLOCK_HEIGHT;
+import static com.github.apixandru.pokemon.util.Constants.BLOCK_WIDTH;
 
 import org.newdawn.slick.geom.Vector2f;
 
@@ -26,8 +26,8 @@ public final class PositionUtil {
 	 * @param height
 	 */
 	public static void round(final Vector2f position) {
-		position.x = round(position.x, TILE_WIDTH);
-		position.y = round(position.y, TILE_HEIGHT);
+		position.x = round(position.x, BLOCK_WIDTH);
+		position.y = round(position.y, BLOCK_HEIGHT);
 	}
 
 	/**

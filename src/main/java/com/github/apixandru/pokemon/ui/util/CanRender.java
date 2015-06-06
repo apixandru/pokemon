@@ -8,10 +8,6 @@ import org.newdawn.slick.Graphics;
 
 /**
  * @author Alexandru Bledea
- * @since May 28, 2015
- */
-/**
- * @author Alexandru Bledea
  * @since Jun 4, 2015
  */
 public interface CanRender {

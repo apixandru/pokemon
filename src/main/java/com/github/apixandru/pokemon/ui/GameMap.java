@@ -3,6 +3,9 @@
  */
 package com.github.apixandru.pokemon.ui;
 
+import static com.github.apixandru.pokemon.util.Constants.BLOCK_HEIGHT;
+import static com.github.apixandru.pokemon.util.Constants.BLOCK_WIDTH;
+
 import org.newdawn.slick.Graphics;
 
 import com.github.apixandru.pokemon.ui.util.CanRender;
@@ -20,7 +23,7 @@ public class GameMap implements CanRender {
 	public void render(final Graphics g) {
 		for (int x = 0; x < 10; x++) {
 			for (int y = 0; y < 10; y++) {
-				g.drawRect(x * 32, y * 32, 32, 32);
+				g.drawRect(x * BLOCK_WIDTH, y * BLOCK_HEIGHT, BLOCK_WIDTH, BLOCK_HEIGHT);
 			}
 		}
 	}
