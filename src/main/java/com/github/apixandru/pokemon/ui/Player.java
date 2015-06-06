@@ -15,6 +15,7 @@ import com.github.apixandru.pokemon.ui.util.CanRender;
 import com.github.apixandru.pokemon.ui.util.CanUpdate;
 import com.github.apixandru.pokemon.ui.util.MoveInput;
 import com.github.apixandru.pokemon.ui.util.MoveInputAdapter;
+import com.github.apixandru.pokemon.ui.util.PositionUtil;
 import com.github.apixandru.pokemon.util.Constants;
 
 /**
@@ -48,20 +49,22 @@ public final class Player implements CanRender, CanUpdate {
 			final MoveInput adapt = MoveInputAdapter.adapt(container.getInput());
 			if (adapt.isMove()) {
 				directionModifiers = Constants.DIRECTION_MODIFIERS[adapt.getMoveDirection()];
-				moveTo.x = position.x + directionModifiers[POS_X] * 32;
-				moveTo.y = position.y + directionModifiers[POS_Y] * 32;
+				moveTo.x = directionModifiers[POS_X] * 32;
+				moveTo.y = directionModifiers[POS_Y] * 32;
 				moving = true;
 			}
 		} else {
-			position.x = position.x + directionModifiers[POS_X] * speed * delta;
-			position.y = position.y + directionModifiers[POS_Y] * speed * delta;
-			if (position.y > moveTo.y) {
-				position.y = moveTo.y;
-			}
-			if (position.x > moveTo.x) {
-				position.x = moveTo.x;
-			}
-			if (moveTo.equals(position)) {
+			final float changeX = directionModifiers[POS_X] * speed * delta;
+			final float changeY = directionModifiers[POS_Y] * speed * delta;
+
+			position.x = position.x + changeX;
+			position.y = position.y + changeY;
+
+			System.out.println(moveTo);
+			moveTo.x -= changeX;
+			moveTo.y -= changeY;
+			if (moveTo.x <= 0 && moveTo.y <= 0) {
+				PositionUtil.round(position);
 				moving = false;
 			}
 		}
@@ -72,7 +75,7 @@ public final class Player implements CanRender, CanUpdate {
 	 */
 	@Override
 	public void render(final Graphics g) {
-		g.fill(new Circle(position.x, position.y, 10));
+		g.fill(new Circle(position.x + 16, position.y + 16, 10));
 	}
 
 }
