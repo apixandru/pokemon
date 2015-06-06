@@ -34,7 +34,7 @@ public class PokemonGame extends BasicGame {
 	@Override
 	public void init(final GameContainer container) throws SlickException {
 		gameMap = new GameMap();
-		player = new Player(new Vector2f(48, 48));
+		player = new Player(new Vector2f(32, 32));
 	}
 
 	/* (non-Javadoc)
