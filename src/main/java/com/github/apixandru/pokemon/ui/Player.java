@@ -3,6 +3,8 @@
  */
 package com.github.apixandru.pokemon.ui;
 
+import static com.github.apixandru.pokemon.util.Constants.DIRECTION_MODIFIERS;
+import static com.github.apixandru.pokemon.util.Constants.DIRECTION_MODIFIERS_NO_SIGN;
 import static com.github.apixandru.pokemon.util.Constants.POS_X;
 import static com.github.apixandru.pokemon.util.Constants.POS_Y;
 
@@ -16,7 +18,6 @@ import com.github.apixandru.pokemon.ui.util.CanUpdate;
 import com.github.apixandru.pokemon.ui.util.MoveInput;
 import com.github.apixandru.pokemon.ui.util.MoveInputAdapter;
 import com.github.apixandru.pokemon.ui.util.PositionUtil;
-import com.github.apixandru.pokemon.util.Constants;
 
 /**
  * @author Alexandru Bledea
@@ -48,21 +49,22 @@ public final class Player implements CanRender, CanUpdate {
 		if (!moving) {
 			final MoveInput adapt = MoveInputAdapter.adapt(container.getInput());
 			if (adapt.isMove()) {
-				directionModifiers = Constants.DIRECTION_MODIFIERS[adapt.getMoveDirection()];
-				moveTo.x = directionModifiers[POS_X] * 32;
-				moveTo.y = directionModifiers[POS_Y] * 32;
+				final byte moveDirection = adapt.getMoveDirection();
+				directionModifiers = DIRECTION_MODIFIERS[moveDirection];
+				moveTo.x = DIRECTION_MODIFIERS_NO_SIGN[moveDirection][POS_X] * 32;
+				moveTo.y = DIRECTION_MODIFIERS_NO_SIGN[moveDirection][POS_Y] * 32;
 				moving = true;
 			}
 		} else {
-			final float changeX = directionModifiers[POS_X] * speed * delta;
-			final float changeY = directionModifiers[POS_Y] * speed * delta;
+			final float changeX = speed * delta;
+			final float changeY = speed * delta;
 
-			position.x = position.x + changeX;
-			position.y = position.y + changeY;
+			position.x += directionModifiers[POS_X] * changeX;
+			position.y += directionModifiers[POS_Y] * changeY;
 
-			System.out.println(moveTo);
 			moveTo.x -= changeX;
 			moveTo.y -= changeY;
+
 			if (moveTo.x <= 0 && moveTo.y <= 0) {
 				PositionUtil.round(position);
 				moving = false;
