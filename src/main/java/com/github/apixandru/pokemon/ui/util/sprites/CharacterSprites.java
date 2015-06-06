@@ -49,9 +49,9 @@ public final class CharacterSprites {
 
 
 		this.moving = Arrays.asList(animation(moveUp, sittingUp),
-				animation(moveLeft, sittingLeft),
+				new Animation(new Image[]{moveRight, sittingRight}, 200, false),
 				animation(moveDown, sittingDown),
-				animation(moveRight, sittingRight));
+				new Animation(new Image[]{moveLeft, sittingLeft}, 200, false));
 	}
 
 	/**
