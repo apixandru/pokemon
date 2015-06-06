@@ -8,9 +8,9 @@ package com.github.apixandru.pokemon.util;
  * @since Jun 5, 2015
  */
 public interface Constants {
-
-	byte BLOCK_WIDTH = 16;
-	byte BLOCK_HEIGHT = 16;
+	byte SCALE = 3;
+	byte BLOCK_WIDTH = SCALE * 16;
+	byte BLOCK_HEIGHT = SCALE * 16;
 
 	byte DIRECTION_UP = 0;
 	byte DIRECTION_RIGHT = 1;

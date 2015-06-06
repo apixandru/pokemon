@@ -10,10 +10,11 @@ import static com.github.apixandru.pokemon.util.Constants.DIRECTION_MODIFIERS;
 import static com.github.apixandru.pokemon.util.Constants.DIRECTION_MODIFIERS_NO_SIGN;
 import static com.github.apixandru.pokemon.util.Constants.POS_X;
 import static com.github.apixandru.pokemon.util.Constants.POS_Y;
+import static com.github.apixandru.pokemon.util.Constants.SCALE;
 
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
-import org.newdawn.slick.Renderable;
+import org.newdawn.slick.Image;
 import org.newdawn.slick.geom.Vector2f;
 
 import com.github.apixandru.pokemon.ui.util.CanRender;
@@ -39,7 +40,7 @@ public final class Player implements CanRender, CanUpdate {
 	private boolean moving;
 	private byte[] directionModifiers;
 
-	private final Renderable renderable;
+	private final Image renderable;
 
 	/**
 	 * @param vector2f
@@ -87,7 +88,7 @@ public final class Player implements CanRender, CanUpdate {
 	 */
 	@Override
 	public void render(final Graphics g) {
-		renderable.draw(position.x, position.y);
+		renderable.draw(position.x, position.y, SCALE);
 	}
 
 }
