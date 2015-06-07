@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="8" height="8" tilewidth="16" tileheight="16" nextobjectid="1">
+ <tileset firstgid="1" name="ash house" tilewidth="16" tileheight="16" tilecount="32">
+  <image source="../blocksets/ash_house.png" width="32" height="256"/>
+ </tileset>
+ <layer name="Tile Layer 1" width="8" height="8">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAA4XN5wqAMAxG0Tpq3XXv9f5P6RUqlCL44xBIviSJECJFgRI7DsxYkCGHRoUTF1ZsiBBDmSqdnvyhDA++te/mAoTO/Kk9Biv3/q7RYMT0ca9FhxucEMVzAAEAAA==
+  </data>
+ </layer>
+</map>

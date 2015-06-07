@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="2" height="16" tilewidth="16" tileheight="16" nextobjectid="1">
+ <tileset firstgid="1" name="as" tilewidth="16" tileheight="16" tilecount="64">
+  <image source="../maps/red_house_nice.png" width="128" height="128"/>
+ </tileset>
+ <layer name="Tile Layer 3" width="2" height="16">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAAy3MOQJDQAAAwHWfwR/okgaFIwX/f5UpFNPOGEKY+PJjYeXkT0RMRU1CSkPLxs7Fzfwex3sUlPQMZOR86HgAWOGEloAAAAA=
+  </data>
+ </layer>
+</map>
