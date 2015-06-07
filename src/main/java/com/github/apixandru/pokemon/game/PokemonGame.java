@@ -14,6 +14,7 @@ import org.newdawn.slick.geom.Vector2f;
 
 import com.github.apixandru.pokemon.ui.GameMap;
 import com.github.apixandru.pokemon.ui.Player;
+import com.github.apixandru.pokemon.ui.util.Camera;
 import com.github.apixandru.pokemon.ui.util.sprites.CharacterSprites;
 
 /**
@@ -24,6 +25,7 @@ public class PokemonGame extends BasicGame {
 
 	private Player player;
 	private GameMap gameMap;
+	private Camera camera;
 
 	/**
 	 *
@@ -40,6 +42,7 @@ public class PokemonGame extends BasicGame {
 		final CharacterSprites redSprites = CharacterSprites.load("resources/sprites/red.png");
 		gameMap = new GameMap();
 		player = new Player(new Vector2f(3 * BLOCK_WIDTH, 6 * BLOCK_HEIGHT), redSprites);
+		camera = new Camera(container.getWidth(), container.getHeight());
 	}
 
 	/* (non-Javadoc)
@@ -47,7 +50,9 @@ public class PokemonGame extends BasicGame {
 	 */
 	@Override
 	public void render(final GameContainer container, final Graphics g) throws SlickException {
+		camera.translate(g, player.position);
 		gameMap.render(g);
+		camera.translate(g, player.position);
 		player.render(g);
 	}
 

@@ -33,7 +33,7 @@ public final class Player implements CanRender, CanUpdate {
 	private final CharacterSprites sprites;
 
 	private final Vector2f moveTo = new Vector2f();
-	private final Vector2f position;
+	public final Vector2f position;
 
 	private final float speed = .15f;
 
