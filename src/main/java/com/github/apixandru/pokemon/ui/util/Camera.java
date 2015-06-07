@@ -9,14 +9,14 @@ import org.newdawn.slick.geom.Vector2f;
  */
 public final class Camera {
 
-	private final int visibleWidth;
-	private final int visibleHeight;
+	private final float visibleWidth;
+	private final float visibleHeight;
 
 	/**
 	 * @param visibleWidth
 	 * @param visibleHeight
 	 */
-	public Camera(final int visibleWidth, final int visibleHeight) {
+	public Camera(final float visibleWidth, final float visibleHeight) {
 		this.visibleWidth = visibleWidth;
 		this.visibleHeight = visibleHeight;
 	}
@@ -26,8 +26,8 @@ public final class Camera {
 	 * @param position
 	 */
 	public void translate(final Graphics graphics, final Vector2f position) {
-		final int x = compute(position.x, this.visibleWidth);
-		final int y = compute(position.y, this.visibleHeight);
+		final float x = compute(position.x, this.visibleWidth);
+		final float y = compute(position.y, this.visibleHeight);
 		graphics.translate(x, y);
 	}
 
@@ -36,8 +36,8 @@ public final class Camera {
 	 * @param visibleRange
 	 * @return
 	 */
-	private static int compute(final float position, final int visibleRange) {
-		return (int) -position + visibleRange / 2;
+	private static float compute(final float position, final float visibleRange) {
+		return visibleRange / 2 - position;
 	}
 
 }
