@@ -35,7 +35,7 @@ public final class Player implements CanRender, CanUpdate {
 	private final Vector2f moveTo = new Vector2f();
 	public final Vector2f position;
 
-	private final float speed = .15f;
+	private final float speed = .07f;
 
 	private boolean moving;
 	private byte[] directionModifiers;
