@@ -43,7 +43,7 @@ public class PokemonGame extends BasicGame {
 		final CharacterSprites redSprites = CharacterSprites.load("resources/sprites/red.png");
 		gameMap = new GameMap();
 		player = new Player(new Vector2f(3 * BLOCK_WIDTH, 6 * BLOCK_HEIGHT), redSprites);
-		camera = new Camera(container.getWidth() / SCALE, container.getHeight() / SCALE);
+		camera = new Camera(container.getWidth(), container.getHeight(), SCALE);
 	}
 
 	/* (non-Javadoc)
@@ -51,7 +51,6 @@ public class PokemonGame extends BasicGame {
 	 */
 	@Override
 	public void render(final GameContainer container, final Graphics g) throws SlickException {
-		g.scale(SCALE, SCALE);
 		camera.translate(g, player.position);
 		gameMap.render(g);
 		player.render(g);
