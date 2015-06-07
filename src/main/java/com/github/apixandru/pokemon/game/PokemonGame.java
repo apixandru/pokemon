@@ -39,7 +39,7 @@ public class PokemonGame extends BasicGame {
 	public void init(final GameContainer container) throws SlickException {
 		final CharacterSprites redSprites = CharacterSprites.load("resources/sprites/red.png");
 		gameMap = new GameMap();
-		player = new Player(new Vector2f(BLOCK_WIDTH, BLOCK_HEIGHT), redSprites);
+		player = new Player(new Vector2f(3 * BLOCK_WIDTH, 6 * BLOCK_HEIGHT), redSprites);
 	}
 
 	/* (non-Javadoc)
