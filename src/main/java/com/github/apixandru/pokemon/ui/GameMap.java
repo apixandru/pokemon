@@ -34,7 +34,7 @@ public class GameMap implements CanRender, CanUpdate {
 		final CharacterSprites redSprites = CharacterSprites.load("resources/sprites/red.png");
 		this.actualMap = new TiledMap("resources/maps/ash_house.tmx");
 		this.mapModel = new PokemonMap(actualMap.getWidth(), actualMap.getHeight());
-		this.player = new Player(new Vector2f(3 * BLOCK_WIDTH, 6 * BLOCK_HEIGHT), redSprites);
+		this.player = new Player(new Vector2f(3 * BLOCK_WIDTH, 6 * BLOCK_HEIGHT), redSprites, mapModel);
 
 		initializeBlocked(actualMap.getWidth(), actualMap.getHeight());
 	}
