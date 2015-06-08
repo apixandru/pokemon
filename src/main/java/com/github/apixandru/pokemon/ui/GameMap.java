@@ -28,6 +28,7 @@ public class GameMap implements CanRender {
 	public GameMap() throws SlickException {
 		this.actualMap = new TiledMap("resources/maps/ash_house.tmx");
 		this.mapModel = new PokemonMap(actualMap.getWidth(), actualMap.getHeight());
+		initializeBlocked(actualMap.getWidth(), actualMap.getHeight());
 	}
 
 	/**
