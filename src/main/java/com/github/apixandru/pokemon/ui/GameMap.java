@@ -10,6 +10,7 @@ import org.newdawn.slick.Graphics;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.tiled.TiledMap;
 
+import com.github.apixandru.pokemon.model.PokemonMap;
 import com.github.apixandru.pokemon.ui.util.CanRender;
 
 /**
@@ -19,12 +20,14 @@ import com.github.apixandru.pokemon.ui.util.CanRender;
 public class GameMap implements CanRender {
 
 	private final TiledMap actualMap;
+	private final PokemonMap mapModel;
 
 	/**
 	 * @throws SlickException
 	 */
 	public GameMap() throws SlickException {
 		this.actualMap = new TiledMap("resources/maps/ash_house.tmx");
+		this.mapModel = new PokemonMap(actualMap.getWidth(), actualMap.getHeight());
 	}
 
 	/* (non-Javadoc)
