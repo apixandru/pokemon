@@ -30,6 +30,24 @@ public class GameMap implements CanRender {
 		this.mapModel = new PokemonMap(actualMap.getWidth(), actualMap.getHeight());
 	}
 
+	/**
+	 * @param numTilesX
+	 * @param numTilesY
+	 */
+	private void initializeBlocked(final int numTilesX, final int numTilesY) {
+		final int layerId = actualMap.getLayerIndex("stuff");
+		if (-1 == layerId) {
+			return;
+		}
+		for (int x = 0; x < numTilesX; x++) {
+			for (int y = 0; y < numTilesY; y++) {
+				if (actualMap.getTileId(x, y, layerId) != 0) {
+					mapModel.block(x, y);
+				}
+			}
+		}
+	}
+
 	/* (non-Javadoc)
 	 * @see com.github.apixandru.pokemon.ui.util.CanRender#render(org.newdawn.slick.Graphics)
 	 */
