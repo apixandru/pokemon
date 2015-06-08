@@ -13,6 +13,7 @@ import org.newdawn.slick.util.pathfinding.TileBasedMap;
 public final class PokemonMap implements TileBasedMap {
 
 	private final int rows, cols;
+	private final boolean[][] content;
 
 	/**
 	 * @param rows
@@ -21,6 +22,7 @@ public final class PokemonMap implements TileBasedMap {
 	public PokemonMap(final int rows, final int cols) {
 		this.rows = rows;
 		this.cols = cols;
+		this.content = new boolean[rows][cols];
 	}
 
 	/* (non-Javadoc)
@@ -60,6 +62,23 @@ public final class PokemonMap implements TileBasedMap {
 	@Override
 	public float getCost(final PathFindingContext context, final int tx, final int ty) {
 		return 1f;
+	}
+
+	/**
+	 * @param x
+	 * @param y
+	 * @return
+	 */
+	public boolean isBlocked(final int x, final int y) {
+		return this.content[y][x];
+	}
+
+	/**
+	 * @param x
+	 * @param y
+	 */
+	public void block(final int x, final int y) {
+		this.content[y][x] = true;
 	}
 
 }
