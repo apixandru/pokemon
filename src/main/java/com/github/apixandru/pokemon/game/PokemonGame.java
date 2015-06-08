@@ -3,20 +3,15 @@
  */
 package com.github.apixandru.pokemon.game;
 
-import static com.github.apixandru.pokemon.util.Constants.BLOCK_HEIGHT;
-import static com.github.apixandru.pokemon.util.Constants.BLOCK_WIDTH;
 import static com.github.apixandru.pokemon.util.Constants.SCALE;
 
 import org.newdawn.slick.BasicGame;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.SlickException;
-import org.newdawn.slick.geom.Vector2f;
 
 import com.github.apixandru.pokemon.ui.GameMap;
-import com.github.apixandru.pokemon.ui.Player;
 import com.github.apixandru.pokemon.ui.util.Camera;
-import com.github.apixandru.pokemon.ui.util.sprites.CharacterSprites;
 
 /**
  * @author Alexandru Bledea
@@ -24,7 +19,6 @@ import com.github.apixandru.pokemon.ui.util.sprites.CharacterSprites;
  */
 public class PokemonGame extends BasicGame {
 
-	private Player player;
 	private GameMap gameMap;
 	private Camera camera;
 
@@ -40,9 +34,7 @@ public class PokemonGame extends BasicGame {
 	 */
 	@Override
 	public void init(final GameContainer container) throws SlickException {
-		final CharacterSprites redSprites = CharacterSprites.load("resources/sprites/red.png");
 		gameMap = new GameMap();
-		player = new Player(new Vector2f(3 * BLOCK_WIDTH, 6 * BLOCK_HEIGHT), redSprites);
 		camera = new Camera(container.getWidth(), container.getHeight(), SCALE);
 	}
 
@@ -51,9 +43,8 @@ public class PokemonGame extends BasicGame {
 	 */
 	@Override
 	public void render(final GameContainer container, final Graphics g) throws SlickException {
-		camera.translate(g, player.position);
+		camera.translate(g, gameMap.player.position);
 		gameMap.render(g);
-		player.render(g);
 	}
 
 	/* (non-Javadoc)
@@ -61,7 +52,6 @@ public class PokemonGame extends BasicGame {
 	 */
 	@Override
 	public void update(final GameContainer container, final int delta) throws SlickException {
-		player.update(container, delta);
 		gameMap.update(container, delta);
 	}
 
