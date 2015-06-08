@@ -62,6 +62,7 @@ public class PokemonGame extends BasicGame {
 	@Override
 	public void update(final GameContainer container, final int delta) throws SlickException {
 		player.update(container, delta);
+		gameMap.update(container, delta);
 	}
 
 }

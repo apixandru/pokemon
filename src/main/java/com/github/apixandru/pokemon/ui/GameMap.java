@@ -6,18 +6,20 @@ package com.github.apixandru.pokemon.ui;
 import static com.github.apixandru.pokemon.util.Constants.BLOCK_HEIGHT;
 import static com.github.apixandru.pokemon.util.Constants.BLOCK_WIDTH;
 
+import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.tiled.TiledMap;
 
 import com.github.apixandru.pokemon.model.PokemonMap;
 import com.github.apixandru.pokemon.ui.util.CanRender;
+import com.github.apixandru.pokemon.ui.util.CanUpdate;
 
 /**
  * @author Alexandru Bledea
  * @since Jun 4, 2015
  */
-public class GameMap implements CanRender {
+public class GameMap implements CanRender, CanUpdate {
 
 	private final TiledMap actualMap;
 	private final PokemonMap mapModel;
@@ -60,6 +62,15 @@ public class GameMap implements CanRender {
 				g.drawRect(x * BLOCK_WIDTH, y * BLOCK_HEIGHT, BLOCK_WIDTH, BLOCK_HEIGHT);
 			}
 		}
+	}
+
+	/* (non-Javadoc)
+	 * @see com.github.apixandru.pokemon.ui.util.CanUpdate#update(org.newdawn.slick.GameContainer, int)
+	 */
+	@Override
+	public void update(final GameContainer container, final int delta) {
+		// TODO Auto-generated method stub
+
 	}
 
 }
