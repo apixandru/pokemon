@@ -3,9 +3,14 @@
  <tileset firstgid="1" name="ash house" tilewidth="16" tileheight="16" tilecount="32">
   <image source="../blocksets/ash_house.png" width="32" height="256"/>
  </tileset>
- <layer name="Tile Layer 1" width="8" height="8">
+ <layer name="background" width="8" height="8">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAA4XN5wqAMAxG0Tpq3XXv9f5P6RUqlCL44xBIviSJECJFgRI7DsxYkCGHRoUTF1ZsiBBDmSqdnvyhDA++te/mAoTO/Kk9Biv3/q7RYMT0ca9FhxucEMVzAAEAAA==
+   H4sIAAAAAAAAA2NgIB4IALE8ECsAsTQQywAxGxBzADE7lGZFE2MlgNmhmBFqB0w/ujpmLPJsUDExJHUwu0FACEpLYDEPBESAGABwf7baAAEAAA==
+  </data>
+ </layer>
+ <layer name="a lot of nice stuff" width="8" height="8">
+  <data encoding="base64" compression="gzip">
+   H4sIAAAAAAAAA+NkYGDgAmJeIOYDYlkglgNiSSCWAmJuIOYBYn4G2gMmAvIsWMREcagVhNLiOOSFoTQAtOrlpAABAAA=
   </data>
  </layer>
 </map>
