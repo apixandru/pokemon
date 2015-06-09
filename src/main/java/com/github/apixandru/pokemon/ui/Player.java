@@ -98,8 +98,12 @@ public final class Player implements CanRender, CanUpdate {
 	private void move(final MoveInput adapt) {
 		moveDirection = adapt.getMoveDirection();
 		directionModifiers = DIRECTION_MODIFIERS[moveDirection];
-		moveTo.x = DIRECTION_MODIFIERS_NO_SIGN[moveDirection][POS_X] * BLOCK_WIDTH;
-		moveTo.y = DIRECTION_MODIFIERS_NO_SIGN[moveDirection][POS_Y] * BLOCK_HEIGHT;
+		final int blockX = (int) (position.x / BLOCK_WIDTH) + DIRECTION_MODIFIERS[moveDirection][POS_X];
+		final int blockY = (int) (position.y / BLOCK_HEIGHT) + DIRECTION_MODIFIERS[moveDirection][POS_Y];
+		if (!mapModel.isBlocked(blockX, blockY)) {
+			moveTo.x = DIRECTION_MODIFIERS_NO_SIGN[moveDirection][POS_X] * BLOCK_WIDTH;
+			moveTo.y = DIRECTION_MODIFIERS_NO_SIGN[moveDirection][POS_Y] * BLOCK_HEIGHT;
+		}
 		moving = true;
 	}
 
