@@ -70,7 +70,19 @@ public final class PokemonMap implements TileBasedMap {
 	 * @return
 	 */
 	public boolean isBlocked(final int x, final int y) {
+		if (isOutOfBounds(x, y)) {
+			return true;
+		}
 		return this.content[y][x];
+	}
+
+	/**
+	 * @param x
+	 * @param y
+	 * @return
+	 */
+	private boolean isOutOfBounds(final int x, final int y) {
+		return x < 0 || y < 0 || x >= cols || y >= rows;
 	}
 
 	/**
