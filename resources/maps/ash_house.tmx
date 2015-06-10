@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="8" height="8" tilewidth="16" tileheight="16" nextobjectid="1">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="8" height="8" tilewidth="16" tileheight="16" nextobjectid="9">
  <tileset firstgid="1" name="ash house" tilewidth="16" tileheight="16" tilecount="32">
   <image source="../blocksets/ash_house.png" width="32" height="256"/>
  </tileset>
@@ -13,4 +13,17 @@
    H4sIAAAAAAAAA+NkYGDgAmJeIOYDYlkglgNiSSCWAmJuIOYBYn4G2gMmAvIsWMREcagVhNLiOOSFoTQAtOrlpAABAAA=
   </data>
  </layer>
+ <objectgroup name="events" width="0" height="0">
+  <object id="2" x="48" y="96" width="16" height="16">
+   <properties>
+    <property name="type" value="spawn_point"/>
+   </properties>
+  </object>
+  <object id="6" x="112" y="16" width="16" height="16">
+   <properties>
+    <property name="destination" value="ash_house_ground_floor"/>
+    <property name="type" value="warp_point"/>
+   </properties>
+  </object>
+ </objectgroup>
 </map>
