@@ -3,12 +3,11 @@
  */
 package com.github.apixandru.pokemon.model;
 
-
 /**
  * @author Alexandru Bledea
  * @since Jun 7, 2015
  */
-public final class PokemonMapImpl {
+public final class PokemonMapImpl implements PokemonMap {
 
 	private final int rows, cols;
 	private final boolean[][] content;
@@ -23,11 +22,10 @@ public final class PokemonMapImpl {
 		this.content = new boolean[rows][cols];
 	}
 
-	/**
-	 * @param x
-	 * @param y
-	 * @return
+	/* (non-Javadoc)
+	 * @see com.github.apixandru.pokemon.model.PokemonMap#isBlocked(int, int)
 	 */
+	@Override
 	public boolean isBlocked(final int x, final int y) {
 		if (isOutOfBounds(x, y)) {
 			return true;

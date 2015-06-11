@@ -17,7 +17,7 @@ import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Renderable;
 import org.newdawn.slick.geom.Vector2f;
 
-import com.github.apixandru.pokemon.model.PokemonMapImpl;
+import com.github.apixandru.pokemon.model.PokemonMap;
 import com.github.apixandru.pokemon.ui.util.CanRender;
 import com.github.apixandru.pokemon.ui.util.CanUpdate;
 import com.github.apixandru.pokemon.ui.util.MoveInput;
@@ -43,14 +43,14 @@ public final class Player implements CanRender, CanUpdate {
 
 	private byte moveDirection;
 
-	private final PokemonMapImpl mapModel;
+	private final PokemonMap mapModel;
 
 	/**
 	 * @param mapModel
 	 * @param vector2f
 	 * @param redSprites
 	 */
-	public Player(final Vector2f position, final CharacterSprites sprites, final PokemonMapImpl mapModel) {
+	public Player(final Vector2f position, final CharacterSprites sprites, final PokemonMap mapModel) {
 		this.position = position;
 		this.sprites = sprites;
 		this.mapModel = mapModel;

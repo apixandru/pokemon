@@ -6,6 +6,7 @@ package com.github.apixandru.pokemon.ui;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.tiled.TiledMap;
 
+import com.github.apixandru.pokemon.model.PokemonMap;
 import com.github.apixandru.pokemon.model.PokemonMapImpl;
 
 /**
@@ -17,7 +18,7 @@ import com.github.apixandru.pokemon.model.PokemonMapImpl;
  */
 public class PokemonTiledMap extends TiledMap {
 
-	public final PokemonMapImpl model;
+	private final PokemonMapImpl model;
 
 	/**
 	 * @param ref
@@ -30,6 +31,7 @@ public class PokemonTiledMap extends TiledMap {
 
 		parseObjects();
 		initializeBlocked();
+
 	}
 
 	/**
@@ -76,6 +78,13 @@ public class PokemonTiledMap extends TiledMap {
 				}
 			}
 		}
+	}
+
+	/**
+	 * @return the model
+	 */
+	public PokemonMap getModel() {
+		return model;
 	}
 
 }
