@@ -41,7 +41,7 @@ public class GameMap implements CanRender, CanUpdate {
 	 */
 	@Override
 	public void render(final Graphics g) {
-		actualMap.render(0, 0, 0, 0, 16, 16);
+		actualMap.render(0, 0);
 		for (int x = 0; x < 10; x++) {
 			for (int y = 0; y < 10; y++) {
 				g.drawRect(x * BLOCK_WIDTH, y * BLOCK_HEIGHT, BLOCK_WIDTH, BLOCK_HEIGHT);
