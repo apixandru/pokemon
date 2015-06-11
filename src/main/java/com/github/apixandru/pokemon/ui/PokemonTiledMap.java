@@ -6,11 +6,18 @@ package com.github.apixandru.pokemon.ui;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.tiled.TiledMap;
 
+import com.github.apixandru.pokemon.model.PokemonMap;
+
 /**
+ * This class only exists because we didn't have direct access
+ * to the objects from inside tiled map, whatever
+ *
  * @author Alexandru Bledea
  * @since Jun 10, 2015
  */
 public class PokemonTiledMap extends TiledMap {
+
+	public final PokemonMap model;
 
 	/**
 	 * @param ref
@@ -19,6 +26,16 @@ public class PokemonTiledMap extends TiledMap {
 	public PokemonTiledMap(final String ref) throws SlickException {
 		super(ref);
 
+		this.model = new PokemonMap(getWidth(), getHeight());
+
+		parseObjects();
+
+	}
+
+	/**
+	 *
+	 */
+	private void parseObjects() {
 		final int objectGroupCount = getObjectGroupCount();
 		if (1 < objectGroupCount) {
 			throw new IllegalStateException("More than one group defined!");

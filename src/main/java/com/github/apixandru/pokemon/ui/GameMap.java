@@ -11,7 +11,6 @@ import org.newdawn.slick.Graphics;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.geom.Vector2f;
 
-import com.github.apixandru.pokemon.model.PokemonMap;
 import com.github.apixandru.pokemon.ui.util.CanRender;
 import com.github.apixandru.pokemon.ui.util.CanUpdate;
 import com.github.apixandru.pokemon.ui.util.sprites.CharacterSprites;
@@ -23,7 +22,6 @@ import com.github.apixandru.pokemon.ui.util.sprites.CharacterSprites;
 public class GameMap implements CanRender, CanUpdate {
 
 	private final PokemonTiledMap actualMap;
-	private final PokemonMap mapModel;
 	public final Player player;
 
 	/**
@@ -34,8 +32,7 @@ public class GameMap implements CanRender, CanUpdate {
 
 		this.actualMap = new PokemonTiledMap("resources/maps/ash_house.tmx");
 
-		this.mapModel = new PokemonMap(actualMap.getWidth(), actualMap.getHeight());
-		this.player = new Player(new Vector2f(3 * BLOCK_WIDTH, 6 * BLOCK_HEIGHT), redSprites, mapModel);
+		this.player = new Player(new Vector2f(3 * BLOCK_WIDTH, 6 * BLOCK_HEIGHT), redSprites, actualMap.model);
 		initializeBlocked(actualMap.getWidth(), actualMap.getHeight());
 	}
 
@@ -51,7 +48,7 @@ public class GameMap implements CanRender, CanUpdate {
 		for (int x = 0; x < numTilesX; x++) {
 			for (int y = 0; y < numTilesY; y++) {
 				if (actualMap.getTileId(x, y, layerId) != 0) {
-					mapModel.block(x, y);
+					actualMap.model.block(x, y);
 				}
 			}
 		}
