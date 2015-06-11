@@ -32,7 +32,7 @@ public class GameMap implements CanRender, CanUpdate {
 
 		this.actualMap = new PokemonTiledMap("resources/maps/ash_house.tmx");
 
-		this.player = new Player(new Vector2f(3 * BLOCK_WIDTH, 6 * BLOCK_HEIGHT), redSprites, actualMap.model);
+		this.player = new Player(new Vector2f(3 * BLOCK_WIDTH, 6 * BLOCK_HEIGHT), redSprites, actualMap.getModel());
 	}
 
 
