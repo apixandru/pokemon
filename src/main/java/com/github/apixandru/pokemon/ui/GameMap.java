@@ -33,26 +33,8 @@ public class GameMap implements CanRender, CanUpdate {
 		this.actualMap = new PokemonTiledMap("resources/maps/ash_house.tmx");
 
 		this.player = new Player(new Vector2f(3 * BLOCK_WIDTH, 6 * BLOCK_HEIGHT), redSprites, actualMap.model);
-		initializeBlocked(actualMap.getWidth(), actualMap.getHeight());
 	}
 
-	/**
-	 * @param numTilesX
-	 * @param numTilesY
-	 */
-	private void initializeBlocked(final int numTilesX, final int numTilesY) {
-		final int layerId = actualMap.getLayerIndex("stuff");
-		if (-1 == layerId) {
-			return;
-		}
-		for (int x = 0; x < numTilesX; x++) {
-			for (int y = 0; y < numTilesY; y++) {
-				if (actualMap.getTileId(x, y, layerId) != 0) {
-					actualMap.model.block(x, y);
-				}
-			}
-		}
-	}
 
 	/* (non-Javadoc)
 	 * @see com.github.apixandru.pokemon.ui.util.CanRender#render(org.newdawn.slick.Graphics)

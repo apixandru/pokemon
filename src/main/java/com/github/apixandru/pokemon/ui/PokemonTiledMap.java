@@ -29,7 +29,7 @@ public class PokemonTiledMap extends TiledMap {
 		this.model = new PokemonMap(getWidth(), getHeight());
 
 		parseObjects();
-
+		initializeBlocked();
 	}
 
 	/**
@@ -57,6 +57,23 @@ public class PokemonTiledMap extends TiledMap {
 					break;
 				default:
 					throw new IllegalArgumentException("Cannot parse map, unexpected type: " + type);
+			}
+		}
+	}
+
+	/**
+	 *
+	 */
+	private void initializeBlocked() {
+		final int layerId = getLayerIndex("stuff");
+		if (-1 == layerId) {
+			return;
+		}
+		for (int x = 0, xTo = getWidth(); x < xTo; x++) {
+			for (int y = 0, yTo = getHeight(); y < yTo; y++) {
+				if (getTileId(x, y, layerId) != 0) {
+					model.block(x, y);
+				}
 			}
 		}
 	}
