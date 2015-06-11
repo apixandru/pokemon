@@ -8,7 +8,7 @@ package com.github.apixandru.pokemon.model;
  * @author Alexandru Bledea
  * @since Jun 7, 2015
  */
-public final class PokemonMap {
+public final class PokemonMapImpl {
 
 	private final int rows, cols;
 	private final boolean[][] content;
@@ -17,7 +17,7 @@ public final class PokemonMap {
 	 * @param rows
 	 * @param cols
 	 */
-	public PokemonMap(final int rows, final int cols) {
+	public PokemonMapImpl(final int rows, final int cols) {
 		this.rows = rows;
 		this.cols = cols;
 		this.content = new boolean[rows][cols];
