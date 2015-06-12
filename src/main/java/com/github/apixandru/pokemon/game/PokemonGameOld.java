@@ -17,7 +17,7 @@ import com.github.apixandru.pokemon.ui.util.Camera;
  * @author Alexandru Bledea
  * @since Jun 3, 2015
  */
-public class PokemonGame extends BasicGame {
+public class PokemonGameOld extends BasicGame {
 
 	private GameMap gameMap;
 	private Camera camera;
@@ -25,7 +25,7 @@ public class PokemonGame extends BasicGame {
 	/**
 	 *
 	 */
-	public PokemonGame() {
+	public PokemonGameOld() {
 		super("Pokemon");
 	}
 
