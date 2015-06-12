@@ -18,7 +18,7 @@ public final class Main {
 	 * @throws SlickException
 	 */
 	public static void main(final String[] args) throws SlickException {
-		final AppGameContainer container = new AppGameContainer(new PokemonGameOld());
+		final AppGameContainer container = new AppGameContainer(new PokemonGame());
 		container.setTargetFrameRate(60);
 		container.setDisplayMode(500, 400, false);
 		container.start();
