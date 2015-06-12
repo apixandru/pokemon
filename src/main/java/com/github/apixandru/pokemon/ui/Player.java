@@ -7,6 +7,7 @@ import static com.github.apixandru.pokemon.util.Constants.BLOCK_HEIGHT;
 import static com.github.apixandru.pokemon.util.Constants.BLOCK_WIDTH;
 import static com.github.apixandru.pokemon.util.Constants.DIRECTION_MODIFIERS;
 import static com.github.apixandru.pokemon.util.Constants.DIRECTION_MODIFIERS_NO_SIGN;
+import static com.github.apixandru.pokemon.util.Constants.DIRECTION_UP;
 import static com.github.apixandru.pokemon.util.Constants.POS_X;
 import static com.github.apixandru.pokemon.util.Constants.POS_Y;
 
@@ -16,6 +17,9 @@ import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Renderable;
 import org.newdawn.slick.geom.Vector2f;
+import org.newdawn.slick.state.StateBasedGame;
+import org.newdawn.slick.state.transition.FadeInTransition;
+import org.newdawn.slick.state.transition.FadeOutTransition;
 
 import com.github.apixandru.pokemon.model.PokemonMap;
 import com.github.apixandru.pokemon.ui.util.CanRender;
@@ -61,6 +65,15 @@ public final class Player implements CanRender, CanUpdate {
 	 */
 	@Override
 	public void update(final GameContainer container, final int delta) {
+		throw new IllegalStateException("replace with the one below");
+	}
+
+	/**
+	 * @param container
+	 * @param game
+	 * @param delta
+	 */
+	public void update(final GameContainer container, final StateBasedGame game, final int delta) {
 		final MoveInput adapt = MoveInputAdapter.adapt(container.getInput());
 		final boolean nowMoving = adapt.isMove();
 		boolean finishedWalking = true;
@@ -82,7 +95,18 @@ public final class Player implements CanRender, CanUpdate {
 			if (finishedWalking) {
 				PositionUtil.round(position); // center in block
 				if (7 == position.x / BLOCK_WIDTH && 1 == position.y / BLOCK_HEIGHT) {
-					System.out.println("done");
+					game.enterState(0, new FadeOutTransition(), new FadeInTransition() {
+						/* (non-Javadoc)
+						 * @see org.newdawn.slick.state.transition.FadeInTransition#preRender(org.newdawn.slick.state.StateBasedGame, org.newdawn.slick.GameContainer, org.newdawn.slick.Graphics)
+						 */
+						@Override
+						public void preRender(final StateBasedGame game, final GameContainer container, final Graphics g) {
+							position.x = 3 * BLOCK_WIDTH;
+							position.y = 6 * BLOCK_HEIGHT;
+							moveDirection = DIRECTION_UP;
+						}
+					});
+					return; // in hula mea
 				}
 
 				if (!nowMoving) {

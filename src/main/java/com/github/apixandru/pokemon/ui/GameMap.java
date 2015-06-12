@@ -10,6 +10,7 @@ import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.geom.Vector2f;
+import org.newdawn.slick.state.StateBasedGame;
 
 import com.github.apixandru.pokemon.ui.util.CanRender;
 import com.github.apixandru.pokemon.ui.util.CanUpdate;
@@ -50,12 +51,21 @@ public class GameMap implements CanRender, CanUpdate {
 		this.player.render(g);
 	}
 
+	/**
+	 * @param container
+	 * @param game
+	 * @param delta
+	 */
+	public void update(final GameContainer container, final StateBasedGame game, final int delta) {
+		player.update(container, game, delta);
+	}
+
 	/* (non-Javadoc)
 	 * @see com.github.apixandru.pokemon.ui.util.CanUpdate#update(org.newdawn.slick.GameContainer, int)
 	 */
 	@Override
 	public void update(final GameContainer container, final int delta) {
-		player.update(container, delta);
+		throw new IllegalStateException("Should be replaced by the update with game");
 	}
 
 }
