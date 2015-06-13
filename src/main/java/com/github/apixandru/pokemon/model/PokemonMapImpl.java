@@ -3,6 +3,9 @@
  */
 package com.github.apixandru.pokemon.model;
 
+import com.github.apixandru.pokemon.model.object.Character;
+import com.github.apixandru.pokemon.model.object.CharacterMoveListener;
+
 /**
  * @author Alexandru Bledea
  * @since Jun 7, 2015
@@ -50,4 +53,37 @@ public final class PokemonMapImpl implements PokemonMap {
 		this.content[y][x] = true;
 	}
 
+	/* (non-Javadoc)
+	 * @see com.github.apixandru.pokemon.model.PokemonMap#asCharacterMoveListener()
+	 */
+	@Override
+	public CharacterMoveListener asCharacterMoveListener() {
+		return new PokemonMapCharacterMoveListener();
+	}
+
+	/**
+	 * @author Alexandru Bledea
+	 * @since Jun 13, 2015
+	 */
+	private class PokemonMapCharacterMoveListener implements CharacterMoveListener {
+
+		/* (non-Javadoc)
+		 * @see com.github.apixandru.pokemon.model.object.CharacterMoveListener#characterMoveStart(com.github.apixandru.pokemon.model.object.Character, byte)
+		 */
+		@Override
+		public void characterMoveStart(final Character character, final byte direction) {
+			// TODO Auto-generated method stub
+
+		}
+
+		/* (non-Javadoc)
+		 * @see com.github.apixandru.pokemon.model.object.CharacterMoveListener#characterMoveEnd(com.github.apixandru.pokemon.model.object.Character)
+		 */
+		@Override
+		public void characterMoveEnd(final Character character) {
+			// TODO Auto-generated method stub
+
+		}
+
+	}
 }
