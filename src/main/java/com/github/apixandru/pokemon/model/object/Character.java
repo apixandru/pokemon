@@ -3,13 +3,18 @@
  */
 package com.github.apixandru.pokemon.model.object;
 
+import static com.github.apixandru.pokemon.util.Constants.DIRECTION_MODIFIERS;
+import static com.github.apixandru.pokemon.util.Constants.POS_X;
+import static com.github.apixandru.pokemon.util.Constants.POS_Y;
+
 /**
  * @author Alexandru Bledea
  * @since Jun 11, 2015
  */
 public final class Character {
 
-	private final int x, y;
+	public int xCurrent, yCurrent;
+	private int xDestination, yDestination;
 
 	private final CharacterMoveListener listener;
 
@@ -18,15 +23,26 @@ public final class Character {
 	 * @param y
 	 */
 	public Character(final int x, final int y, final CharacterMoveListener listener) {
-		this.x = x;
-		this.y = y;
+		this.xCurrent = x;
+		this.yCurrent = y;
 		this.listener = listener;
 	}
 
 	/**
-	 * @param direction
+	 * @param moveDirection
 	 */
-	public void move(final byte direction) {
-		listener.characterMoveStart(this, direction);
+	public void startMove(final byte moveDirection) {
+		this.xDestination = this.xCurrent + DIRECTION_MODIFIERS[moveDirection][POS_X];
+		this.yDestination = this.yCurrent + DIRECTION_MODIFIERS[moveDirection][POS_Y];
+
 	}
+
+	/**
+	 *
+	 */
+	public void endMove() {
+		this.xCurrent = xDestination;
+		this.yCurrent = yDestination;
+	}
+
 }
