@@ -52,15 +52,16 @@ public final class Player implements CanRender, CanUpdate {
 	private final Character character;
 
 	/**
+	 * @param x
+	 * @param y
+	 * @param sprites
 	 * @param mapModel
-	 * @param vector2f
-	 * @param redSprites
 	 */
-	public Player(final Vector2f position, final CharacterSprites sprites, final PokemonMap mapModel) {
-		this.position = position;
+	public Player(final int x, final int y, final CharacterSprites sprites, final PokemonMap mapModel) {
+		this.position = new Vector2f(x * BLOCK_WIDTH, y * BLOCK_HEIGHT);
 		this.sprites = sprites;
 		this.mapModel = mapModel;
-		this.character = new Character((int) position.x / BLOCK_WIDTH, (int) position.y / BLOCK_HEIGHT, mapModel.asCharacterMoveListener());
+		this.character = new Character(x, y / BLOCK_HEIGHT, mapModel.asCharacterMoveListener());
 	}
 
 	/* (non-Javadoc)
