@@ -22,6 +22,7 @@ import org.newdawn.slick.state.transition.FadeInTransition;
 import org.newdawn.slick.state.transition.FadeOutTransition;
 
 import com.github.apixandru.pokemon.model.PokemonMap;
+import com.github.apixandru.pokemon.model.object.Character;
 import com.github.apixandru.pokemon.ui.util.CanRender;
 import com.github.apixandru.pokemon.ui.util.CanUpdate;
 import com.github.apixandru.pokemon.ui.util.MoveInput;
@@ -48,6 +49,7 @@ public final class Player implements CanRender, CanUpdate {
 	private byte moveDirection;
 
 	private final PokemonMap mapModel;
+	private final Character character;
 
 	/**
 	 * @param mapModel
@@ -58,6 +60,7 @@ public final class Player implements CanRender, CanUpdate {
 		this.position = position;
 		this.sprites = sprites;
 		this.mapModel = mapModel;
+		this.character = new Character((int) position.x / BLOCK_WIDTH, (int) position.y / BLOCK_HEIGHT, mapModel.asCharacterMoveListener());
 	}
 
 	/* (non-Javadoc)
@@ -106,7 +109,7 @@ public final class Player implements CanRender, CanUpdate {
 							moveDirection = DIRECTION_UP;
 						}
 					});
-					return; // in hula mea
+					return;
 				}
 
 				if (!nowMoving) {

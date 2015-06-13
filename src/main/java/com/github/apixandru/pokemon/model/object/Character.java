@@ -3,7 +3,6 @@
  */
 package com.github.apixandru.pokemon.model.object;
 
-
 /**
  * @author Alexandru Bledea
  * @since Jun 11, 2015
@@ -11,6 +10,7 @@ package com.github.apixandru.pokemon.model.object;
 public final class Character {
 
 	private final int x, y;
+
 	private final CharacterMoveListener listener;
 
 	/**
@@ -23,13 +23,10 @@ public final class Character {
 		this.listener = listener;
 	}
 
-
 	/**
 	 * @param direction
 	 */
 	public void move(final byte direction) {
-		for (final CharacterMoveListener characterMoveListener : listeners) {
-
-		}
+		listener.characterMoveStart(this, direction);
 	}
 }
