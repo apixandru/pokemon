@@ -3,13 +3,9 @@
  */
 package com.github.apixandru.pokemon.ui;
 
-import static com.github.apixandru.pokemon.util.Constants.BLOCK_HEIGHT;
-import static com.github.apixandru.pokemon.util.Constants.BLOCK_WIDTH;
-
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.SlickException;
-import org.newdawn.slick.geom.Vector2f;
 import org.newdawn.slick.state.StateBasedGame;
 
 import com.github.apixandru.pokemon.ui.util.CanRender;
@@ -33,7 +29,7 @@ public class GameMap implements CanRender, CanUpdate {
 
 		this.actualMap = new PokemonTiledMap("resources/maps/ash_house.tmx");
 
-		this.player = new Player(new Vector2f(3 * BLOCK_WIDTH, 6 * BLOCK_HEIGHT), redSprites, actualMap.getModel());
+		this.player = new Player(3, 6, redSprites, actualMap.getModel());
 	}
 
 
@@ -43,11 +39,11 @@ public class GameMap implements CanRender, CanUpdate {
 	@Override
 	public void render(final Graphics g) {
 		actualMap.render(0, 0);
-		for (int x = 0; x < 10; x++) {
-			for (int y = 0; y < 10; y++) {
-				g.drawRect(x * BLOCK_WIDTH, y * BLOCK_HEIGHT, BLOCK_WIDTH, BLOCK_HEIGHT);
-			}
-		}
+//		for (int x = 0; x < 10; x++) {
+//			for (int y = 0; y < 10; y++) {
+//				g.drawRect(x * BLOCK_WIDTH, y * BLOCK_HEIGHT, BLOCK_WIDTH, BLOCK_HEIGHT);
+//			}
+//		}
 		this.player.render(g);
 	}
 
