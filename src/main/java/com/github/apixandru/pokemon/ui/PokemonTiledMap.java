@@ -6,8 +6,10 @@ package com.github.apixandru.pokemon.ui;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.tiled.TiledMap;
 
+import com.github.apixandru.pokemon.model.MapEventListener;
 import com.github.apixandru.pokemon.model.PokemonMap;
 import com.github.apixandru.pokemon.model.PokemonMapImpl;
+import com.github.apixandru.pokemon.model.object.WarpPoint;
 
 /**
  * This class only exists because we didn't have direct access
@@ -85,6 +87,22 @@ public class PokemonTiledMap extends TiledMap {
 	 */
 	public PokemonMap getModel() {
 		return model;
+	}
+
+	/**
+	 * @author Alexandru Bledea
+	 * @since Jun 14, 2015
+	 */
+	private class EventListener implements MapEventListener {
+
+		/* (non-Javadoc)
+		 * @see com.github.apixandru.pokemon.model.MapEventListener#onWarpPoint(com.github.apixandru.pokemon.model.object.Character, com.github.apixandru.pokemon.model.object.WarpPoint)
+		 */
+		@Override
+		public void onWarpPoint(final Character character, final WarpPoint warpPoint) {
+			System.out.println("stepped on warp point");
+		}
+
 	}
 
 }
