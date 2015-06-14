@@ -25,6 +25,7 @@
   <object id="6" x="112" y="16" width="16" height="16">
    <properties>
     <property name="destination" value="ash_house_ground_floor"/>
+    <property name="spawn_index" value="0"/>
     <property name="type" value="warp_point"/>
    </properties>
   </object>
