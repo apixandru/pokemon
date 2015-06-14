@@ -67,6 +67,15 @@ public final class CharacterSprites {
 	}
 
 	/**
+	 *
+	 */
+	public void reset() {
+		for (final Animation animation : moving) {
+			animation.restart();
+		}
+	}
+
+	/**
 	 * @throws SlickException
 	 */
 	public static CharacterSprites load(final String image) throws SlickException {

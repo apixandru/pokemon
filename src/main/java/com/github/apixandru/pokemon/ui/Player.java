@@ -128,6 +128,7 @@ public final class Player implements CanRender, CanUpdate {
 	 *
 	 */
 	public void reset() {
+		this.sprites.reset();
 		this.moving = false;
 		this.offset.x = 0;
 		this.offset.y = 0;
