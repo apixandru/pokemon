@@ -9,6 +9,7 @@ import org.newdawn.slick.tiled.TiledMap;
 import com.github.apixandru.pokemon.model.MapEventListener;
 import com.github.apixandru.pokemon.model.PokemonMap;
 import com.github.apixandru.pokemon.model.PokemonMapImpl;
+import com.github.apixandru.pokemon.model.object.Character;
 import com.github.apixandru.pokemon.model.object.WarpPoint;
 
 /**
@@ -29,7 +30,7 @@ public class PokemonTiledMap extends TiledMap {
 	public PokemonTiledMap(final String ref) throws SlickException {
 		super(ref);
 
-		this.model = new PokemonMapImpl(getWidth(), getHeight());
+		this.model = new PokemonMapImpl(getWidth(), getHeight(), new EventListener());
 
 		parseObjects();
 		initializeBlocked();

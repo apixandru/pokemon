@@ -12,17 +12,21 @@ import com.github.apixandru.pokemon.model.object.CharacterMoveListener;
  */
 public final class PokemonMapImpl implements PokemonMap {
 
+	private final MapEventListener listener;
+
 	private final int rows, cols;
 	private final boolean[][] content;
 
 	/**
 	 * @param rows
 	 * @param cols
+	 * @param listener
 	 */
-	public PokemonMapImpl(final int rows, final int cols) {
+	public PokemonMapImpl(final int rows, final int cols, final MapEventListener listener) {
 		this.rows = rows;
 		this.cols = cols;
 		this.content = new boolean[rows][cols];
+		this.listener = listener;
 	}
 
 	/* (non-Javadoc)
@@ -72,7 +76,6 @@ public final class PokemonMapImpl implements PokemonMap {
 		 */
 		@Override
 		public void characterMoveStart(final Character character, final byte direction) {
-			// TODO Auto-generated method stub
 
 		}
 
@@ -82,7 +85,7 @@ public final class PokemonMapImpl implements PokemonMap {
 		@Override
 		public void characterMoveEnd(final Character character) {
 			if (character.xCurrent == 7 && character.yCurrent == 1) {
-				System.out.println("in position");
+				listener.onWarpPoint(character, null);
 			}
 		}
 
