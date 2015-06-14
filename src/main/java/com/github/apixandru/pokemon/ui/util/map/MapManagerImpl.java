@@ -15,46 +15,33 @@ import com.github.apixandru.pokemon.ui.PokemonTiledMap;
  * @author Alexandru Bledea
  * @since Jun 14, 2015
  */
-public final class MapLoader {
+public final class MapManagerImpl implements MapManager {
 
 	private final Map<String, PokemonTiledMap> maps = new HashMap<String, PokemonTiledMap>();
 	private final MapEventListener listener;
 
 	/**
 	 * @param listener
+	 * @throws SlickException
 	 */
-	public MapLoader(final MapEventListener listener) {
+	public MapManagerImpl(final MapEventListener listener) throws SlickException {
 		this.listener = listener;
+		loadMap("ash_house_level1");
 	}
 
 	/**
 	 * @param filename
 	 * @throws SlickException
 	 */
-	public void loadMap(final String filename) throws SlickException {
+	private void loadMap(final String filename) throws SlickException {
 		maps.put(filename, new PokemonTiledMap("resources/maps/" + filename + ".tmx", listener));
 	}
 
-	/**
-	 * @return
+	/* (non-Javadoc)
+	 * @see com.github.apixandru.pokemon.model.MapManager#getMap(java.lang.String)
 	 */
-	public MapManager build() {
-		return new MapLoaderManager();
-	}
-
-	/**
-	 * @author Alexandru Bledea
-	 * @since Jun 14, 2015
-	 */
-	private class MapLoaderManager implements MapManager {
-
-		/* (non-Javadoc)
-		 * @see com.github.apixandru.pokemon.model.MapManager#getMap(java.lang.String)
-		 */
-		@Override
-		public PokemonTiledMap getMap(final String name) {
-			return maps.get(name);
-		}
-
+	@Override
+	public PokemonTiledMap getMap(final String name) {
+		return maps.get(name);
 	}
 }
