@@ -18,6 +18,8 @@ public final class Character {
 
 	private final CharacterMoveListener listener;
 
+	public byte moveDirection;
+
 	/**
 	 * @param x
 	 * @param y
@@ -32,6 +34,7 @@ public final class Character {
 	 * @param moveDirection
 	 */
 	public boolean moveBegin(final byte moveDirection) {
+		this.moveDirection = moveDirection;
 		final int xDestination = this.xCurrent + DIRECTION_MODIFIERS[moveDirection][POS_X];
 		final int yDestination = this.yCurrent + DIRECTION_MODIFIERS[moveDirection][POS_Y];
 		if (listener.isBlocked(xDestination, yDestination)) {

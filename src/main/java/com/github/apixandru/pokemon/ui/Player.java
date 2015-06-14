@@ -7,7 +7,6 @@ import static com.github.apixandru.pokemon.util.Constants.BLOCK_HEIGHT;
 import static com.github.apixandru.pokemon.util.Constants.BLOCK_WIDTH;
 import static com.github.apixandru.pokemon.util.Constants.DIRECTION_MODIFIERS;
 import static com.github.apixandru.pokemon.util.Constants.DIRECTION_MODIFIERS_NO_SIGN;
-import static com.github.apixandru.pokemon.util.Constants.DIRECTION_UP;
 import static com.github.apixandru.pokemon.util.Constants.POS_X;
 import static com.github.apixandru.pokemon.util.Constants.POS_Y;
 
@@ -46,8 +45,6 @@ public final class Player implements CanRender, CanUpdate {
 	private boolean moving;
 	private byte[] directionModifiers;
 
-	private byte moveDirection;
-
 	private final Character character;
 
 	/**
@@ -79,9 +76,8 @@ public final class Player implements CanRender, CanUpdate {
 		final MoveInput adapt = MoveInputAdapter.adapt(container.getInput());
 		final boolean nowMoving = adapt.isMove();
 		boolean finishedWalking = true;
-
 		if (moving) {
-			sprites.moving.get(moveDirection).update(delta);
+			sprites.moving.get(character.moveDirection).update(delta);
 
 			final float changeX = speed * delta;
 			final float changeY = speed * delta;
@@ -106,14 +102,13 @@ public final class Player implements CanRender, CanUpdate {
 						public void preRender(final StateBasedGame game, final GameContainer container, final Graphics g) {
 							position.x = 3 * BLOCK_WIDTH;
 							position.y = 6 * BLOCK_HEIGHT;
-							moveDirection = DIRECTION_UP;
 						}
 					});
 					return;
 				}
 
 				if (!nowMoving) {
-					sprites.moving.get(moveDirection).restart();
+					sprites.moving.get(character.moveDirection).restart();
 					moving = false;
 				}
 			}
@@ -127,7 +122,7 @@ public final class Player implements CanRender, CanUpdate {
 	 * @param adapt
 	 */
 	private void move(final MoveInput adapt) {
-		moveDirection = adapt.getMoveDirection();
+		final byte moveDirection = adapt.getMoveDirection();
 
 		if (character.moveBegin(moveDirection)) {
 			moveTo.x = DIRECTION_MODIFIERS_NO_SIGN[moveDirection][POS_X] * BLOCK_WIDTH;
@@ -148,7 +143,7 @@ public final class Player implements CanRender, CanUpdate {
 		} else {
 			renderables = sprites.notMoving;
 		}
-		renderables.get(moveDirection).draw(position.x, position.y, BLOCK_WIDTH, BLOCK_HEIGHT);
+		renderables.get(character.moveDirection).draw(position.x, position.y, BLOCK_WIDTH, BLOCK_HEIGHT);
 	}
 
 }
