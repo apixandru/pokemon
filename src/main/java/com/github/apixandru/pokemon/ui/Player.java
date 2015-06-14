@@ -61,7 +61,7 @@ public final class Player implements CanRender, CanUpdate {
 		this.position = new Vector2f(x * BLOCK_WIDTH, y * BLOCK_HEIGHT);
 		this.sprites = sprites;
 		this.mapModel = mapModel;
-		this.character = new Character(x, y / BLOCK_HEIGHT, mapModel.asCharacterMoveListener());
+		this.character = new Character(x, y, mapModel.asCharacterMoveListener());
 	}
 
 	/* (non-Javadoc)
@@ -98,6 +98,7 @@ public final class Player implements CanRender, CanUpdate {
 
 			if (finishedWalking) {
 				PositionUtil.round(position); // center in block
+				character.moveEnd();
 				if (7 == position.x / BLOCK_WIDTH && 1 == position.y / BLOCK_HEIGHT) {
 					game.enterState(0, new FadeOutTransition(), new FadeInTransition() {
 						/* (non-Javadoc)
@@ -129,13 +130,12 @@ public final class Player implements CanRender, CanUpdate {
 	 */
 	private void move(final MoveInput adapt) {
 		moveDirection = adapt.getMoveDirection();
-		directionModifiers = DIRECTION_MODIFIERS[moveDirection];
-		final int blockX = (int) (position.x / BLOCK_WIDTH) + DIRECTION_MODIFIERS[moveDirection][POS_X];
-		final int blockY = (int) (position.y / BLOCK_HEIGHT) + DIRECTION_MODIFIERS[moveDirection][POS_Y];
-		if (!mapModel.isBlocked(blockX, blockY)) {
+
+		if (character.moveBegin(moveDirection)) {
 			moveTo.x = DIRECTION_MODIFIERS_NO_SIGN[moveDirection][POS_X] * BLOCK_WIDTH;
 			moveTo.y = DIRECTION_MODIFIERS_NO_SIGN[moveDirection][POS_Y] * BLOCK_HEIGHT;
 		}
+		directionModifiers = DIRECTION_MODIFIERS[moveDirection];
 		moving = true;
 	}
 
