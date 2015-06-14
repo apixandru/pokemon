@@ -19,6 +19,8 @@ import com.github.apixandru.pokemon.model.object.WarpPoint;
 import com.github.apixandru.pokemon.ui.Player;
 import com.github.apixandru.pokemon.ui.PokemonTiledMap;
 import com.github.apixandru.pokemon.ui.util.Camera;
+import com.github.apixandru.pokemon.ui.util.map.MapLoader;
+import com.github.apixandru.pokemon.ui.util.map.MapManager;
 import com.github.apixandru.pokemon.ui.util.sprites.CharacterSprites;
 
 /**
@@ -42,7 +44,10 @@ public class StateInMap extends BasicGameState {
 
 		final CharacterSprites redSprites = CharacterSprites.load("resources/sprites/red.png");
 
-		this.actualMap = new PokemonTiledMap("resources/maps/ash_house_level1.tmx", new EventListener());
+		final MapLoader loader = new MapLoader(new EventListener());
+		loader.loadMap("ash_house_level1");
+		final MapManager mapManager = loader.build();
+		this.actualMap = mapManager.getMap("ash_house_level1");
 
 		final Character character = new Character(3, 6);
 		character.setCurrentMap(actualMap.getModel().asCharacterMoveListener());
