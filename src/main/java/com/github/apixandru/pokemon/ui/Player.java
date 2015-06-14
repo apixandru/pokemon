@@ -26,7 +26,6 @@ import com.github.apixandru.pokemon.ui.util.CanRender;
 import com.github.apixandru.pokemon.ui.util.CanUpdate;
 import com.github.apixandru.pokemon.ui.util.MoveInput;
 import com.github.apixandru.pokemon.ui.util.MoveInputAdapter;
-import com.github.apixandru.pokemon.ui.util.PositionUtil;
 import com.github.apixandru.pokemon.ui.util.sprites.CharacterSprites;
 
 /**
@@ -37,8 +36,8 @@ public final class Player implements CanRender, CanUpdate {
 
 	private final CharacterSprites sprites;
 
+	private final Vector2f offset = new Vector2f();
 	private final Vector2f moveTo = new Vector2f();
-	public final Vector2f position;
 
 	private final float speed = .07f;
 
@@ -54,7 +53,6 @@ public final class Player implements CanRender, CanUpdate {
 	 * @param mapModel
 	 */
 	public Player(final int x, final int y, final CharacterSprites sprites, final PokemonMap mapModel) {
-		this.position = new Vector2f(x * BLOCK_WIDTH, y * BLOCK_HEIGHT);
 		this.sprites = sprites;
 		this.character = new Character(x, y, mapModel.asCharacterMoveListener());
 	}
@@ -82,8 +80,8 @@ public final class Player implements CanRender, CanUpdate {
 			final float changeX = speed * delta;
 			final float changeY = speed * delta;
 
-			position.x += directionModifiers[POS_X] * changeX;
-			position.y += directionModifiers[POS_Y] * changeY;
+			offset.x += directionModifiers[POS_X] * changeX;
+			offset.y += directionModifiers[POS_Y] * changeY;
 
 			moveTo.x -= changeX;
 			moveTo.y -= changeY;
@@ -91,17 +89,19 @@ public final class Player implements CanRender, CanUpdate {
 			finishedWalking = moveTo.x <= 0 && moveTo.y <= 0;
 
 			if (finishedWalking) {
-				PositionUtil.round(position); // center in block
+				offset.x = 0;
+				offset.y = 0;
 				character.moveEnd();
-				if (7 == position.x / BLOCK_WIDTH && 1 == position.y / BLOCK_HEIGHT) {
+				if (7 == character.xCurrent && 1 == character.yCurrent) {
 					game.enterState(0, new FadeOutTransition(), new FadeInTransition() {
 						/* (non-Javadoc)
 						 * @see org.newdawn.slick.state.transition.FadeInTransition#preRender(org.newdawn.slick.state.StateBasedGame, org.newdawn.slick.GameContainer, org.newdawn.slick.Graphics)
 						 */
 						@Override
 						public void preRender(final StateBasedGame game, final GameContainer container, final Graphics g) {
-							position.x = 3 * BLOCK_WIDTH;
-							position.y = 6 * BLOCK_HEIGHT;
+							character.xCurrent = 3;
+							character.yCurrent = 6;
+							moving = false;
 						}
 					});
 					return;
@@ -143,7 +143,15 @@ public final class Player implements CanRender, CanUpdate {
 		} else {
 			renderables = sprites.notMoving;
 		}
-		renderables.get(character.moveDirection).draw(position.x, position.y, BLOCK_WIDTH, BLOCK_HEIGHT);
+		final Vector2f position = getPosition();
+		renderables.get(character.moveDirection).draw(position.x, position.y);
+	}
+
+	/**
+	 * @return
+	 */
+	public Vector2f getPosition() {
+		return new Vector2f(character.xCurrent * BLOCK_WIDTH + offset.x, character.yCurrent * BLOCK_HEIGHT + offset.y);
 	}
 
 }
