@@ -27,6 +27,7 @@ public final class MapManagerImpl implements MapManager {
 	public MapManagerImpl(final MapEventListener listener) throws SlickException {
 		this.listener = listener;
 		loadMap("ash_house_level1");
+		loadMap("ash_house_level0");
 	}
 
 	/**
