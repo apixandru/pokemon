@@ -3,10 +3,6 @@
  */
 package com.github.apixandru.pokemon.model;
 
-import static com.github.apixandru.pokemon.util.Constants.DIRECTION_MODIFIERS;
-import static com.github.apixandru.pokemon.util.Constants.POS_X;
-import static com.github.apixandru.pokemon.util.Constants.POS_Y;
-
 import com.github.apixandru.pokemon.model.object.Character;
 import com.github.apixandru.pokemon.model.object.CharacterMoveListener;
 
@@ -55,25 +51,6 @@ public final class PokemonMapImpl implements PokemonMap {
 	 */
 	public void block(final int x, final int y) {
 		this.content[y][x] = true;
-	}
-
-
-	/* (non-Javadoc)
-	 * @see com.github.apixandru.pokemon.model.PokemonMap#canMoveCharacter(com.github.apixandru.pokemon.model.object.Character, byte)
-	 */
-	@Override
-	public boolean canMoveCharacter(final Character character, final byte moveDirection) {
-		final int blockX = character.xCurrent + DIRECTION_MODIFIERS[moveDirection][POS_X];
-		final int blockY = character.yCurrent + DIRECTION_MODIFIERS[moveDirection][POS_Y];
-		return !isBlocked(blockX, blockY);
-	}
-
-	/* (non-Javadoc)
-	 * @see com.github.apixandru.pokemon.model.PokemonMap#characterMoveEnd(com.github.apixandru.pokemon.model.object.Character)
-	 */
-	@Override
-	public void characterMoveEnd(final Character character) {
-		character.endMove();
 	}
 
 	/* (non-Javadoc)
