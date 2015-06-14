@@ -31,18 +31,24 @@ public final class Character {
 	/**
 	 * @param moveDirection
 	 */
-	public void startMove(final byte moveDirection) {
-		this.xDestination = this.xCurrent + DIRECTION_MODIFIERS[moveDirection][POS_X];
-		this.yDestination = this.yCurrent + DIRECTION_MODIFIERS[moveDirection][POS_Y];
-
+	public boolean moveBegin(final byte moveDirection) {
+		final int xDestination = this.xCurrent + DIRECTION_MODIFIERS[moveDirection][POS_X];
+		final int yDestination = this.yCurrent + DIRECTION_MODIFIERS[moveDirection][POS_Y];
+		if (listener.isBlocked(xDestination, yDestination)) {
+			return false;
+		}
+		this.xDestination = xDestination;
+		this.yDestination = yDestination;
+		return true;
 	}
 
 	/**
 	 *
 	 */
-	public void endMove() {
+	public void moveEnd() {
 		this.xCurrent = xDestination;
 		this.yCurrent = yDestination;
+		listener.characterMoveEnd(this);
 	}
 
 }
