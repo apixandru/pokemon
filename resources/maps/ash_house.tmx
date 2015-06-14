@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.0" orientation="orthogonal" renderorder="right-down" width="8" height="8" tilewidth="16" tileheight="16" nextobjectid="9">
+ <properties>
+  <property name="map_name" value="house_ash_level1"/>
+ </properties>
  <tileset firstgid="1" name="ash house" tilewidth="16" tileheight="16" tilecount="32">
   <image source="../blocksets/ash_house.png" width="32" height="256"/>
  </tileset>
