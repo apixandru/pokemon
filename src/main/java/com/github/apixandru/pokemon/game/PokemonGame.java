@@ -8,6 +8,8 @@ import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.StateBasedGame;
 import org.newdawn.slick.state.transition.FadeInTransition;
 
+import com.github.apixandru.pokemon.game.state.StateInMap;
+
 /**
  * @author Alexandru Bledea
  * @since Jun 12, 2015

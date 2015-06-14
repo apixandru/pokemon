@@ -11,7 +11,9 @@ import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 
+import com.github.apixandru.pokemon.model.MapEventListener;
 import com.github.apixandru.pokemon.model.object.Character;
+import com.github.apixandru.pokemon.model.object.WarpPoint;
 import com.github.apixandru.pokemon.ui.Player;
 import com.github.apixandru.pokemon.ui.PokemonTiledMap;
 import com.github.apixandru.pokemon.ui.util.Camera;
@@ -27,14 +29,18 @@ public class StateInMap extends BasicGameState {
 	public Player player;
 	private Camera camera;
 
+	private StateBasedGame game;
+
 	/* (non-Javadoc)
 	 * @see org.newdawn.slick.state.GameState#init(org.newdawn.slick.GameContainer, org.newdawn.slick.state.StateBasedGame)
 	 */
 	@Override
 	public void init(final GameContainer container, final StateBasedGame game) throws SlickException {
+		this.game = game;
+
 		final CharacterSprites redSprites = CharacterSprites.load("resources/sprites/red.png");
 
-		this.actualMap = new PokemonTiledMap("resources/maps/ash_house.tmx");
+		this.actualMap = new PokemonTiledMap("resources/maps/ash_house.tmx", new EventListener());
 
 		final Character character = new Character(3, 6, actualMap.getModel().asCharacterMoveListener());
 
@@ -68,6 +74,22 @@ public class StateInMap extends BasicGameState {
 	@Override
 	public int getID() {
 		return 0;
+	}
+
+	/**
+	 * @author Alexandru Bledea
+	 * @since Jun 14, 2015
+	 */
+	private class EventListener implements MapEventListener {
+
+		/* (non-Javadoc)
+		 * @see com.github.apixandru.pokemon.model.MapEventListener#onWarpPoint(com.github.apixandru.pokemon.model.object.Character, com.github.apixandru.pokemon.model.object.WarpPoint)
+		 */
+		@Override
+		public void onWarpPoint(final Character character, final WarpPoint warpPoint) {
+			System.out.println("stepped on warp point");
+		}
+
 	}
 
 }
