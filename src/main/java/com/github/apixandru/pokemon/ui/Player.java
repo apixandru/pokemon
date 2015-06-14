@@ -20,7 +20,6 @@ import org.newdawn.slick.state.StateBasedGame;
 import org.newdawn.slick.state.transition.FadeInTransition;
 import org.newdawn.slick.state.transition.FadeOutTransition;
 
-import com.github.apixandru.pokemon.model.PokemonMap;
 import com.github.apixandru.pokemon.model.object.Character;
 import com.github.apixandru.pokemon.ui.util.CanRender;
 import com.github.apixandru.pokemon.ui.util.CanUpdate;
@@ -47,14 +46,12 @@ public final class Player implements CanRender, CanUpdate {
 	private final Character character;
 
 	/**
-	 * @param x
-	 * @param y
+	 * @param character
 	 * @param sprites
-	 * @param mapModel
 	 */
-	public Player(final int x, final int y, final CharacterSprites sprites, final PokemonMap mapModel) {
+	public Player(final Character character, final CharacterSprites sprites) {
 		this.sprites = sprites;
-		this.character = new Character(x, y, mapModel.asCharacterMoveListener());
+		this.character = character;
 	}
 
 	/* (non-Javadoc)

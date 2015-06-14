@@ -11,6 +11,7 @@ import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 
+import com.github.apixandru.pokemon.model.object.Character;
 import com.github.apixandru.pokemon.ui.Player;
 import com.github.apixandru.pokemon.ui.PokemonTiledMap;
 import com.github.apixandru.pokemon.ui.util.Camera;
@@ -35,9 +36,11 @@ public class StateInMap extends BasicGameState {
 
 		this.actualMap = new PokemonTiledMap("resources/maps/ash_house.tmx");
 
-		this.player = new Player(3, 6, redSprites, actualMap.getModel());
+		final Character character = new Character(3, 6, actualMap.getModel().asCharacterMoveListener());
 
-		camera = new Camera(container.getWidth(), container.getHeight(), SCALE);
+		this.player = new Player(character, redSprites);
+
+		this.camera = new Camera(container.getWidth(), container.getHeight(), SCALE);
 	}
 
 	/* (non-Javadoc)
