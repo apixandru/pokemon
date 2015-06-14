@@ -16,7 +16,6 @@ import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Renderable;
 import org.newdawn.slick.geom.Vector2f;
-import org.newdawn.slick.state.StateBasedGame;
 
 import com.github.apixandru.pokemon.model.object.Character;
 import com.github.apixandru.pokemon.ui.util.CanRender;
@@ -57,15 +56,6 @@ public final class Player implements CanRender, CanUpdate {
 	 */
 	@Override
 	public void update(final GameContainer container, final int delta) {
-		throw new IllegalStateException("replace with the one below");
-	}
-
-	/**
-	 * @param container
-	 * @param game
-	 * @param delta
-	 */
-	public void update(final GameContainer container, final StateBasedGame game, final int delta) {
 		final MoveInput adapt = MoveInputAdapter.adapt(container.getInput());
 		final boolean nowMoving = adapt.isMove();
 		boolean finishedWalking = true;
