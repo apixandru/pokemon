@@ -48,7 +48,6 @@ public final class Player implements CanRender, CanUpdate {
 
 	private byte moveDirection;
 
-	private final PokemonMap mapModel;
 	private final Character character;
 
 	/**
@@ -60,7 +59,6 @@ public final class Player implements CanRender, CanUpdate {
 	public Player(final int x, final int y, final CharacterSprites sprites, final PokemonMap mapModel) {
 		this.position = new Vector2f(x * BLOCK_WIDTH, y * BLOCK_HEIGHT);
 		this.sprites = sprites;
-		this.mapModel = mapModel;
 		this.character = new Character(x, y, mapModel.asCharacterMoveListener());
 	}
 
