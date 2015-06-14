@@ -3,7 +3,7 @@
  */
 package com.github.apixandru.pokemon.model;
 
-import com.github.apixandru.pokemon.model.object.CharacterMoveListener;
+import com.github.apixandru.pokemon.model.object.WorldMap;
 
 /**
  * @author Alexandru Bledea
@@ -14,6 +14,6 @@ public interface PokemonMap extends WorldBounds {
 	/**
 	 * @return
 	 */
-	CharacterMoveListener asCharacterMoveListener();
+	WorldMap asCharacterMoveListener();
 
 }

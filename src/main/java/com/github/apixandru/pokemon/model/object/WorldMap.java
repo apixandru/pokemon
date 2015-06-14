@@ -9,7 +9,7 @@ import com.github.apixandru.pokemon.model.WorldBounds;
  * @author Alexandru Bledea
  * @since Jun 13, 2015
  */
-public interface CharacterMoveListener extends WorldBounds {
+public interface WorldMap extends WorldBounds {
 
 	/**
 	 * @param character

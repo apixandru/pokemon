@@ -4,7 +4,7 @@
 package com.github.apixandru.pokemon.model;
 
 import com.github.apixandru.pokemon.model.object.Character;
-import com.github.apixandru.pokemon.model.object.CharacterMoveListener;
+import com.github.apixandru.pokemon.model.object.WorldMap;
 
 /**
  * @author Alexandru Bledea
@@ -61,7 +61,7 @@ public final class PokemonMapImpl implements PokemonMap {
 	 * @see com.github.apixandru.pokemon.model.PokemonMap#asCharacterMoveListener()
 	 */
 	@Override
-	public CharacterMoveListener asCharacterMoveListener() {
+	public WorldMap asCharacterMoveListener() {
 		return new PokemonMapCharacterMoveListener();
 	}
 
@@ -69,7 +69,7 @@ public final class PokemonMapImpl implements PokemonMap {
 	 * @author Alexandru Bledea
 	 * @since Jun 13, 2015
 	 */
-	private class PokemonMapCharacterMoveListener implements CharacterMoveListener {
+	private class PokemonMapCharacterMoveListener implements WorldMap {
 
 		/* (non-Javadoc)
 		 * @see com.github.apixandru.pokemon.model.object.CharacterMoveListener#characterMoveStart(com.github.apixandru.pokemon.model.object.Character, byte)

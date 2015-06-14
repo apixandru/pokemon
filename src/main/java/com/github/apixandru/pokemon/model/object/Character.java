@@ -16,7 +16,7 @@ public final class Character {
 	public int xCurrent, yCurrent;
 	private int xDestination, yDestination;
 
-	private final CharacterMoveListener listener;
+	private WorldMap currentMap;
 
 	public byte moveDirection;
 
@@ -24,10 +24,9 @@ public final class Character {
 	 * @param x
 	 * @param y
 	 */
-	public Character(final int x, final int y, final CharacterMoveListener listener) {
+	public Character(final int x, final int y) {
 		this.xCurrent = x;
 		this.yCurrent = y;
-		this.listener = listener;
 	}
 
 	/**
@@ -37,7 +36,7 @@ public final class Character {
 		this.moveDirection = moveDirection;
 		final int xDestination = this.xCurrent + DIRECTION_MODIFIERS[moveDirection][POS_X];
 		final int yDestination = this.yCurrent + DIRECTION_MODIFIERS[moveDirection][POS_Y];
-		if (listener.isBlocked(xDestination, yDestination)) {
+		if (currentMap.isBlocked(xDestination, yDestination)) {
 			return false;
 		}
 		this.xDestination = xDestination;
@@ -51,7 +50,14 @@ public final class Character {
 	public void moveEnd() {
 		this.xCurrent = xDestination;
 		this.yCurrent = yDestination;
-		listener.characterMoveEnd(this);
+		currentMap.characterMoveEnd(this);
+	}
+
+	/**
+	 * @param currentMap the currentMap to set
+	 */
+	public void setCurrentMap(final WorldMap currentMap) {
+		this.currentMap = currentMap;
 	}
 
 }
