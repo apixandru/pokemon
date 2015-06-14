@@ -3,11 +3,13 @@
  */
 package com.github.apixandru.pokemon.model.object;
 
+import com.github.apixandru.pokemon.model.WorldBounds;
+
 /**
  * @author Alexandru Bledea
  * @since Jun 13, 2015
  */
-public interface CharacterMoveListener {
+public interface CharacterMoveListener extends WorldBounds {
 
 	/**
 	 * @param character

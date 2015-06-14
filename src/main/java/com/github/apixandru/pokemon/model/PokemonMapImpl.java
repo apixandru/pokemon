@@ -104,7 +104,17 @@ public final class PokemonMapImpl implements PokemonMap {
 		 */
 		@Override
 		public void characterMoveEnd(final Character character) {
-			// TODO Auto-generated method stub
+			if (character.xCurrent == 7 && character.yCurrent == 1) {
+				System.out.println("in position");
+			}
+		}
+
+		/* (non-Javadoc)
+		 * @see com.github.apixandru.pokemon.model.WorldBounds#isBlocked(int, int)
+		 */
+		@Override
+		public boolean isBlocked(final int x, final int y) {
+			return PokemonMapImpl.this.isBlocked(x, y);
 		}
 	}
 
