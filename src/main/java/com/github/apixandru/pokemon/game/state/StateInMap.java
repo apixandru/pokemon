@@ -1,7 +1,7 @@
 /**
  *
  */
-package com.github.apixandru.pokemon.game;
+package com.github.apixandru.pokemon.game.state;
 
 import static com.github.apixandru.pokemon.util.Constants.SCALE;
 
@@ -11,8 +11,10 @@ import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
 
-import com.github.apixandru.pokemon.ui.GameMap;
+import com.github.apixandru.pokemon.ui.Player;
+import com.github.apixandru.pokemon.ui.PokemonTiledMap;
 import com.github.apixandru.pokemon.ui.util.Camera;
+import com.github.apixandru.pokemon.ui.util.sprites.CharacterSprites;
 
 /**
  * @author Alexandru Bledea
@@ -20,7 +22,8 @@ import com.github.apixandru.pokemon.ui.util.Camera;
  */
 public class StateInMap extends BasicGameState {
 
-	private GameMap gameMap;
+	private PokemonTiledMap actualMap;
+	public Player player;
 	private Camera camera;
 
 	/* (non-Javadoc)
@@ -28,7 +31,12 @@ public class StateInMap extends BasicGameState {
 	 */
 	@Override
 	public void init(final GameContainer container, final StateBasedGame game) throws SlickException {
-		gameMap = new GameMap();
+		final CharacterSprites redSprites = CharacterSprites.load("resources/sprites/red.png");
+
+		this.actualMap = new PokemonTiledMap("resources/maps/ash_house.tmx");
+
+		this.player = new Player(3, 6, redSprites, actualMap.getModel());
+
 		camera = new Camera(container.getWidth(), container.getHeight(), SCALE);
 	}
 
@@ -37,8 +45,9 @@ public class StateInMap extends BasicGameState {
 	 */
 	@Override
 	public void render(final GameContainer container, final StateBasedGame game, final Graphics g) throws SlickException {
-		camera.translate(g, gameMap.player.getPosition());
-		gameMap.render(g);
+		this.camera.translate(g, this.player.getPosition());
+		this.actualMap.render(0, 0);
+		this.player.render(g);
 	}
 
 	/* (non-Javadoc)
@@ -46,7 +55,8 @@ public class StateInMap extends BasicGameState {
 	 */
 	@Override
 	public void update(final GameContainer container, final StateBasedGame game, final int delta) throws SlickException {
-		gameMap.update(container, game, delta);
+		player.update(container, game, delta);
+
 	}
 
 	/* (non-Javadoc)
