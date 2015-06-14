@@ -42,7 +42,7 @@ public class StateInMap extends BasicGameState {
 
 		final CharacterSprites redSprites = CharacterSprites.load("resources/sprites/red.png");
 
-		this.actualMap = new PokemonTiledMap("resources/maps/ash_house.tmx", new EventListener());
+		this.actualMap = new PokemonTiledMap("resources/maps/ash_house_level1.tmx", new EventListener());
 
 		final Character character = new Character(3, 6);
 		character.setCurrentMap(actualMap.getModel().asCharacterMoveListener());
