@@ -10,6 +10,8 @@ import org.newdawn.slick.Graphics;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.state.BasicGameState;
 import org.newdawn.slick.state.StateBasedGame;
+import org.newdawn.slick.state.transition.FadeInTransition;
+import org.newdawn.slick.state.transition.FadeOutTransition;
 
 import com.github.apixandru.pokemon.model.MapEventListener;
 import com.github.apixandru.pokemon.model.object.Character;
@@ -88,7 +90,19 @@ public class StateInMap extends BasicGameState {
 		 */
 		@Override
 		public void onWarpPoint(final Character character, final WarpPoint warpPoint) {
-			System.out.println("stepped on warp point");
+			game.enterState(0, new FadeOutTransition(), new FadeInTransition() {
+
+				/* (non-Javadoc)
+				 * @see org.newdawn.slick.state.transition.FadeInTransition#preRender(org.newdawn.slick.state.StateBasedGame, org.newdawn.slick.GameContainer, org.newdawn.slick.Graphics)
+				 */
+				@Override
+				public void preRender(final StateBasedGame game, final GameContainer container, final Graphics g) {
+					character.xCurrent = 3;
+					character.yCurrent = 6;
+					player.reset();
+				}
+			});
+
 		}
 
 	}

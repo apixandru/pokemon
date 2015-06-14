@@ -17,8 +17,6 @@ import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Renderable;
 import org.newdawn.slick.geom.Vector2f;
 import org.newdawn.slick.state.StateBasedGame;
-import org.newdawn.slick.state.transition.FadeInTransition;
-import org.newdawn.slick.state.transition.FadeOutTransition;
 
 import com.github.apixandru.pokemon.model.object.Character;
 import com.github.apixandru.pokemon.ui.util.CanRender;
@@ -89,21 +87,6 @@ public final class Player implements CanRender, CanUpdate {
 				offset.x = 0;
 				offset.y = 0;
 				character.moveEnd();
-				if (7 == character.xCurrent && 1 == character.yCurrent) {
-					game.enterState(0, new FadeOutTransition(), new FadeInTransition() {
-						/* (non-Javadoc)
-						 * @see org.newdawn.slick.state.transition.FadeInTransition#preRender(org.newdawn.slick.state.StateBasedGame, org.newdawn.slick.GameContainer, org.newdawn.slick.Graphics)
-						 */
-						@Override
-						public void preRender(final StateBasedGame game, final GameContainer container, final Graphics g) {
-							character.xCurrent = 3;
-							character.yCurrent = 6;
-							moving = false;
-						}
-					});
-					return;
-				}
-
 				if (!nowMoving) {
 					sprites.moving.get(character.moveDirection).restart();
 					moving = false;
@@ -149,6 +132,17 @@ public final class Player implements CanRender, CanUpdate {
 	 */
 	public Vector2f getPosition() {
 		return new Vector2f(character.xCurrent * BLOCK_WIDTH + offset.x, character.yCurrent * BLOCK_HEIGHT + offset.y);
+	}
+
+	/**
+	 *
+	 */
+	public void reset() {
+		this.moving = false;
+		this.offset.x = 0;
+		this.offset.y = 0;
+		this.moveTo.x = 0;
+		this.moveTo.y = 0;
 	}
 
 }
