@@ -27,11 +27,6 @@ public interface PokemonMap extends WorldBounds {
 	/**
 	 * @param character
 	 */
-	void characterMoveStart(Character character, byte moveDirection);
-
-	/**
-	 * @param character
-	 */
 	void characterMoveEnd(Character character);
 
 }

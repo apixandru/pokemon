@@ -69,16 +69,6 @@ public final class PokemonMapImpl implements PokemonMap {
 	}
 
 	/* (non-Javadoc)
-	 * @see com.github.apixandru.pokemon.model.PokemonMap#characterMoveStart(com.github.apixandru.pokemon.model.object.Character, byte)
-	 */
-	@Override
-	public void characterMoveStart(final Character character, final byte moveDirection) {
-		if (canMoveCharacter(character, moveDirection)) {
-			character.startMove(moveDirection);
-		}
-	}
-
-	/* (non-Javadoc)
 	 * @see com.github.apixandru.pokemon.model.PokemonMap#characterMoveEnd(com.github.apixandru.pokemon.model.object.Character)
 	 */
 	@Override
@@ -115,9 +105,7 @@ public final class PokemonMapImpl implements PokemonMap {
 		@Override
 		public void characterMoveEnd(final Character character) {
 			// TODO Auto-generated method stub
-
 		}
-
 	}
 
 }
