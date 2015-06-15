@@ -42,7 +42,7 @@ public class PokemonTiledMap extends TiledMap {
 	private void parseObjects() {
 		final int objectGroupCount = getObjectGroupCount();
 		for (int layer = 0; layer < objectGroupCount; layer++) {
-			final ObjectGroup group = (ObjectGroup) objectGroups.get(0);
+			final ObjectGroup group = (ObjectGroup) objectGroups.get(layer);
 
 			switch (group.name) {
 				case "spawn points":
