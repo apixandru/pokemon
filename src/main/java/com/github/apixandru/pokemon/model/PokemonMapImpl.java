@@ -4,7 +4,9 @@
 package com.github.apixandru.pokemon.model;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import com.github.apixandru.pokemon.model.object.Character;
 import com.github.apixandru.pokemon.model.object.SpawnPoint;
@@ -22,7 +24,8 @@ public final class PokemonMapImpl implements PokemonMap {
 	private final int rows, cols;
 	private final boolean[][] content;
 
-	private final List<SpawnPoint> spawnPoints = new ArrayList<SpawnPoint>();
+	private final Map<Integer, SpawnPoint> spawnPoints = new HashMap<Integer, SpawnPoint>();
+
 	private final List<WarpPoint> warpPoints = new ArrayList<WarpPoint>();
 
 	/**
@@ -112,7 +115,15 @@ public final class PokemonMapImpl implements PokemonMap {
 	 * @param index
 	 */
 	public void addSpawnPoint(final int x, final int y, final int index) {
-		spawnPoints.add(new SpawnPoint(x, y, index));
+		spawnPoints.put(index, new SpawnPoint(x, y, index));
+	}
+
+	/**
+	 * @param index
+	 * @return
+	 */
+	public SpawnPoint getSpawnPoint(final int index) {
+		return spawnPoints.get(index);
 	}
 
 }
