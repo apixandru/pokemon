@@ -106,4 +106,13 @@ public final class PokemonMapImpl implements PokemonMap {
 		}
 	}
 
+	/**
+	 * @param x
+	 * @param y
+	 * @param index
+	 */
+	public void addSpawnPoint(final int x, final int y, final int index) {
+		spawnPoints.add(new SpawnPoint(x, y, index));
+	}
+
 }

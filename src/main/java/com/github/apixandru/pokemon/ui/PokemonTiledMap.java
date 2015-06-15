@@ -41,27 +41,42 @@ public class PokemonTiledMap extends TiledMap {
 	 */
 	private void parseObjects() {
 		final int objectGroupCount = getObjectGroupCount();
-		if (1 < objectGroupCount) {
-			throw new IllegalStateException("More than one group defined!");
-		}
-		if (objectGroupCount == 0) {
-			return;
-		}
-		final ObjectGroup group = (ObjectGroup) objectGroups.get(0);
-		if (!"events".equals(group.name)) {
-			throw new IllegalStateException("Expected group name to be 'stuff', it's actually " + group.name);
-		}
-		for (final Object object : group.objects) {
-			final GroupObject obj = (GroupObject) object;
-			final String type = (String) obj.props.get("type");
-			switch (type) {
-				case "spawn_point":
+		for (int layer = 0; layer < objectGroupCount; layer++) {
+			final ObjectGroup group = (ObjectGroup) objectGroups.get(0);
+
+			switch (group.name) {
+				case "spawn points":
+					parseSpawnPoints(group);
 					break;
-				case "warp_point":
+				case "warp points":
+					parseWarpPoints(group);
 					break;
 				default:
-					throw new IllegalArgumentException("Cannot parse map, unexpected type: " + type);
+					throw new IllegalArgumentException("Unknown group name: " + group.name);
 			}
+		}
+	}
+
+	/**
+	 * @param group
+	 */
+	private void parseSpawnPoints(final ObjectGroup group) {
+		for (final Object object : group.objects) {
+			final GroupObject obj = (GroupObject) object;
+			final Object idx = obj.props.get("index");
+			if (null == idx) {
+				throw new IllegalArgumentException("Expecting spawn point to have index");
+			}
+			model.addSpawnPoint(obj.x / obj.width, obj.y / obj.height, Integer.parseInt((String) idx));
+		}
+	}
+
+	/**
+	 * @param group
+	 */
+	private void parseWarpPoints(final ObjectGroup group) {
+		for (final Object object : group.objects) {
+			final GroupObject obj = (GroupObject) object;
 		}
 	}
 
