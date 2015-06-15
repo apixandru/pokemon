@@ -16,18 +16,15 @@
    H4sIAAAAAAAAA+NkYGDgAmJeIOYDYlkglgNiSSCWAmJuIOYBYn4G2gMmAvIsWMREcagVhNLiOOSFoTQAtOrlpAABAAA=
   </data>
  </layer>
- <objectgroup name="events" width="0" height="0">
-  <object id="2" x="48" y="96" width="16" height="16">
+ <objectgroup name="warp points" width="0" height="0">
+  <object id="6" name="warp_point_1" x="112" y="16" width="16" height="16">
    <properties>
-    <property name="type" value="spawn_point"/>
-   </properties>
-  </object>
-  <object id="6" x="112" y="16" width="16" height="16">
-   <properties>
-    <property name="destination" value="ash_house_ground_floor"/>
+    <property name="destination" value="ash_house_level0"/>
     <property name="spawn_index" value="0"/>
-    <property name="type" value="warp_point"/>
    </properties>
   </object>
+ </objectgroup>
+ <objectgroup name="spawn points" width="0" height="0">
+  <object id="2" name="initial spawn point" x="48" y="96" width="16" height="16"/>
  </objectgroup>
 </map>
