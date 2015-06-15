@@ -72,4 +72,15 @@ public final class MapManagerImpl implements MapManager {
 	public PokemonTiledMap getMap(final String name) {
 		return maps.get(name);
 	}
+
+	/* (non-Javadoc)
+	 * @see com.github.apixandru.pokemon.ui.util.map.MapManager#getSpawnPoint(com.github.apixandru.pokemon.model.object.WarpPoint)
+	 */
+	@Override
+	public SpawnPoint getSpawnPoint(final WarpPoint warpPoint) {
+		final PokemonTiledMap destination = maps.get(warpPoint.destName);
+		final PokemonMapImpl destMapModel = (PokemonMapImpl) destination.getModel();
+		return destMapModel.getSpawnPoint(warpPoint.spawnIndex);
+	}
+
 }

@@ -15,6 +15,7 @@ import org.newdawn.slick.state.transition.FadeOutTransition;
 
 import com.github.apixandru.pokemon.model.MapEventListener;
 import com.github.apixandru.pokemon.model.object.Character;
+import com.github.apixandru.pokemon.model.object.SpawnPoint;
 import com.github.apixandru.pokemon.model.object.WarpPoint;
 import com.github.apixandru.pokemon.ui.Player;
 import com.github.apixandru.pokemon.ui.PokemonTiledMap;
@@ -103,6 +104,9 @@ public class StateInMap extends BasicGameState {
 				public void preRender(final StateBasedGame game, final GameContainer container, final Graphics g) {
 					actualMap = mapManager.getMap(warpPoint.destName);
 					character.setCurrentMap(actualMap.getModel().asCharacterMoveListener());
+					final SpawnPoint spawnPoint = mapManager.getSpawnPoint(warpPoint);
+					character.xCurrent = spawnPoint.x;
+					character.yCurrent = spawnPoint.y;
 					player.reset();
 				}
 			});

@@ -3,6 +3,8 @@
  */
 package com.github.apixandru.pokemon.ui.util.map;
 
+import com.github.apixandru.pokemon.model.object.SpawnPoint;
+import com.github.apixandru.pokemon.model.object.WarpPoint;
 import com.github.apixandru.pokemon.ui.PokemonTiledMap;
 
 
@@ -17,5 +19,11 @@ public interface MapManager {
 	 * @return
 	 */
 	PokemonTiledMap getMap(String name);
+
+	/**
+	 * @param warpPoint
+	 * @return
+	 */
+	SpawnPoint getSpawnPoint(WarpPoint warpPoint);
 
 }
