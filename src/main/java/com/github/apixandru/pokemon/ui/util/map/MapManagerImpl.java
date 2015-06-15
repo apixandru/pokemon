@@ -51,8 +51,7 @@ public final class MapManagerImpl implements MapManager {
 				final SpawnPoint spawnPoint = destMapModel.getSpawnPoint(warp.spawnIndex);
 				if (null == spawnPoint) {
 					throw new IllegalStateException(String.format("Map '%s' references '%s' spawn index '%s', but no such index exists!",
-							entry.getKey(),
-							warp.destName, warp.spawnIndex));
+							entry.getKey(), warp.destName, warp.spawnIndex));
 				}
 			}
 		}
