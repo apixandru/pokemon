@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="8" height="9" tilewidth="16" tileheight="16" nextobjectid="15">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="8" height="9" tilewidth="16" tileheight="16" nextobjectid="18">
  <tileset firstgid="1" name="ash_house_level00" tilewidth="16" tileheight="16" tilecount="60">
   <image source="../blocksets/ash_house.png" width="32" height="480"/>
  </tileset>
@@ -25,6 +25,18 @@
    <properties>
     <property name="destination" value="ash_house_level1"/>
     <property name="spawn_index" value="1"/>
+   </properties>
+  </object>
+  <object id="16" name="going outside left" x="32" y="128" width="16" height="16">
+   <properties>
+    <property name="destination" value="ash_house_level1"/>
+    <property name="spawn_index" value="0"/>
+   </properties>
+  </object>
+  <object id="17" name="going outside right" x="48" y="128" width="16" height="16">
+   <properties>
+    <property name="destination" value="ash_house_level1"/>
+    <property name="spawn_index" value="0"/>
    </properties>
   </object>
  </objectgroup>

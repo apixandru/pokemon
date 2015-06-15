@@ -25,14 +25,14 @@
   </object>
  </objectgroup>
  <objectgroup name="spawn points" width="0" height="0">
-  <object id="7" name="spawn point up stairs" x="48" y="96" width="16" height="16">
+  <object id="7" name="spawn point up stairs" x="112" y="16" width="16" height="16">
    <properties>
     <property name="index" value="1"/>
    </properties>
   </object>
   <object id="2" name="initial spawn point" x="48" y="96" width="16" height="16">
    <properties>
-    <property name="index" value="1"/>
+    <property name="index" value="0"/>
    </properties>
   </object>
  </objectgroup>
