@@ -63,21 +63,41 @@ public class PokemonTiledMap extends TiledMap {
 	private void parseSpawnPoints(final ObjectGroup group) {
 		for (final Object object : group.objects) {
 			final GroupObject obj = (GroupObject) object;
-			final Object idx = obj.props.get("index");
-			if (null == idx) {
-				throw new IllegalArgumentException("Expecting spawn point to have index");
-			}
-			model.addSpawnPoint(obj.x / obj.width, obj.y / obj.height, Integer.parseInt((String) idx));
+			final int index = getRequiredInt(obj, "index");
+			model.addSpawnPoint(obj.x / obj.width, obj.y / obj.height, index);
 		}
 	}
 
 	/**
 	 * @param group
 	 */
-	private void parseWarpPoints(final ObjectGroup group) {
+	private static void parseWarpPoints(final ObjectGroup group) {
 		for (final Object object : group.objects) {
 			final GroupObject obj = (GroupObject) object;
+
 		}
+	}
+
+	/**
+	 * @param obj
+	 * @param name
+	 * @return
+	 */
+	private static int getRequiredInt(final GroupObject obj, final String name) {
+		return Integer.parseInt(getRequiredString(obj, name));
+	}
+
+	/**
+	 * @param obj
+	 * @param name
+	 * @return
+	 */
+	private static String getRequiredString(final GroupObject obj, final String name) {
+		final Object property = obj.props.get(name);
+		if (property instanceof String) {
+			return (String) property;
+		}
+		throw new IllegalArgumentException(String.format("Expecting object %s to have %s", obj.index, name));
 	}
 
 	/**
