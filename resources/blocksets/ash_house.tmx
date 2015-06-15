@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="2" height="28" tilewidth="16" tileheight="16" nextobjectid="1">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="2" height="30" tilewidth="16" tileheight="16" nextobjectid="1">
  <tileset firstgid="1" name="as" tilewidth="16" tileheight="16" tilecount="64">
   <image source="aux/ash_house_level1.png" width="128" height="128"/>
  </tileset>
  <tileset firstgid="65" name="level0" tilewidth="16" tileheight="16" tilecount="64">
   <image source="aux/ash_house_level0.png" width="128" height="128"/>
  </tileset>
- <layer name="Tile Layer 3" width="2" height="28">
+ <layer name="Tile Layer 3" width="2" height="30">
   <data encoding="base64" compression="gzip">
-   H4sIAAAAAAAAAy3MNxIBUQAA0C/ncIfV0aCQChYzLGa4g9AIDR2H94otXvuiEEKHLj0GDJkyI0OWClVy5KlRZ8SYOQv66TFJjxJlWrQpUKRBk5glCTtWrNlzYMOWIyfOXLjz4MqNJy/efPjy4w8tNVtR4AAAAA==
+   H4sIAAAAAAAAA2XMNxJBUQBA0Sdn/h7oaFBIhfRnxBn2IDRCQ8fineJ37sxpbzOE0KJNhx59xkxIkaZEmQxZKlQZMGTKjG7yGCWPAkUaROTIU6POnAUbtiyJ2bFnxZoDR06cuXHnwpUHT168+fAN//0Ar3PBsfAAAAA=
   </data>
  </layer>
 </map>
