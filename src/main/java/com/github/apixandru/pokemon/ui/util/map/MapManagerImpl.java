@@ -30,8 +30,8 @@ public final class MapManagerImpl implements MapManager {
 	 */
 	public MapManagerImpl(final MapEventListener listener) throws SlickException {
 		this.listener = listener;
-		loadMap("ash_house_level1");
-		loadMap("ash_house_level0");
+		loadMap("pallet_town/ash_house_level1");
+		loadMap("pallet_town/ash_house_level0");
 		validateLinks();
 	}
 
@@ -62,7 +62,7 @@ public final class MapManagerImpl implements MapManager {
 	 * @throws SlickException
 	 */
 	private void loadMap(final String filename) throws SlickException {
-		maps.put(filename, new PokemonTiledMap("resources/maps/" + filename + ".tmx", listener));
+		maps.put(filename.split("/")[1], new PokemonTiledMap("resources/maps/" + filename + ".tmx", listener));
 	}
 
 	/* (non-Javadoc)

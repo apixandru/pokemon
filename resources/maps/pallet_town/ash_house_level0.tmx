@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.0" orientation="orthogonal" renderorder="right-down" width="8" height="9" tilewidth="16" tileheight="16" nextobjectid="18">
  <tileset firstgid="1" name="ash_house_level00" tilewidth="16" tileheight="16" tilecount="60">
-  <image source="../blocksets/ash_house.png" width="32" height="480"/>
+  <image source="../../blocksets/ash_house.png" width="32" height="480"/>
  </tileset>
  <layer name="background" width="8" height="9">
   <data encoding="base64" compression="gzip">
