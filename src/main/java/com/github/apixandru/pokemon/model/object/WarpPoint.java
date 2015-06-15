@@ -9,8 +9,8 @@ package com.github.apixandru.pokemon.model.object;
  */
 public final class WarpPoint extends Point {
 
-	private final String destName;
-	private final int spawnIndex;
+	public final String destName;
+	public final int spawnIndex;
 
 	/**
 	 * @param x
