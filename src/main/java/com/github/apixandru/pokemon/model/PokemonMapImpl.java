@@ -95,9 +95,10 @@ public final class PokemonMapImpl implements PokemonMap {
 		 */
 		@Override
 		public void characterMoveEnd(final Character character) {
+//			TODO: maybe find a quicker way ?
 			for (final WarpPoint warpPoint : getWarpPoints()) {
 				if (warpPoint.x == character.xCurrent && warpPoint.y == character.yCurrent) {
-					listener.onWarpPoint(character, null);
+					listener.onWarpPoint(character, warpPoint);
 					break;
 				}
 			}

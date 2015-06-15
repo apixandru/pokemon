@@ -94,12 +94,6 @@ public class StateInMap extends BasicGameState {
 		 */
 		@Override
 		public void onWarpPoint(final Character character, final WarpPoint warpPoint) {
-			PokemonTiledMap destMap;
-			if (mapManager.getMap("ash_house_level1") == actualMap) {
-				destMap = mapManager.getMap("ash_house_level0");
-			} else {
-				destMap = mapManager.getMap("ash_house_level1");
-			}
 			game.enterState(0, new FadeOutTransition(), new FadeInTransition() {
 
 				/* (non-Javadoc)
@@ -107,7 +101,7 @@ public class StateInMap extends BasicGameState {
 				 */
 				@Override
 				public void preRender(final StateBasedGame game, final GameContainer container, final Graphics g) {
-					actualMap = destMap;
+					actualMap = mapManager.getMap(warpPoint.destName);
 					character.setCurrentMap(actualMap.getModel().asCharacterMoveListener());
 					player.reset();
 				}
