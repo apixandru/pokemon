@@ -3,7 +3,12 @@
  */
 package com.github.apixandru.pokemon.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import com.github.apixandru.pokemon.model.object.Character;
+import com.github.apixandru.pokemon.model.object.SpawnPoint;
+import com.github.apixandru.pokemon.model.object.WarpPoint;
 import com.github.apixandru.pokemon.model.object.WorldMap;
 
 /**
@@ -16,6 +21,9 @@ public final class PokemonMapImpl implements PokemonMap {
 
 	private final int rows, cols;
 	private final boolean[][] content;
+
+	private final List<SpawnPoint> spawnPoints = new ArrayList<SpawnPoint>();
+	private final List<WarpPoint> warpPoints = new ArrayList<WarpPoint>();
 
 	/**
 	 * @param rows
