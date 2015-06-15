@@ -20,4 +20,12 @@
    </properties>
   </object>
  </objectgroup>
+ <objectgroup name="warp points" width="0" height="0">
+  <object id="12" name="going up" x="112" y="16" width="16" height="16">
+   <properties>
+    <property name="destination" value="ash_house_level1"/>
+    <property name="spawn_index" value="1"/>
+   </properties>
+  </object>
+ </objectgroup>
 </map>
