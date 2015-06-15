@@ -14,9 +14,9 @@
   </data>
  </layer>
  <objectgroup name="spawn points" width="0" height="0">
-  <object id="11" name="warp_point_1" x="112" y="16" width="16" height="16">
+  <object id="11" name="spawn_point_0" x="112" y="16" width="16" height="16">
    <properties>
-    <property name="spawn_index" value="0"/>
+    <property name="index" value="0"/>
    </properties>
   </object>
  </objectgroup>
