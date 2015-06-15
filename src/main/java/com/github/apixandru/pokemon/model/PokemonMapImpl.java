@@ -126,4 +126,14 @@ public final class PokemonMapImpl implements PokemonMap {
 		return spawnPoints.get(index);
 	}
 
+	/**
+	 * @param x
+	 * @param y
+	 * @param destName
+	 * @param spawnIndex
+	 */
+	public void addWarpPoint(final int x, final int y, final String destName, final int spawnIndex) {
+		warpPoints.add(new WarpPoint(x, y, destName, spawnIndex));
+	}
+
 }

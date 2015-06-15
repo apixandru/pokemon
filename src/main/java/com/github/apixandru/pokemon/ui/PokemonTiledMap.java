@@ -71,10 +71,12 @@ public class PokemonTiledMap extends TiledMap {
 	/**
 	 * @param group
 	 */
-	private static void parseWarpPoints(final ObjectGroup group) {
+	private void parseWarpPoints(final ObjectGroup group) {
 		for (final Object object : group.objects) {
 			final GroupObject obj = (GroupObject) object;
-
+			final int spawnIndex = getRequiredInt(obj, "spawn_index");
+			final String destName = getRequiredString(obj, "destination");
+			model.addWarpPoint(obj.x / obj.width, obj.y / obj.height, destName, spawnIndex);
 		}
 	}
 
