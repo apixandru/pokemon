@@ -29,11 +29,11 @@ public final class PokemonMapImpl implements PokemonMap {
 	private final List<WarpPoint> warpPoints = new ArrayList<WarpPoint>();
 
 	/**
-	 * @param rows
 	 * @param cols
+	 * @param rows
 	 * @param listener
 	 */
-	public PokemonMapImpl(final int rows, final int cols, final MapEventListener listener) {
+	public PokemonMapImpl(final int cols, final int rows, final MapEventListener listener) {
 		this.rows = rows;
 		this.cols = cols;
 		this.content = new boolean[rows][cols];
