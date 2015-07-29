@@ -3,10 +3,13 @@
 
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>com.github.apixandru</groupId>
-	<artifactId>pokemon-game</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<parent>
+		<groupId>com.github.apixandru.pokemon</groupId>
+		<artifactId>pokemon</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+	</parent>
 
+	<artifactId>pokemon-game</artifactId>
 
 	<dependencies>
 
@@ -43,20 +46,20 @@
 				</configuration>
 			</plugin>
 			<plugin>
-        <groupId>com.googlecode.mavennatives</groupId>
-        <artifactId>maven-nativedependencies-plugin</artifactId>
-        <version>0.0.7</version>
-        <executions>
-                <execution>
-                        <id>unpacknatives</id>
-                        <phase>generate-resources</phase>
-                        <goals>
-                                <goal>copy</goal>
-                        </goals>
-                </execution>
-        </executions>
-</plugin>
-			
+				<groupId>com.googlecode.mavennatives</groupId>
+				<artifactId>maven-nativedependencies-plugin</artifactId>
+				<version>0.0.7</version>
+				<executions>
+					<execution>
+						<id>unpacknatives</id>
+						<phase>generate-resources</phase>
+						<goals>
+							<goal>copy</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+
 		</plugins>
 	</build>
 
