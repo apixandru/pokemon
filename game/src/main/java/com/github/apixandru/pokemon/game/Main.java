@@ -20,13 +20,22 @@ public final class Main {
 	 * @throws SlickException
 	 */
 	public static void main(final String[] args) throws SlickException {
-		String natives = new File("target/natives").getAbsolutePath();
-		System.setProperty("java.library.path", "target");
-		System.setProperty("org.lwjgl.librarypath", natives);
+		ensureLwjglIsLoaded();
+
 		final AppGameContainer container = new AppGameContainer(new PokemonGame());
 		container.setTargetFrameRate(60);
 		container.setDisplayMode(500, 400, false);
 		container.start();
+	}
+
+	/**
+	 *
+	 */
+	private static void ensureLwjglIsLoaded() {
+//		in intellij, make sure that the working dir is game and not parent
+		final String natives = new File("natives").getAbsolutePath();
+		System.setProperty("java.library.path", natives);
+		System.setProperty("org.lwjgl.librarypath", natives);
 	}
 
 }
