@@ -14,16 +14,16 @@ import com.github.apixandru.pokemon.ui.PokemonTiledMap;
  */
 public interface MapManager {
 
-	/**
-	 * @param name
-	 * @return
-	 */
-	PokemonTiledMap getMap(String name);
+    /**
+     * @param name
+     * @return
+     */
+    PokemonTiledMap getMap(String name);
 
-	/**
-	 * @param warpPoint
-	 * @return
-	 */
-	SpawnPoint getSpawnPoint(WarpPoint warpPoint);
+    /**
+     * @param warpPoint
+     * @return
+     */
+    SpawnPoint getSpawnPoint(WarpPoint warpPoint);
 
 }

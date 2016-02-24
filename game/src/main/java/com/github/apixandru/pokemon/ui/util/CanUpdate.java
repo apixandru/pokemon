@@ -12,9 +12,9 @@ import org.newdawn.slick.GameContainer;
  */
 public interface CanUpdate {
 
-	/**
-	 * @param delta
-	 */
-	void update(final GameContainer container, int delta);
+    /**
+     * @param delta
+     */
+    void update(final GameContainer container, int delta);
 
 }

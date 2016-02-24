@@ -9,16 +9,16 @@ package com.github.apixandru.pokemon.model.object;
  */
 public final class SpawnPoint extends Point {
 
-	public final int index;
+    public final int index;
 
-	/**
-	 * @param x
-	 * @param y
-	 * @param index
-	 */
-	public SpawnPoint(final int x, final int y, final int index) {
-		super(x, y);
-		this.index = index;
-	}
+    /**
+     * @param x
+     * @param y
+     * @param index
+     */
+    public SpawnPoint(final int x, final int y, final int index) {
+        super(x, y);
+        this.index = index;
+    }
 
 }

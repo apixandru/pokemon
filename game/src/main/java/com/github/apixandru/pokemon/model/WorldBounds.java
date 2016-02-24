@@ -9,11 +9,11 @@ package com.github.apixandru.pokemon.model;
  */
 public interface WorldBounds {
 
-	/**
-	 * @param x
-	 * @param y
-	 * @return
-	 */
-	boolean isBlocked(int x, int y);
+    /**
+     * @param x
+     * @param y
+     * @return
+     */
+    boolean isBlocked(int x, int y);
 
 }

@@ -3,10 +3,10 @@
  */
 package com.github.apixandru.pokemon.ui.util;
 
+import org.newdawn.slick.geom.Vector2f;
+
 import static com.github.apixandru.pokemon.util.Constants.BLOCK_HEIGHT;
 import static com.github.apixandru.pokemon.util.Constants.BLOCK_WIDTH;
-
-import org.newdawn.slick.geom.Vector2f;
 
 /**
  * @author Alexandru Bledea
@@ -14,33 +14,33 @@ import org.newdawn.slick.geom.Vector2f;
  */
 public final class PositionUtil {
 
-	/**
-	 *
-	 */
-	private PositionUtil() {
-	}
+    /**
+     *
+     */
+    private PositionUtil() {
+    }
 
-	/**
-	 * @param position
-	 * @param width
-	 * @param height
-	 */
-	public static void round(final Vector2f position) {
-		position.x = round(position.x, BLOCK_WIDTH);
-		position.y = round(position.y, BLOCK_HEIGHT);
-	}
+    /**
+     * @param position
+     * @param width
+     * @param height
+     */
+    public static void round(final Vector2f position) {
+        position.x = round(position.x, BLOCK_WIDTH);
+        position.y = round(position.y, BLOCK_HEIGHT);
+    }
 
-	/**
-	 * @param currentPosition
-	 * @param maxDimension
-	 * @return
-	 */
-	private static int round(final float currentPosition, final int maxDimension) {
-		float i = currentPosition / maxDimension;
-		final float remainder = i % 1.0f;
-		if (remainder > 0.5f) {
-			i++;
-		}
-		return (int) i * maxDimension;
-	}
+    /**
+     * @param currentPosition
+     * @param maxDimension
+     * @return
+     */
+    private static int round(final float currentPosition, final int maxDimension) {
+        float i = currentPosition / maxDimension;
+        final float remainder = i % 1.0f;
+        if (remainder > 0.5f) {
+            i++;
+        }
+        return (int) i * maxDimension;
+    }
 }

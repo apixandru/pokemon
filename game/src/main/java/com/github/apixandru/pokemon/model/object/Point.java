@@ -9,15 +9,15 @@ package com.github.apixandru.pokemon.model.object;
  */
 public class Point {
 
-	public final int x, y;
+    public final int x, y;
 
-	/**
-	 * @param x
-	 * @param y
-	 */
-	public Point(final int x, final int y) {
-		this.x = x;
-		this.y = y;
-	}
+    /**
+     * @param x
+     * @param y
+     */
+    public Point(final int x, final int y) {
+        this.x = x;
+        this.y = y;
+    }
 
 }

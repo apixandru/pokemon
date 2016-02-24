@@ -11,9 +11,9 @@ import com.github.apixandru.pokemon.model.object.WorldMap;
  */
 public interface PokemonMap extends WorldBounds {
 
-	/**
-	 * @return
-	 */
-	WorldMap asCharacterMoveListener();
+    /**
+     * @return
+     */
+    WorldMap asCharacterMoveListener();
 
 }

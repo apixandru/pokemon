@@ -13,51 +13,51 @@ import static com.github.apixandru.pokemon.util.Constants.POS_Y;
  */
 public final class Character {
 
-	public int xCurrent, yCurrent;
-	private int xDestination, yDestination;
+    public int xCurrent, yCurrent;
+    private int xDestination, yDestination;
 
-	private WorldMap currentMap;
+    private WorldMap currentMap;
 
-	public byte moveDirection;
+    public byte moveDirection;
 
-	/**
-	 * @param x
-	 * @param y
-	 */
-	public Character(final int x, final int y) {
-		this.xCurrent = x;
-		this.yCurrent = y;
-	}
+    /**
+     * @param x
+     * @param y
+     */
+    public Character(final int x, final int y) {
+        this.xCurrent = x;
+        this.yCurrent = y;
+    }
 
-	/**
-	 * @param moveDirection
-	 */
-	public boolean moveBegin(final byte moveDirection) {
-		this.moveDirection = moveDirection;
-		final int xDestination = this.xCurrent + DIRECTION_MODIFIERS[moveDirection][POS_X];
-		final int yDestination = this.yCurrent + DIRECTION_MODIFIERS[moveDirection][POS_Y];
-		if (currentMap.isBlocked(xDestination, yDestination)) {
-			return false;
-		}
-		this.xDestination = xDestination;
-		this.yDestination = yDestination;
-		return true;
-	}
+    /**
+     * @param moveDirection
+     */
+    public boolean moveBegin(final byte moveDirection) {
+        this.moveDirection = moveDirection;
+        final int xDestination = this.xCurrent + DIRECTION_MODIFIERS[moveDirection][POS_X];
+        final int yDestination = this.yCurrent + DIRECTION_MODIFIERS[moveDirection][POS_Y];
+        if (currentMap.isBlocked(xDestination, yDestination)) {
+            return false;
+        }
+        this.xDestination = xDestination;
+        this.yDestination = yDestination;
+        return true;
+    }
 
-	/**
-	 *
-	 */
-	public void moveEnd() {
-		this.xCurrent = xDestination;
-		this.yCurrent = yDestination;
-		currentMap.characterMoveEnd(this);
-	}
+    /**
+     *
+     */
+    public void moveEnd() {
+        this.xCurrent = xDestination;
+        this.yCurrent = yDestination;
+        currentMap.characterMoveEnd(this);
+    }
 
-	/**
-	 * @param currentMap the currentMap to set
-	 */
-	public void setCurrentMap(final WorldMap currentMap) {
-		this.currentMap = currentMap;
-	}
+    /**
+     * @param currentMap the currentMap to set
+     */
+    public void setCurrentMap(final WorldMap currentMap) {
+        this.currentMap = currentMap;
+    }
 
 }

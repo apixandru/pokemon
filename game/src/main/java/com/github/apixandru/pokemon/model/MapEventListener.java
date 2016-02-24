@@ -12,10 +12,10 @@ import com.github.apixandru.pokemon.model.object.WarpPoint;
  */
 public interface MapEventListener {
 
-	/**
-	 * @param character
-	 * @param warpPoint
-	 */
-	void onWarpPoint(Character character, WarpPoint warpPoint);
+    /**
+     * @param character
+     * @param warpPoint
+     */
+    void onWarpPoint(Character character, WarpPoint warpPoint);
 
 }

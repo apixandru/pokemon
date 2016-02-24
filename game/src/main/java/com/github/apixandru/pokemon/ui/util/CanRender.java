@@ -12,9 +12,9 @@ import org.newdawn.slick.Graphics;
  */
 public interface CanRender {
 
-	/**
-	 * @param g
-	 */
-	void render(Graphics g);
+    /**
+     * @param g
+     */
+    void render(Graphics g);
 
 }

@@ -9,14 +9,14 @@ package com.github.apixandru.pokemon.ui.util;
  */
 public interface MoveInput {
 
-	/**
-	 * @return
-	 */
-	byte getMoveDirection();
+    /**
+     * @return
+     */
+    byte getMoveDirection();
 
-	/**
-	 * @return
-	 */
-	boolean isMove();
+    /**
+     * @return
+     */
+    boolean isMove();
 
 }
