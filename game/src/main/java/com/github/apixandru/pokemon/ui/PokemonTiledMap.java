@@ -20,11 +20,6 @@ public class PokemonTiledMap extends TiledMap {
 
     private final PokemonMapImpl model;
 
-    /**
-     * @param ref
-     * @param eventListener
-     * @throws SlickException
-     */
     public PokemonTiledMap(final String ref, final MapEventListener eventListener) throws SlickException {
         super(ref);
 
@@ -35,9 +30,18 @@ public class PokemonTiledMap extends TiledMap {
 
     }
 
-    /**
-     *
-     */
+    private static int getRequiredInt(final GroupObject obj, final String name) {
+        return Integer.parseInt(getRequiredString(obj, name));
+    }
+
+    private static String getRequiredString(final GroupObject obj, final String name) {
+        final Object property = obj.props.get(name);
+        if (property instanceof String) {
+            return (String) property;
+        }
+        throw new IllegalArgumentException(String.format("Expecting object %s to have %s", obj.index, name));
+    }
+
     private void parseObjects() {
         final int objectGroupCount = getObjectGroupCount();
         for (int layer = 0; layer < objectGroupCount; layer++) {
@@ -56,9 +60,6 @@ public class PokemonTiledMap extends TiledMap {
         }
     }
 
-    /**
-     * @param group
-     */
     private void parseSpawnPoints(final ObjectGroup group) {
         for (final Object object : group.objects) {
             final GroupObject obj = (GroupObject) object;
@@ -67,9 +68,6 @@ public class PokemonTiledMap extends TiledMap {
         }
     }
 
-    /**
-     * @param group
-     */
     private void parseWarpPoints(final ObjectGroup group) {
         for (final Object object : group.objects) {
             final GroupObject obj = (GroupObject) object;
@@ -79,31 +77,6 @@ public class PokemonTiledMap extends TiledMap {
         }
     }
 
-    /**
-     * @param obj
-     * @param name
-     * @return
-     */
-    private static int getRequiredInt(final GroupObject obj, final String name) {
-        return Integer.parseInt(getRequiredString(obj, name));
-    }
-
-    /**
-     * @param obj
-     * @param name
-     * @return
-     */
-    private static String getRequiredString(final GroupObject obj, final String name) {
-        final Object property = obj.props.get(name);
-        if (property instanceof String) {
-            return (String) property;
-        }
-        throw new IllegalArgumentException(String.format("Expecting object %s to have %s", obj.index, name));
-    }
-
-    /**
-     *
-     */
     private void initializeBlocked() {
         final int layerId = getLayerIndex("stuff");
         if (-1 == layerId) {
@@ -118,9 +91,6 @@ public class PokemonTiledMap extends TiledMap {
         }
     }
 
-    /**
-     * @return the model
-     */
     public PokemonMap getModel() {
         return model;
     }

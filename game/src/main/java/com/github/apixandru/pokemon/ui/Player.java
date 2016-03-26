@@ -35,24 +35,15 @@ public final class Player implements CanRender, CanUpdate {
     private final Vector2f moveTo = new Vector2f();
 
     private final float speed = .07f;
-
+    private final Character character;
     private boolean moving;
     private byte[] directionModifiers;
 
-    private final Character character;
-
-    /**
-     * @param character
-     * @param sprites
-     */
     public Player(final Character character, final CharacterSprites sprites) {
         this.sprites = sprites;
         this.character = character;
     }
 
-    /* (non-Javadoc)
-     * @see com.github.apixandru.pokemon.ui.util.CanUpdate#update(org.newdawn.slick.GameContainer, int)
-     */
     @Override
     public void update(final GameContainer container, final int delta) {
         final MoveInput adapt = MoveInputAdapter.adapt(container.getInput());
@@ -87,9 +78,6 @@ public final class Player implements CanRender, CanUpdate {
         }
     }
 
-    /**
-     * @param adapt
-     */
     private void move(final MoveInput adapt) {
         final byte moveDirection = adapt.getMoveDirection();
 
@@ -101,9 +89,6 @@ public final class Player implements CanRender, CanUpdate {
         moving = true;
     }
 
-    /* (non-Javadoc)
-     * @see com.github.apixandru.pokemon.ui.util.CanRender#render(org.newdawn.slick.Graphics)
-     */
     @Override
     public void render(final Graphics g) {
         final List<? extends Renderable> renderables;
@@ -116,16 +101,10 @@ public final class Player implements CanRender, CanUpdate {
         renderables.get(character.moveDirection).draw(position.x, position.y);
     }
 
-    /**
-     * @return
-     */
     public Vector2f getPosition() {
         return new Vector2f(character.xCurrent * BLOCK_WIDTH + offset.x, character.yCurrent * BLOCK_HEIGHT + offset.y);
     }
 
-    /**
-     *
-     */
     public void reset() {
         this.sprites.reset();
         this.moving = false;

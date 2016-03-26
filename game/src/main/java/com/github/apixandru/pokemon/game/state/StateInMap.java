@@ -29,16 +29,13 @@ import static com.github.apixandru.pokemon.util.Constants.SCALE;
  */
 public class StateInMap extends BasicGameState {
 
-    private PokemonTiledMap actualMap;
     public Player player;
+    private PokemonTiledMap actualMap;
     private Camera camera;
 
     private MapManager mapManager;
     private StateBasedGame game;
 
-    /* (non-Javadoc)
-     * @see org.newdawn.slick.state.GameState#init(org.newdawn.slick.GameContainer, org.newdawn.slick.state.StateBasedGame)
-     */
     @Override
     public void init(final GameContainer container, final StateBasedGame game) throws SlickException {
         this.game = game;
@@ -56,9 +53,6 @@ public class StateInMap extends BasicGameState {
         this.camera = new Camera(container.getWidth(), container.getHeight(), SCALE);
     }
 
-    /* (non-Javadoc)
-     * @see org.newdawn.slick.state.GameState#render(org.newdawn.slick.GameContainer, org.newdawn.slick.state.StateBasedGame, org.newdawn.slick.Graphics)
-     */
     @Override
     public void render(final GameContainer container, final StateBasedGame game, final Graphics g) throws SlickException {
         this.camera.translate(g, this.player.getPosition());
@@ -66,18 +60,12 @@ public class StateInMap extends BasicGameState {
         this.player.render(g);
     }
 
-    /* (non-Javadoc)
-     * @see org.newdawn.slick.state.GameState#update(org.newdawn.slick.GameContainer, org.newdawn.slick.state.StateBasedGame, int)
-     */
     @Override
     public void update(final GameContainer container, final StateBasedGame game, final int delta) throws SlickException {
         player.update(container, delta);
 
     }
 
-    /* (non-Javadoc)
-     * @see org.newdawn.slick.state.BasicGameState#getID()
-     */
     @Override
     public int getID() {
         return 0;
@@ -89,16 +77,10 @@ public class StateInMap extends BasicGameState {
      */
     private class EventListener implements MapEventListener {
 
-        /* (non-Javadoc)
-         * @see com.github.apixandru.pokemon.model.MapEventListener#onWarpPoint(com.github.apixandru.pokemon.model.object.Character, com.github.apixandru.pokemon.model.object.WarpPoint)
-         */
         @Override
         public void onWarpPoint(final Character character, final WarpPoint warpPoint) {
             game.enterState(0, new FadeOutTransition(), new FadeInTransition() {
 
-                /* (non-Javadoc)
-                 * @see org.newdawn.slick.state.transition.FadeInTransition#preRender(org.newdawn.slick.state.StateBasedGame, org.newdawn.slick.GameContainer, org.newdawn.slick.Graphics)
-                 */
                 @Override
                 public void preRender(final StateBasedGame game, final GameContainer container, final Graphics g) {
                     actualMap = mapManager.getMap(warpPoint.destName);

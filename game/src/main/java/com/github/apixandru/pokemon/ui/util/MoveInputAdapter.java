@@ -15,16 +15,14 @@ public final class MoveInputAdapter implements MoveInput {
 
     private final Input input;
 
-    /**
-     * @param input
-     */
     private MoveInputAdapter(final Input input) {
         this.input = input;
     }
 
-    /* (non-Javadoc)
-     * @see com.github.apixandru.pokemon.ui.util.MoveInput#getMoveDirection()
-     */
+    public static MoveInput adapt(final Input input) {
+        return new MoveInputAdapter(input);
+    }
+
     @Override
     public byte getMoveDirection() {
         if (input.isKeyDown(Input.KEY_UP)) {
@@ -42,20 +40,9 @@ public final class MoveInputAdapter implements MoveInput {
         return -1;
     }
 
-    /* (non-Javadoc)
-     * @see com.github.apixandru.pokemon.ui.util.MoveInput#isMove()
-     */
     @Override
     public boolean isMove() {
         return -1 != getMoveDirection();
-    }
-
-    /**
-     * @param input
-     * @return
-     */
-    public static MoveInput adapt(final Input input) {
-        return new MoveInputAdapter(input);
     }
 
 }

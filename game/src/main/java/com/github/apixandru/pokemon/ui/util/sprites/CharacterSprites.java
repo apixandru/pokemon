@@ -27,9 +27,6 @@ public final class CharacterSprites {
     public final List<Image> notMoving;
     public final List<Animation> moving;
 
-    /**
-     * @param spriteSheet
-     */
     private CharacterSprites(final SpriteSheet spriteSheet) {
         final Image sittingUp = spriteSheet.getSprite(0, SITTING_UP);
         final Image sittingLeft = spriteSheet.getSprite(0, SITTING_LEFT);
@@ -54,11 +51,6 @@ public final class CharacterSprites {
                 new Animation(new Image[]{moveLeft, sittingLeft}, 150, false));
     }
 
-    /**
-     * @param frameMoving
-     * @param frameSitting
-     * @return
-     */
     private static Animation animation(final Image frameMoving, final Image frameSitting) {
         final Image[] image = {frameMoving, frameSitting, frameMoving.getFlippedCopy(true, false), frameSitting};
         final Animation animation = new Animation(image, 150);
@@ -66,21 +58,15 @@ public final class CharacterSprites {
         return animation;
     }
 
-    /**
-     *
-     */
+    public static CharacterSprites load(final String image) throws SlickException {
+        final SpriteSheet spriteSheet = SpriteParser.loadSpriteSheet(image);
+        return new CharacterSprites(spriteSheet);
+    }
+
     public void reset() {
         for (final Animation animation : moving) {
             animation.restart();
         }
-    }
-
-    /**
-     * @throws SlickException
-     */
-    public static CharacterSprites load(final String image) throws SlickException {
-        final SpriteSheet spriteSheet = SpriteParser.loadSpriteSheet(image);
-        return new CharacterSprites(spriteSheet);
     }
 
 }

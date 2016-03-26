@@ -14,24 +14,15 @@ import static com.github.apixandru.pokemon.util.Constants.POS_Y;
 public final class Character {
 
     public int xCurrent, yCurrent;
+    public byte moveDirection;
     private int xDestination, yDestination;
-
     private WorldMap currentMap;
 
-    public byte moveDirection;
-
-    /**
-     * @param x
-     * @param y
-     */
     public Character(final int x, final int y) {
         this.xCurrent = x;
         this.yCurrent = y;
     }
 
-    /**
-     * @param moveDirection
-     */
     public boolean moveBegin(final byte moveDirection) {
         this.moveDirection = moveDirection;
         final int xDestination = this.xCurrent + DIRECTION_MODIFIERS[moveDirection][POS_X];
@@ -44,18 +35,12 @@ public final class Character {
         return true;
     }
 
-    /**
-     *
-     */
     public void moveEnd() {
         this.xCurrent = xDestination;
         this.yCurrent = yDestination;
         currentMap.characterMoveEnd(this);
     }
 
-    /**
-     * @param currentMap the currentMap to set
-     */
     public void setCurrentMap(final WorldMap currentMap) {
         this.currentMap = currentMap;
     }
