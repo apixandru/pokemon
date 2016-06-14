@@ -1,2 +1,2 @@
-include 'desktop', 'libgdx-util', 'core'
+include 'desktop', 'libgdx-util', 'core', 'game'
 

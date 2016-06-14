@@ -51,6 +51,10 @@ project(":libgdx-util") {
     }
 }
 
+project(":game") {
+    apply plugin: "java"
+}
+
 project(":core") {
     apply plugin: "java"
     dependencies {
