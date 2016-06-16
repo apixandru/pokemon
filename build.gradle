@@ -34,8 +34,6 @@ allprojects {
 
 project(":desktop") {
     apply plugin: "java"
-
-
     dependencies {
         compile project(":core")
         compile "com.badlogicgames.gdx:gdx-backend-lwjgl:$gdxVersion"
@@ -53,6 +51,9 @@ project(":libgdx-util") {
 
 project(":game") {
     apply plugin: "java"
+    dependencies {
+        compile project(":pokemon-model")
+    }
 }
 
 project(":core") {
