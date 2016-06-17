@@ -3,7 +3,8 @@
  */
 package com.github.apixandru.pokemon.model.object;
 
-import com.github.apixandru.pokemon.model.WorldBounds;
+
+import com.apixandru.pokemon.model.WorldBounds;
 
 /**
  * @author Alexandru Bledea

@@ -1,7 +1,7 @@
 /**
  *
  */
-package com.github.apixandru.pokemon.model;
+package com.apixandru.pokemon.model;
 
 /**
  * @author Alexandru Bledea
@@ -9,11 +9,6 @@ package com.github.apixandru.pokemon.model;
  */
 public interface WorldBounds {
 
-    /**
-     * @param x
-     * @param y
-     * @return
-     */
     boolean isBlocked(int x, int y);
 
 }
