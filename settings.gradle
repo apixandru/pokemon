@@ -1,2 +1,2 @@
-include 'desktop', 'libgdx-util', 'core', 'pokemon-slick2d', 'pokemon-model'
+include 'pokemon-desktop', 'libgdx-util', 'pokemon-core', 'pokemon-slick2d', 'pokemon-model'
 
