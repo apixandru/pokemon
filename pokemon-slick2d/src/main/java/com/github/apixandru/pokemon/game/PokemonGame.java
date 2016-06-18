@@ -15,16 +15,10 @@ import org.newdawn.slick.state.transition.FadeInTransition;
  */
 public class PokemonGame extends StateBasedGame {
 
-    /**
-     *
-     */
     public PokemonGame() {
         super("Pokemon rip-off");
     }
 
-    /* (non-Javadoc)
-     * @see org.newdawn.slick.state.StateBasedGame#initStatesList(org.newdawn.slick.GameContainer)
-     */
     @Override
     public void initStatesList(final GameContainer container) throws SlickException {
         addState(new StateInMap());

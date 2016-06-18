@@ -20,13 +20,9 @@ import java.util.Map.Entry;
  */
 public final class MapManagerImpl implements MapManager {
 
-    private final Map<String, PokemonTiledMap> maps = new HashMap<String, PokemonTiledMap>();
+    private final Map<String, PokemonTiledMap> maps = new HashMap<>();
     private final MapEventListener listener;
 
-    /**
-     * @param listener
-     * @throws SlickException
-     */
     public MapManagerImpl(final MapEventListener listener) throws SlickException {
         this.listener = listener;
         loadMap("pallet_town/ash_house_level1");
@@ -34,9 +30,6 @@ public final class MapManagerImpl implements MapManager {
         validateLinks();
     }
 
-    /**
-     *
-     */
     private void validateLinks() {
         for (final Entry<String, PokemonTiledMap> entry : maps.entrySet()) {
             final PokemonTiledMap map = entry.getValue();
@@ -56,25 +49,16 @@ public final class MapManagerImpl implements MapManager {
         }
     }
 
-    /**
-     * @param filename
-     * @throws SlickException
-     */
+
     private void loadMap(final String filename) throws SlickException {
         maps.put(filename.split("/")[1], new PokemonTiledMap("resources/maps/" + filename + ".tmx", listener));
     }
 
-    /* (non-Javadoc)
-     * @see com.github.apixandru.pokemon.model.MapManager#getMap(java.lang.String)
-     */
     @Override
     public PokemonTiledMap getMap(final String name) {
         return maps.get(name);
     }
 
-    /* (non-Javadoc)
-     * @see com.github.apixandru.pokemon.ui.util.map.MapManager#getSpawnPoint(com.apixandru.pokemon.model.object.WarpPoint)
-     */
     @Override
     public SpawnPoint getSpawnPoint(final WarpPoint warpPoint) {
         final PokemonTiledMap destination = maps.get(warpPoint.destName);

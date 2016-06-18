@@ -15,10 +15,6 @@ import java.io.File;
  */
 public final class Main {
 
-    /**
-     * @param args
-     * @throws SlickException
-     */
     public static void main(final String[] args) throws SlickException {
         ensureLwjglIsLoaded();
 
@@ -28,9 +24,6 @@ public final class Main {
         container.start();
     }
 
-    /**
-     *
-     */
     private static void ensureLwjglIsLoaded() {
 //      in intellij, make sure that the working dir is game and not parent
         final String natives = new File("natives").getAbsolutePath();
