@@ -3,9 +3,9 @@ package com.apixandru.pokemon.state;
 import com.apixandru.libgdx.state.AbstractState;
 import com.apixandru.libgdx.state.StateManager;
 import com.apixandru.libgdx.util.Animation;
+import com.apixandru.pokemon.model.Constants;
 import com.apixandru.pokemon.sprite.Sprites;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.github.apixandru.pokemon.util.Constants;
 
 /**
  * @author Alexandru-Constantin Bledea

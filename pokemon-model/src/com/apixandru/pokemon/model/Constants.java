@@ -1,13 +1,14 @@
 /**
  *
  */
-package com.github.apixandru.pokemon.util;
+package com.apixandru.pokemon.model;
 
 /**
  * @author Alexandru Bledea
  * @since Jun 5, 2015
  */
 public interface Constants {
+
     byte SCALE = 3;
     byte BLOCK_WIDTH = 16;
     byte BLOCK_HEIGHT = 16;

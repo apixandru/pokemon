@@ -1,11 +1,11 @@
 /**
  *
  */
-package com.github.apixandru.pokemon.model.object;
+package com.apixandru.pokemon.model.object;
 
-import static com.github.apixandru.pokemon.util.Constants.DIRECTION_MODIFIERS;
-import static com.github.apixandru.pokemon.util.Constants.POS_X;
-import static com.github.apixandru.pokemon.util.Constants.POS_Y;
+import static com.apixandru.pokemon.model.Constants.DIRECTION_MODIFIERS;
+import static com.apixandru.pokemon.model.Constants.POS_X;
+import static com.apixandru.pokemon.model.Constants.POS_Y;
 
 /**
  * @author Alexandru Bledea

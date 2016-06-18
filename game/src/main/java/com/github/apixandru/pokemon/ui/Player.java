@@ -3,7 +3,7 @@
  */
 package com.github.apixandru.pokemon.ui;
 
-import com.github.apixandru.pokemon.model.object.Character;
+import com.apixandru.pokemon.model.object.Character;
 import com.github.apixandru.pokemon.ui.util.CanRender;
 import com.github.apixandru.pokemon.ui.util.CanUpdate;
 import com.github.apixandru.pokemon.ui.util.MoveInput;
@@ -16,12 +16,12 @@ import org.newdawn.slick.geom.Vector2f;
 
 import java.util.List;
 
-import static com.github.apixandru.pokemon.util.Constants.BLOCK_HEIGHT;
-import static com.github.apixandru.pokemon.util.Constants.BLOCK_WIDTH;
-import static com.github.apixandru.pokemon.util.Constants.DIRECTION_MODIFIERS;
-import static com.github.apixandru.pokemon.util.Constants.DIRECTION_MODIFIERS_NO_SIGN;
-import static com.github.apixandru.pokemon.util.Constants.POS_X;
-import static com.github.apixandru.pokemon.util.Constants.POS_Y;
+import static com.apixandru.pokemon.model.Constants.BLOCK_HEIGHT;
+import static com.apixandru.pokemon.model.Constants.BLOCK_WIDTH;
+import static com.apixandru.pokemon.model.Constants.DIRECTION_MODIFIERS;
+import static com.apixandru.pokemon.model.Constants.DIRECTION_MODIFIERS_NO_SIGN;
+import static com.apixandru.pokemon.model.Constants.POS_X;
+import static com.apixandru.pokemon.model.Constants.POS_Y;
 
 /**
  * @author Alexandru Bledea

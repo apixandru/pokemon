@@ -3,7 +3,7 @@
  */
 package com.github.apixandru.pokemon.ui.util;
 
-import com.github.apixandru.pokemon.util.Constants;
+import com.apixandru.pokemon.model.Constants;
 import org.newdawn.slick.Input;
 
 

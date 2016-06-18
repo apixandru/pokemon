@@ -3,10 +3,10 @@
  */
 package com.github.apixandru.pokemon.model;
 
-import com.github.apixandru.pokemon.model.object.Character;
-import com.github.apixandru.pokemon.model.object.SpawnPoint;
-import com.github.apixandru.pokemon.model.object.WarpPoint;
-import com.github.apixandru.pokemon.model.object.WorldMap;
+import com.apixandru.pokemon.model.object.Character;
+import com.apixandru.pokemon.model.object.SpawnPoint;
+import com.apixandru.pokemon.model.object.WarpPoint;
+import com.apixandru.pokemon.model.object.WorldMap;
 
 import java.util.ArrayList;
 import java.util.HashMap;

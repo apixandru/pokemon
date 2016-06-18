@@ -1,7 +1,7 @@
 /**
  *
  */
-package com.github.apixandru.pokemon.model.object;
+package com.apixandru.pokemon.model.object;
 
 
 import com.apixandru.pokemon.model.WorldBounds;
@@ -12,15 +12,8 @@ import com.apixandru.pokemon.model.WorldBounds;
  */
 public interface WorldMap extends WorldBounds {
 
-    /**
-     * @param character
-     * @param direction
-     */
     void characterMoveStart(Character character, byte direction);
 
-    /**
-     * @param character
-     */
     void characterMoveEnd(Character character);
 
 }

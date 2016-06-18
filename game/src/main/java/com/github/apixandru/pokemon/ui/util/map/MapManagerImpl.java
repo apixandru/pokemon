@@ -3,10 +3,10 @@
  */
 package com.github.apixandru.pokemon.ui.util.map;
 
+import com.apixandru.pokemon.model.object.SpawnPoint;
+import com.apixandru.pokemon.model.object.WarpPoint;
 import com.github.apixandru.pokemon.model.MapEventListener;
 import com.github.apixandru.pokemon.model.PokemonMapImpl;
-import com.github.apixandru.pokemon.model.object.SpawnPoint;
-import com.github.apixandru.pokemon.model.object.WarpPoint;
 import com.github.apixandru.pokemon.ui.PokemonTiledMap;
 import org.newdawn.slick.SlickException;
 
@@ -73,7 +73,7 @@ public final class MapManagerImpl implements MapManager {
     }
 
     /* (non-Javadoc)
-     * @see com.github.apixandru.pokemon.ui.util.map.MapManager#getSpawnPoint(com.github.apixandru.pokemon.model.object.WarpPoint)
+     * @see com.github.apixandru.pokemon.ui.util.map.MapManager#getSpawnPoint(com.apixandru.pokemon.model.object.WarpPoint)
      */
     @Override
     public SpawnPoint getSpawnPoint(final WarpPoint warpPoint) {

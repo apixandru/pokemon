@@ -3,8 +3,8 @@
  */
 package com.github.apixandru.pokemon.ui.util.map;
 
-import com.github.apixandru.pokemon.model.object.SpawnPoint;
-import com.github.apixandru.pokemon.model.object.WarpPoint;
+import com.apixandru.pokemon.model.object.SpawnPoint;
+import com.apixandru.pokemon.model.object.WarpPoint;
 import com.github.apixandru.pokemon.ui.PokemonTiledMap;
 
 

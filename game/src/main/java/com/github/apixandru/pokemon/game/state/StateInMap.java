@@ -3,10 +3,10 @@
  */
 package com.github.apixandru.pokemon.game.state;
 
+import com.apixandru.pokemon.model.object.Character;
+import com.apixandru.pokemon.model.object.SpawnPoint;
+import com.apixandru.pokemon.model.object.WarpPoint;
 import com.github.apixandru.pokemon.model.MapEventListener;
-import com.github.apixandru.pokemon.model.object.Character;
-import com.github.apixandru.pokemon.model.object.SpawnPoint;
-import com.github.apixandru.pokemon.model.object.WarpPoint;
 import com.github.apixandru.pokemon.ui.Player;
 import com.github.apixandru.pokemon.ui.PokemonTiledMap;
 import com.github.apixandru.pokemon.ui.util.Camera;
@@ -21,7 +21,7 @@ import org.newdawn.slick.state.StateBasedGame;
 import org.newdawn.slick.state.transition.FadeInTransition;
 import org.newdawn.slick.state.transition.FadeOutTransition;
 
-import static com.github.apixandru.pokemon.util.Constants.SCALE;
+import static com.apixandru.pokemon.model.Constants.SCALE;
 
 /**
  * @author Alexandru Bledea
