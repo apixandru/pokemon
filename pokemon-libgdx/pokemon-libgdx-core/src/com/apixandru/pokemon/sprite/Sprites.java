@@ -13,7 +13,7 @@ import static com.github.apixandru.pokemon.ui.util.sprites.SpriteConstants.SPRIT
  */
 public class Sprites {
 
-    public final Texture redSprites = loadTexture("../pokemon-slick2d/resources/sprites/red.png");
+    public final Texture redSprites = loadTexture("pokemon-slick2d/resources/sprites/red.png");
     public final TextureRegion[][] tmp = TextureRegion.split(redSprites, SPRITE_WIDTH, SPRITE_HEIGHT);
     public CharacterSprites sprites = new CharacterSprites(tmp);
 

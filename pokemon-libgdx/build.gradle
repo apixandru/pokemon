@@ -12,27 +12,27 @@ dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.11'
 }
 
-project(":pokemon-libgdx:pokemon-desktop") {
+project(":pokemon-libgdx:pokemon-libgdx-desktop") {
     apply plugin: "java"
     dependencies {
-        compile project(":pokemon-libgdx:pokemon-core")
+        compile project(":pokemon-libgdx:pokemon-libgdx-core")
         compile "com.badlogicgames.gdx:gdx-backend-lwjgl:$gdxVersion"
         compile "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-desktop"
         compile "com.badlogicgames.gdx:gdx-box2d-platform:$gdxVersion:natives-desktop"
     }
 }
 
-project(":pokemon-libgdx:libgdx-util") {
+project(":pokemon-libgdx:pokemon-libgdx-util") {
     apply plugin: "java"
     dependencies {
         compile "com.badlogicgames.gdx:gdx:$gdxVersion"
     }
 }
 
-project(":pokemon-libgdx:pokemon-core") {
+project(":pokemon-libgdx:pokemon-libgdx-core") {
     apply plugin: "java"
     dependencies {
-        compile project(":pokemon-libgdx:libgdx-util")
+        compile project(":pokemon-libgdx:pokemon-libgdx-util")
         compile project(":pokemon-slick2d")
         compile "com.badlogicgames.gdx:gdx:$gdxVersion"
         compile "com.badlogicgames.gdx:gdx-box2d:$gdxVersion"
