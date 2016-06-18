@@ -1,9 +1,8 @@
 /**
  *
  */
-package com.github.apixandru.pokemon.model;
+package com.apixandru.pokemon.model;
 
-import com.apixandru.pokemon.model.WorldBounds;
 import com.apixandru.pokemon.model.object.WorldMap;
 
 /**

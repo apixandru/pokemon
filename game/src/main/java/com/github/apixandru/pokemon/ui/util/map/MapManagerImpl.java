@@ -3,10 +3,10 @@
  */
 package com.github.apixandru.pokemon.ui.util.map;
 
+import com.apixandru.pokemon.model.MapEventListener;
+import com.apixandru.pokemon.model.PokemonMapImpl;
 import com.apixandru.pokemon.model.object.SpawnPoint;
 import com.apixandru.pokemon.model.object.WarpPoint;
-import com.github.apixandru.pokemon.model.MapEventListener;
-import com.github.apixandru.pokemon.model.PokemonMapImpl;
 import com.github.apixandru.pokemon.ui.PokemonTiledMap;
 import org.newdawn.slick.SlickException;
 

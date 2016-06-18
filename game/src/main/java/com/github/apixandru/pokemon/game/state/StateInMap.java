@@ -3,10 +3,10 @@
  */
 package com.github.apixandru.pokemon.game.state;
 
+import com.apixandru.pokemon.model.MapEventListener;
 import com.apixandru.pokemon.model.object.Character;
 import com.apixandru.pokemon.model.object.SpawnPoint;
 import com.apixandru.pokemon.model.object.WarpPoint;
-import com.github.apixandru.pokemon.model.MapEventListener;
 import com.github.apixandru.pokemon.ui.Player;
 import com.github.apixandru.pokemon.ui.PokemonTiledMap;
 import com.github.apixandru.pokemon.ui.util.Camera;

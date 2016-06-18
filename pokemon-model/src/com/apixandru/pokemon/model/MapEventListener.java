@@ -1,7 +1,7 @@
 /**
  *
  */
-package com.github.apixandru.pokemon.model;
+package com.apixandru.pokemon.model;
 
 import com.apixandru.pokemon.model.object.Character;
 import com.apixandru.pokemon.model.object.WarpPoint;

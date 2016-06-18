@@ -3,9 +3,9 @@
  */
 package com.github.apixandru.pokemon.ui;
 
-import com.github.apixandru.pokemon.model.MapEventListener;
-import com.github.apixandru.pokemon.model.PokemonMap;
-import com.github.apixandru.pokemon.model.PokemonMapImpl;
+import com.apixandru.pokemon.model.MapEventListener;
+import com.apixandru.pokemon.model.PokemonMap;
+import com.apixandru.pokemon.model.PokemonMapImpl;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.tiled.TiledMap;
 
