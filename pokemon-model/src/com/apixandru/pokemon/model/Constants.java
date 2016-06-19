@@ -26,7 +26,7 @@ public final class Constants {
     public static final byte POS_X = 0;
     public static final byte POS_Y = 1;
 
-    public static final byte[][] DIRECTION_MODIFIERS = {
+    private static final byte[][] DIRECTION_MODIFIERS = {
             {+0, -1},
             {+1, +0},
             {+0, +1},

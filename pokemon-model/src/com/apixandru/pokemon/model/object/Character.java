@@ -3,9 +3,7 @@
  */
 package com.apixandru.pokemon.model.object;
 
-import static com.apixandru.pokemon.model.Constants.DIRECTION_MODIFIERS;
-import static com.apixandru.pokemon.model.Constants.POS_X;
-import static com.apixandru.pokemon.model.Constants.POS_Y;
+import static com.apixandru.pokemon.model.Constants.getDirectionModifier;
 
 /**
  * @author Alexandru Bledea
@@ -25,8 +23,9 @@ public final class Character {
 
     public boolean moveBegin(final byte moveDirection) {
         this.moveDirection = moveDirection;
-        final int xDestination = this.xCurrent + DIRECTION_MODIFIERS[moveDirection][POS_X];
-        final int yDestination = this.yCurrent + DIRECTION_MODIFIERS[moveDirection][POS_Y];
+        Point directionModifier = getDirectionModifier(moveDirection);
+        final int xDestination = this.xCurrent + directionModifier.x;
+        final int yDestination = this.yCurrent + directionModifier.y;
         if (currentMap.isBlocked(xDestination, yDestination)) {
             return false;
         }
