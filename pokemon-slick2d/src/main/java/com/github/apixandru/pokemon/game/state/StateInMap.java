@@ -7,6 +7,7 @@ import com.apixandru.pokemon.model.MapEventListener;
 import com.apixandru.pokemon.model.object.Character;
 import com.apixandru.pokemon.model.object.SpawnPoint;
 import com.apixandru.pokemon.model.object.WarpPoint;
+import com.apixandru.pokemon.slick2d.SlickPlayerSpriteProvider;
 import com.github.apixandru.pokemon.ui.Player;
 import com.github.apixandru.pokemon.ui.PokemonTiledMap;
 import com.github.apixandru.pokemon.ui.util.Camera;
@@ -48,7 +49,7 @@ public class StateInMap extends BasicGameState {
         final Character character = new Character(3, 6);
         character.setCurrentMap(actualMap.getModel().asCharacterMoveListener());
 
-        this.player = new Player(character, redSprites);
+        this.player = new Player(character, new SlickPlayerSpriteProvider(redSprites));
 
         this.camera = new Camera(container.getWidth(), container.getHeight(), SCALE);
     }

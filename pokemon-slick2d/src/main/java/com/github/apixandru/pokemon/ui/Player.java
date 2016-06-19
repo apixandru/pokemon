@@ -6,17 +6,17 @@ package com.github.apixandru.pokemon.ui;
 import com.apixandru.pokemon.model.Constants.MoveDirection;
 import com.apixandru.pokemon.model.object.Character;
 import com.apixandru.pokemon.model.object.Point;
+import com.apixandru.pokemon.slick2d.SlickPlayerSpriteProvider;
 import com.github.apixandru.pokemon.ui.util.CanRender;
 import com.github.apixandru.pokemon.ui.util.CanUpdate;
 import com.github.apixandru.pokemon.ui.util.MoveInput;
 import com.github.apixandru.pokemon.ui.util.MoveInputAdapter;
-import com.github.apixandru.pokemon.ui.util.sprites.CharacterSprites;
+import org.newdawn.slick.Animation;
 import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
+import org.newdawn.slick.Image;
 import org.newdawn.slick.Renderable;
 import org.newdawn.slick.geom.Vector2f;
-
-import java.util.List;
 
 import static com.apixandru.pokemon.model.Constants.getDirectionModifier;
 import static com.apixandru.pokemon.model.Constants.getDirectionModifierUnsigned;
@@ -29,19 +29,20 @@ import static com.apixandru.pokemon.ui.UiConstants.BLOCK_WIDTH;
  */
 public final class Player implements CanRender, CanUpdate {
 
-    private final CharacterSprites sprites;
-
     private final Vector2f offset = new Vector2f();
     private final Vector2f moveTo = new Vector2f();
 
     private final float speed = .07f;
     private final Character character;
+
+    private final SlickPlayerSpriteProvider playerSpriteProvider;
+
     private boolean moving;
     private Point directionModifiers;
 
-    public Player(final Character character, final CharacterSprites sprites) {
-        this.sprites = sprites;
+    public Player(final Character character, SlickPlayerSpriteProvider playerSpriteProvider) {
         this.character = character;
+        this.playerSpriteProvider = playerSpriteProvider;
     }
 
     @Override
@@ -50,8 +51,7 @@ public final class Player implements CanRender, CanUpdate {
         final boolean nowMoving = adapt.isMove();
         boolean finishedWalking = true;
         if (moving) {
-            int ordinal = character.moveDirection.ordinal(); // TODO remove implementation detail!
-            sprites.moving.get(ordinal).update(delta);
+            getMovingAnimation().update(delta);
 
             final float changeX = speed * delta;
             final float changeY = speed * delta;
@@ -69,7 +69,7 @@ public final class Player implements CanRender, CanUpdate {
                 offset.y = 0;
                 character.moveEnd();
                 if (!nowMoving) {
-                    sprites.moving.get(ordinal).restart();
+                    getMovingAnimation().restart();
                     moving = false;
                 }
             }
@@ -93,15 +93,22 @@ public final class Player implements CanRender, CanUpdate {
 
     @Override
     public void render(final Graphics g) {
-        final List<? extends Renderable> renderables;
+        Renderable renderable;
         if (moving) {
-            renderables = sprites.moving;
+            renderable = getMovingAnimation();
         } else {
-            renderables = sprites.notMoving;
+            renderable = getStandingImage();
         }
         final Vector2f position = getPosition();
-        int ordinal = character.moveDirection.ordinal(); // TODO remove implementation detail
-        renderables.get(ordinal).draw(position.x, position.y);
+        renderable.draw(position.x, position.y);
+    }
+
+    private Animation getMovingAnimation() {
+        return playerSpriteProvider.getMoving(character.moveDirection);
+    }
+
+    private Image getStandingImage() {
+        return playerSpriteProvider.getStanding(character.moveDirection);
     }
 
     public Vector2f getPosition() {
@@ -109,7 +116,7 @@ public final class Player implements CanRender, CanUpdate {
     }
 
     public void reset() {
-        this.sprites.reset();
+        this.playerSpriteProvider.reset();
         this.moving = false;
         this.offset.x = 0;
         this.offset.y = 0;
