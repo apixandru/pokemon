@@ -3,6 +3,8 @@
  */
 package com.apixandru.pokemon.model.object;
 
+import com.apixandru.pokemon.model.Constants.MoveDirection;
+
 import static com.apixandru.pokemon.model.Constants.getDirectionModifier;
 
 /**
@@ -12,7 +14,7 @@ import static com.apixandru.pokemon.model.Constants.getDirectionModifier;
 public final class Character {
 
     public int xCurrent, yCurrent;
-    public byte moveDirection;
+    public MoveDirection moveDirection = MoveDirection.UP;
     private int xDestination, yDestination;
     private WorldMap currentMap;
 
@@ -21,7 +23,7 @@ public final class Character {
         this.yCurrent = y;
     }
 
-    public boolean moveBegin(final byte moveDirection) {
+    public boolean moveBegin(final MoveDirection moveDirection) {
         this.moveDirection = moveDirection;
         Point directionModifier = getDirectionModifier(moveDirection);
         final int xDestination = this.xCurrent + directionModifier.x;

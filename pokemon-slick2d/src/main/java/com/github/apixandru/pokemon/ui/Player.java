@@ -3,6 +3,7 @@
  */
 package com.github.apixandru.pokemon.ui;
 
+import com.apixandru.pokemon.model.Constants.MoveDirection;
 import com.apixandru.pokemon.model.object.Character;
 import com.apixandru.pokemon.model.object.Point;
 import com.github.apixandru.pokemon.ui.util.CanRender;
@@ -49,7 +50,8 @@ public final class Player implements CanRender, CanUpdate {
         final boolean nowMoving = adapt.isMove();
         boolean finishedWalking = true;
         if (moving) {
-            sprites.moving.get(character.moveDirection).update(delta);
+            int ordinal = character.moveDirection.ordinal(); // TODO remove implementation detail!
+            sprites.moving.get(ordinal).update(delta);
 
             final float changeX = speed * delta;
             final float changeY = speed * delta;
@@ -67,7 +69,7 @@ public final class Player implements CanRender, CanUpdate {
                 offset.y = 0;
                 character.moveEnd();
                 if (!nowMoving) {
-                    sprites.moving.get(character.moveDirection).restart();
+                    sprites.moving.get(ordinal).restart();
                     moving = false;
                 }
             }
@@ -78,7 +80,7 @@ public final class Player implements CanRender, CanUpdate {
     }
 
     private void move(final MoveInput adapt) {
-        final byte moveDirection = (byte) adapt.getMoveDirection().ordinal();
+        MoveDirection moveDirection = adapt.getMoveDirection();
 
         if (character.moveBegin(moveDirection)) {
             Point directionPoint = getDirectionModifierUnsigned(moveDirection);
@@ -98,7 +100,8 @@ public final class Player implements CanRender, CanUpdate {
             renderables = sprites.notMoving;
         }
         final Vector2f position = getPosition();
-        renderables.get(character.moveDirection).draw(position.x, position.y);
+        int ordinal = character.moveDirection.ordinal(); // TODO remove implementation detail
+        renderables.get(ordinal).draw(position.x, position.y);
     }
 
     public Vector2f getPosition() {
