@@ -35,15 +35,19 @@ public final class Constants {
             new Point(-1, +0)
     ));
 
-    public static final byte[][] DIRECTION_MODIFIERS_NO_SIGN = {
-            {0, 1},
-            {1, 0},
-            {0, 1},
-            {1, 0},
-    };
+    private static final List<Point> DIRECTION_MODIFIERS_NO_SIGN = unmodifiableList(asList(
+            new Point(0, 1),
+            new Point(1, 0),
+            new Point(0, 1),
+            new Point(1, 0)
+    ));
 
     public static Point getDirectionModifier(byte moveDirection) {
         return DIRECTION_MODIFIERS.get(moveDirection);
+    }
+
+    public static Point getDirectionModifierUnsigned(byte moveDirection) {
+        return DIRECTION_MODIFIERS_NO_SIGN.get(moveDirection);
     }
 
     public enum MoveDirection {

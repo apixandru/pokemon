@@ -19,10 +19,8 @@ import java.util.List;
 
 import static com.apixandru.pokemon.model.Constants.BLOCK_HEIGHT;
 import static com.apixandru.pokemon.model.Constants.BLOCK_WIDTH;
-import static com.apixandru.pokemon.model.Constants.DIRECTION_MODIFIERS_NO_SIGN;
-import static com.apixandru.pokemon.model.Constants.POS_X;
-import static com.apixandru.pokemon.model.Constants.POS_Y;
 import static com.apixandru.pokemon.model.Constants.getDirectionModifier;
+import static com.apixandru.pokemon.model.Constants.getDirectionModifierUnsigned;
 
 /**
  * @author Alexandru Bledea
@@ -83,8 +81,9 @@ public final class Player implements CanRender, CanUpdate {
         final byte moveDirection = (byte) adapt.getMoveDirection().ordinal();
 
         if (character.moveBegin(moveDirection)) {
-            moveTo.x = DIRECTION_MODIFIERS_NO_SIGN[moveDirection][POS_X] * BLOCK_WIDTH;
-            moveTo.y = DIRECTION_MODIFIERS_NO_SIGN[moveDirection][POS_Y] * BLOCK_HEIGHT;
+            Point directionPoint = getDirectionModifierUnsigned(moveDirection);
+            moveTo.x = directionPoint.x * BLOCK_WIDTH;
+            moveTo.y = directionPoint.y * BLOCK_HEIGHT;
         }
         directionModifiers = getDirectionModifier(moveDirection);
         moving = true;
