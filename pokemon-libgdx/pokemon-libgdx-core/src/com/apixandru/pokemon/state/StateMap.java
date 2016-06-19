@@ -3,8 +3,8 @@ package com.apixandru.pokemon.state;
 import com.apixandru.libgdx.state.AbstractState;
 import com.apixandru.libgdx.state.StateManager;
 import com.apixandru.libgdx.util.Animation;
-import com.apixandru.pokemon.model.Constants;
 import com.apixandru.pokemon.sprite.Sprites;
+import com.apixandru.pokemon.ui.UiConstants;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 /**
@@ -14,7 +14,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 public class StateMap extends AbstractState {
 
     private final Sprites sprites = new Sprites();
-    private final Animation animation = sprites.sprites.moving.get(Constants.DIRECTION_RIGHT);
+    private final Animation animation = sprites.sprites.moving.get(UiConstants.DIRECTION_RIGHT);
 
     public StateMap(StateManager stateManager) {
         super(stateManager);

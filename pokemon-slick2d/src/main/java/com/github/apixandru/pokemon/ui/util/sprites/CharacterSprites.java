@@ -11,12 +11,12 @@ import org.newdawn.slick.SpriteSheet;
 import java.util.Arrays;
 import java.util.List;
 
-import static com.github.apixandru.pokemon.ui.util.sprites.SpriteConstants.MOVING_DOWN;
-import static com.github.apixandru.pokemon.ui.util.sprites.SpriteConstants.MOVING_LEFT;
-import static com.github.apixandru.pokemon.ui.util.sprites.SpriteConstants.MOVING_UP;
-import static com.github.apixandru.pokemon.ui.util.sprites.SpriteConstants.SITTING_DOWN;
-import static com.github.apixandru.pokemon.ui.util.sprites.SpriteConstants.SITTING_LEFT;
-import static com.github.apixandru.pokemon.ui.util.sprites.SpriteConstants.SITTING_UP;
+import static com.apixandru.pokemon.ui.SpriteConstants.MOVING_DOWN;
+import static com.apixandru.pokemon.ui.SpriteConstants.MOVING_LEFT;
+import static com.apixandru.pokemon.ui.SpriteConstants.MOVING_UP;
+import static com.apixandru.pokemon.ui.SpriteConstants.SITTING_DOWN;
+import static com.apixandru.pokemon.ui.SpriteConstants.SITTING_LEFT;
+import static com.apixandru.pokemon.ui.SpriteConstants.SITTING_UP;
 
 /**
  * @author Alexandru Bledea

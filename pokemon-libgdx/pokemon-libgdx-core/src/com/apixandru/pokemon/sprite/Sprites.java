@@ -4,8 +4,8 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 
 import static com.apixandru.libgdx.util.GdxUtils.loadTexture;
-import static com.github.apixandru.pokemon.ui.util.sprites.SpriteConstants.SPRITE_HEIGHT;
-import static com.github.apixandru.pokemon.ui.util.sprites.SpriteConstants.SPRITE_WIDTH;
+import static com.apixandru.pokemon.ui.UiConstants.BLOCK_HEIGHT;
+import static com.apixandru.pokemon.ui.UiConstants.BLOCK_WIDTH;
 
 /**
  * @author Alexandru-Constantin Bledea
@@ -14,7 +14,7 @@ import static com.github.apixandru.pokemon.ui.util.sprites.SpriteConstants.SPRIT
 public class Sprites {
 
     public final Texture redSprites = loadTexture("pokemon-slick2d/resources/sprites/red.png");
-    public final TextureRegion[][] tmp = TextureRegion.split(redSprites, SPRITE_WIDTH, SPRITE_HEIGHT);
+    public final TextureRegion[][] tmp = TextureRegion.split(redSprites, BLOCK_WIDTH, BLOCK_HEIGHT);
     public CharacterSprites sprites = new CharacterSprites(tmp);
 
 }

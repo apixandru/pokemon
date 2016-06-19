@@ -6,6 +6,8 @@ package com.apixandru.pokemon.ui;
  */
 public final class UiConstants {
 
+    public static final byte DIRECTION_RIGHT = 1;
+
     public static final byte BLOCK_WIDTH = 16;
     public static final byte BLOCK_HEIGHT = 16;
 

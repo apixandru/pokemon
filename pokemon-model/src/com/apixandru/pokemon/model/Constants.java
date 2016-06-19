@@ -18,8 +18,6 @@ public final class Constants {
 
     public static final byte SCALE = 3;
 
-    public static final byte DIRECTION_RIGHT = 1;
-
     private static final List<Point> DIRECTION_MODIFIERS = unmodifiableList(asList(
             new Point(+0, -1),
             new Point(+1, +0),

@@ -1,16 +1,13 @@
 /**
  *
  */
-package com.github.apixandru.pokemon.ui.util.sprites;
+package com.apixandru.pokemon.ui;
 
 /**
  * @author Alexandru Bledea
  * @since Jun 6, 2015
  */
 public interface SpriteConstants {
-
-    byte SPRITE_WIDTH = 16;
-    byte SPRITE_HEIGHT = 16;
 
     byte SITTING_DOWN = 0;
     byte SITTING_UP = 1;

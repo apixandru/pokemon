@@ -8,8 +8,8 @@ import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
 import org.newdawn.slick.SpriteSheet;
 
-import static com.github.apixandru.pokemon.ui.util.sprites.SpriteConstants.SPRITE_HEIGHT;
-import static com.github.apixandru.pokemon.ui.util.sprites.SpriteConstants.SPRITE_WIDTH;
+import static com.apixandru.pokemon.ui.UiConstants.BLOCK_HEIGHT;
+import static com.apixandru.pokemon.ui.UiConstants.BLOCK_WIDTH;
 
 /**
  * @author Alexandru Bledea
@@ -17,15 +17,10 @@ import static com.github.apixandru.pokemon.ui.util.sprites.SpriteConstants.SPRIT
  */
 public class SpriteParser {
 
-    /**
-     * @param resource
-     * @return
-     * @throws SlickException
-     */
     public static SpriteSheet loadSpriteSheet(final String resource) throws SlickException {
         final Image image = new Image(resource, Color.white);
         image.setFilter(Image.FILTER_NEAREST);
-        return new SpriteSheet(image, SPRITE_WIDTH, SPRITE_HEIGHT);
+        return new SpriteSheet(image, BLOCK_WIDTH, BLOCK_HEIGHT);
 
     }
 
