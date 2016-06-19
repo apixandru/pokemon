@@ -23,10 +23,7 @@ public final class Constants {
     public static final byte BLOCK_WIDTH = 16;
     public static final byte BLOCK_HEIGHT = 16;
 
-    public static final byte DIRECTION_UP = 0;
     public static final byte DIRECTION_RIGHT = 1;
-    public static final byte DIRECTION_DOWN = 2;
-    public static final byte DIRECTION_LEFT = 3;
 
     public static final byte POS_X = 0;
     public static final byte POS_Y = 1;
@@ -47,6 +44,13 @@ public final class Constants {
 
     public static Point getDirectionModifier(byte moveDirection) {
         return DIRECTION_MODIFIERS.get(moveDirection);
+    }
+
+    public enum MoveDirection {
+        UP,
+        RIGHT,
+        DOWN,
+        LEFT
     }
 
 }

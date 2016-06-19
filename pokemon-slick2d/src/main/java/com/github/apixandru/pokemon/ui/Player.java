@@ -80,7 +80,7 @@ public final class Player implements CanRender, CanUpdate {
     }
 
     private void move(final MoveInput adapt) {
-        final byte moveDirection = adapt.getMoveDirection();
+        final byte moveDirection = (byte) adapt.getMoveDirection().ordinal();
 
         if (character.moveBegin(moveDirection)) {
             moveTo.x = DIRECTION_MODIFIERS_NO_SIGN[moveDirection][POS_X] * BLOCK_WIDTH;

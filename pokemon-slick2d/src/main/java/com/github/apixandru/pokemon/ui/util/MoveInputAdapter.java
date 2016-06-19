@@ -24,25 +24,25 @@ public final class MoveInputAdapter implements MoveInput {
     }
 
     @Override
-    public byte getMoveDirection() {
+    public Constants.MoveDirection getMoveDirection() {
         if (input.isKeyDown(Input.KEY_UP)) {
-            return Constants.DIRECTION_UP;
+            return Constants.MoveDirection.UP;
         }
         if (input.isKeyDown(Input.KEY_RIGHT)) {
-            return Constants.DIRECTION_RIGHT;
+            return Constants.MoveDirection.RIGHT;
         }
         if (input.isKeyDown(Input.KEY_DOWN)) {
-            return Constants.DIRECTION_DOWN;
+            return Constants.MoveDirection.DOWN;
         }
         if (input.isKeyDown(Input.KEY_LEFT)) {
-            return Constants.DIRECTION_LEFT;
+            return Constants.MoveDirection.LEFT;
         }
-        return -1;
+        return null;
     }
 
     @Override
     public boolean isMove() {
-        return -1 != getMoveDirection();
+        return null != getMoveDirection();
     }
 
 }
