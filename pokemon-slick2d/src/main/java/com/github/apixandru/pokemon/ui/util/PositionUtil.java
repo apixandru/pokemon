@@ -5,8 +5,8 @@ package com.github.apixandru.pokemon.ui.util;
 
 import org.newdawn.slick.geom.Vector2f;
 
-import static com.apixandru.pokemon.model.Constants.BLOCK_HEIGHT;
-import static com.apixandru.pokemon.model.Constants.BLOCK_WIDTH;
+import static com.apixandru.pokemon.ui.UiConstants.BLOCK_HEIGHT;
+import static com.apixandru.pokemon.ui.UiConstants.BLOCK_WIDTH;
 
 /**
  * @author Alexandru Bledea

@@ -17,17 +17,16 @@ import static java.util.Collections.unmodifiableList;
 public final class Constants {
 
     public static final byte SCALE = 3;
-    public static final byte BLOCK_WIDTH = 16;
-    public static final byte BLOCK_HEIGHT = 16;
+
     public static final byte DIRECTION_RIGHT = 1;
-    public static final byte POS_X = 0;
-    public static final byte POS_Y = 1;
+
     private static final List<Point> DIRECTION_MODIFIERS = unmodifiableList(asList(
             new Point(+0, -1),
             new Point(+1, +0),
             new Point(+0, +1),
             new Point(-1, +0)
     ));
+
     private static final List<Point> DIRECTION_MODIFIERS_NO_SIGN = unmodifiableList(asList(
             new Point(0, 1),
             new Point(1, 0),

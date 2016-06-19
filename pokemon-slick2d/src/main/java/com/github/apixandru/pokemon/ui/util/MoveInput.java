@@ -3,7 +3,7 @@
  */
 package com.github.apixandru.pokemon.ui.util;
 
-import com.apixandru.pokemon.model.Constants;
+import com.apixandru.pokemon.model.Constants.MoveDirection;
 
 /**
  * @author Alexandru Bledea
@@ -11,14 +11,8 @@ import com.apixandru.pokemon.model.Constants;
  */
 public interface MoveInput {
 
-    /**
-     * @return
-     */
-    Constants.MoveDirection getMoveDirection();
+    MoveDirection getMoveDirection();
 
-    /**
-     * @return
-     */
     boolean isMove();
 
 }

@@ -1,7 +1,9 @@
-include 'pokemon-slick2d'
 include 'pokemon-model'
-include 'pokemon-libgdx'
+include 'pokemon-ui'
 
+include 'pokemon-slick2d'
+
+include 'pokemon-libgdx'
 include 'pokemon-libgdx:pokemon-libgdx-desktop'
 include 'pokemon-libgdx:pokemon-libgdx-util'
 include 'pokemon-libgdx:pokemon-libgdx-core'
