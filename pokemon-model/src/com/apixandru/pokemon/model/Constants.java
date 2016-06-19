@@ -5,6 +5,11 @@ package com.apixandru.pokemon.model;
 
 import com.apixandru.pokemon.model.object.Point;
 
+import java.util.List;
+
+import static java.util.Arrays.asList;
+import static java.util.Collections.unmodifiableList;
+
 /**
  * @author Alexandru Bledea
  * @since Jun 5, 2015
@@ -26,12 +31,12 @@ public final class Constants {
     public static final byte POS_X = 0;
     public static final byte POS_Y = 1;
 
-    private static final byte[][] DIRECTION_MODIFIERS = {
-            {+0, -1},
-            {+1, +0},
-            {+0, +1},
-            {-1, +0},
-    };
+    private static final List<Point> DIRECTION_MODIFIERS = unmodifiableList(asList(
+            new Point(+0, -1),
+            new Point(+1, +0),
+            new Point(+0, +1),
+            new Point(-1, +0)
+    ));
 
     public static final byte[][] DIRECTION_MODIFIERS_NO_SIGN = {
             {0, 1},
@@ -41,8 +46,7 @@ public final class Constants {
     };
 
     public static Point getDirectionModifier(byte moveDirection) {
-        byte[] directionModifier = DIRECTION_MODIFIERS[moveDirection];
-        return new Point(directionModifier[POS_X], directionModifier[POS_Y]);
+        return DIRECTION_MODIFIERS.get(moveDirection);
     }
 
 }
