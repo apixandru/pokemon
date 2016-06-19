@@ -4,6 +4,7 @@
 package com.github.apixandru.pokemon.ui;
 
 import com.apixandru.pokemon.model.object.Character;
+import com.apixandru.pokemon.model.object.Point;
 import com.github.apixandru.pokemon.ui.util.CanRender;
 import com.github.apixandru.pokemon.ui.util.CanUpdate;
 import com.github.apixandru.pokemon.ui.util.MoveInput;
@@ -18,10 +19,10 @@ import java.util.List;
 
 import static com.apixandru.pokemon.model.Constants.BLOCK_HEIGHT;
 import static com.apixandru.pokemon.model.Constants.BLOCK_WIDTH;
-import static com.apixandru.pokemon.model.Constants.DIRECTION_MODIFIERS;
 import static com.apixandru.pokemon.model.Constants.DIRECTION_MODIFIERS_NO_SIGN;
 import static com.apixandru.pokemon.model.Constants.POS_X;
 import static com.apixandru.pokemon.model.Constants.POS_Y;
+import static com.apixandru.pokemon.model.Constants.getDirectionModifier;
 
 /**
  * @author Alexandru Bledea
@@ -37,7 +38,7 @@ public final class Player implements CanRender, CanUpdate {
     private final float speed = .07f;
     private final Character character;
     private boolean moving;
-    private byte[] directionModifiers;
+    private Point directionModifiers;
 
     public Player(final Character character, final CharacterSprites sprites) {
         this.sprites = sprites;
@@ -55,8 +56,8 @@ public final class Player implements CanRender, CanUpdate {
             final float changeX = speed * delta;
             final float changeY = speed * delta;
 
-            offset.x += directionModifiers[POS_X] * changeX;
-            offset.y += directionModifiers[POS_Y] * changeY;
+            offset.x += directionModifiers.x * changeX;
+            offset.y += directionModifiers.y * changeY;
 
             moveTo.x -= changeX;
             moveTo.y -= changeY;
@@ -85,7 +86,7 @@ public final class Player implements CanRender, CanUpdate {
             moveTo.x = DIRECTION_MODIFIERS_NO_SIGN[moveDirection][POS_X] * BLOCK_WIDTH;
             moveTo.y = DIRECTION_MODIFIERS_NO_SIGN[moveDirection][POS_Y] * BLOCK_HEIGHT;
         }
-        directionModifiers = DIRECTION_MODIFIERS[moveDirection];
+        directionModifiers = getDirectionModifier(moveDirection);
         moving = true;
     }
 
