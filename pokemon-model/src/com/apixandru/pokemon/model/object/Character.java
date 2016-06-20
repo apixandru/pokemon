@@ -13,8 +13,8 @@ import static com.apixandru.pokemon.model.Constants.getDirectionModifier;
  */
 public final class Character {
 
-    public int xCurrent, yCurrent;
     public MoveDirection moveDirection = MoveDirection.UP;
+    private int xCurrent, yCurrent;
     private int xDestination, yDestination;
     private WorldMap currentMap;
 

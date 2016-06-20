@@ -87,8 +87,7 @@ public class StateInMap extends BasicGameState {
                     actualMap = mapManager.getMap(warpPoint.destName);
                     character.setCurrentMap(actualMap.getModel().asCharacterMoveListener());
                     final SpawnPoint spawnPoint = mapManager.getSpawnPoint(warpPoint);
-                    character.xCurrent = spawnPoint.x;
-                    character.yCurrent = spawnPoint.y;
+                    character.setLocation(spawnPoint);
                     player.reset();
                 }
             });

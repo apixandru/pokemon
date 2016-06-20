@@ -4,6 +4,7 @@
 package com.apixandru.pokemon.model;
 
 import com.apixandru.pokemon.model.object.Character;
+import com.apixandru.pokemon.model.object.Point;
 import com.apixandru.pokemon.model.object.SpawnPoint;
 import com.apixandru.pokemon.model.object.WarpPoint;
 import com.apixandru.pokemon.model.object.WorldMap;
@@ -85,13 +86,11 @@ public final class PokemonMapImpl implements PokemonMap {
 
         @Override
         public void characterMoveEnd(final Character character) {
+            Point currentLocation = character.getCurrentLocation();
 //          TODO: maybe find a quicker way ?
-            for (final WarpPoint warpPoint : getWarpPoints()) {
-                if (warpPoint.x == character.xCurrent && warpPoint.y == character.yCurrent) {
-                    listener.onWarpPoint(character, warpPoint);
-                    break;
-                }
-            }
+            getWarpPoints().stream()
+                    .filter(currentLocation::sameXY)
+                    .forEach(warpPoint -> listener.onWarpPoint(character, warpPoint));
         }
 
         @Override

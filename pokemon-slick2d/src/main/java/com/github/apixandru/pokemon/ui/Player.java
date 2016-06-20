@@ -112,7 +112,8 @@ public final class Player implements CanRender, CanUpdate {
     }
 
     public Vector2f getPosition() {
-        return new Vector2f(character.xCurrent * BLOCK_WIDTH + offset.x, character.yCurrent * BLOCK_HEIGHT + offset.y);
+        Point currentLocation = character.getCurrentLocation();
+        return new Vector2f(currentLocation.x * BLOCK_WIDTH + offset.x, currentLocation.y * BLOCK_HEIGHT + offset.y);
     }
 
     public void reset() {
