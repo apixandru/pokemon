@@ -5,6 +5,7 @@ package com.github.apixandru.pokemon.game.state;
 
 import com.apixandru.pokemon.model.MapEventListener;
 import com.apixandru.pokemon.model.object.Character;
+import com.apixandru.pokemon.model.object.Point;
 import com.apixandru.pokemon.model.object.SpawnPoint;
 import com.apixandru.pokemon.model.object.WarpPoint;
 import com.apixandru.pokemon.slick2d.SlickPlayerSpriteProvider;
@@ -46,7 +47,7 @@ public class StateInMap extends BasicGameState {
         mapManager = new MapManagerImpl(new EventListener());
         this.actualMap = mapManager.getMap("ash_house_level1");
 
-        final Character character = new Character(3, 6);
+        final Character character = new Character(new Point(3, 6));
         character.setCurrentMap(actualMap.getModel().asCharacterMoveListener());
 
         this.player = new Player(character, new SlickPlayerSpriteProvider(redSprites));

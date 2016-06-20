@@ -16,12 +16,12 @@ public final class Character {
     public MoveDirection moveDirection = MoveDirection.UP;
 
     private Point currentLocation;
+    private Point destination;
 
-    private int xDestination, yDestination;
     private WorldMap currentMap;
 
-    public Character(final int x, final int y) {
-        setCurrentLocation(new Point(x, y));
+    public Character(final Point location) {
+        setCurrentLocation(location);
     }
 
     public boolean moveBegin(final MoveDirection moveDirection) {
@@ -32,13 +32,13 @@ public final class Character {
         if (currentMap.isBlocked(destination.x, destination.y)) {
             return false;
         }
-        this.xDestination = destination.x;
-        this.yDestination = destination.y;
+
+        this.destination = destination;
         return true;
     }
 
     public void moveEnd() {
-        setCurrentLocation(new Point(xDestination, yDestination));
+        setCurrentLocation(destination);
         currentMap.characterMoveEnd(this);
     }
 
