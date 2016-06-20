@@ -16,4 +16,12 @@ public class Point {
         this.y = y;
     }
 
+    public final Point merge(final Point other) {
+        return new Point(x + other.x, y + other.y);
+    }
+
+    public final boolean sameXY(final Point other) {
+        return x == other.x && y == other.y;
+    }
+
 }

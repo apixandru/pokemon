@@ -46,4 +46,13 @@ public final class Character {
         this.currentMap = currentMap;
     }
 
+    public void setLocation(final Point newLocation) {
+        this.xCurrent = newLocation.x;
+        this.yCurrent = newLocation.y;
+    }
+
+    public Point getCurrentLocation() {
+        return new Point(this.xCurrent, this.yCurrent);
+    }
+
 }
