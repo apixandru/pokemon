@@ -14,31 +14,31 @@ import static com.apixandru.pokemon.model.Constants.getDirectionModifier;
 public final class Character {
 
     public MoveDirection moveDirection = MoveDirection.UP;
-    private int xCurrent, yCurrent;
+
+    private Point currentLocation;
+
     private int xDestination, yDestination;
     private WorldMap currentMap;
 
     public Character(final int x, final int y) {
-        this.xCurrent = x;
-        this.yCurrent = y;
+        setCurrentLocation(new Point(x, y));
     }
 
     public boolean moveBegin(final MoveDirection moveDirection) {
         this.moveDirection = moveDirection;
-        Point directionModifier = getDirectionModifier(moveDirection);
-        final int xDestination = this.xCurrent + directionModifier.x;
-        final int yDestination = this.yCurrent + directionModifier.y;
-        if (currentMap.isBlocked(xDestination, yDestination)) {
+
+        Point destination = getDirectionModifier(moveDirection).merge(currentLocation);
+
+        if (currentMap.isBlocked(destination.x, destination.y)) {
             return false;
         }
-        this.xDestination = xDestination;
-        this.yDestination = yDestination;
+        this.xDestination = destination.x;
+        this.yDestination = destination.y;
         return true;
     }
 
     public void moveEnd() {
-        this.xCurrent = xDestination;
-        this.yCurrent = yDestination;
+        setCurrentLocation(new Point(xDestination, yDestination));
         currentMap.characterMoveEnd(this);
     }
 
@@ -46,13 +46,12 @@ public final class Character {
         this.currentMap = currentMap;
     }
 
-    public void setLocation(final Point newLocation) {
-        this.xCurrent = newLocation.x;
-        this.yCurrent = newLocation.y;
+    public Point getCurrentLocation() {
+        return this.currentLocation;
     }
 
-    public Point getCurrentLocation() {
-        return new Point(this.xCurrent, this.yCurrent);
+    public void setCurrentLocation(final Point newLocation) {
+        this.currentLocation = new Point(newLocation);
     }
 
 }

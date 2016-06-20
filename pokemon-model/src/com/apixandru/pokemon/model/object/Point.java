@@ -11,12 +11,16 @@ public class Point {
 
     public final int x, y;
 
+    public Point(final Point point) {
+        this(point.x, point.y);
+    }
+
     public Point(final int x, final int y) {
         this.x = x;
         this.y = y;
     }
 
-    public final Point merge(final Point other) {
+    final Point merge(final Point other) {
         return new Point(x + other.x, y + other.y);
     }
 
