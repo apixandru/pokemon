@@ -12,8 +12,6 @@ import com.apixandru.pokemon.model.WorldBounds;
  */
 public interface WorldMap extends WorldBounds {
 
-    void characterMoveStart(Character character, byte direction);
-
     void characterMoveEnd(Character character);
 
 }

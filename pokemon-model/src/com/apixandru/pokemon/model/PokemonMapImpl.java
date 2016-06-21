@@ -25,9 +25,9 @@ public final class PokemonMapImpl implements PokemonMap {
     private final int rows, cols;
     private final boolean[][] content;
 
-    private final Map<Integer, SpawnPoint> spawnPoints = new HashMap<Integer, SpawnPoint>();
+    private final Map<Integer, SpawnPoint> spawnPoints = new HashMap<>();
 
-    private final List<WarpPoint> warpPoints = new ArrayList<WarpPoint>();
+    private final List<WarpPoint> warpPoints = new ArrayList<>();
 
     public PokemonMapImpl(final int cols, final int rows, final MapEventListener listener) {
         this.rows = rows;
@@ -38,10 +38,7 @@ public final class PokemonMapImpl implements PokemonMap {
 
     @Override
     public boolean isBlocked(final int x, final int y) {
-        if (isOutOfBounds(x, y)) {
-            return true;
-        }
-        return this.content[y][x];
+        return isOutOfBounds(x, y) || this.content[y][x];
     }
 
     private boolean isOutOfBounds(final int x, final int y) {
@@ -78,11 +75,6 @@ public final class PokemonMapImpl implements PokemonMap {
      * @since Jun 13, 2015
      */
     private class PokemonMapCharacterMoveListener implements WorldMap {
-
-        @Override
-        public void characterMoveStart(final Character character, final byte direction) {
-
-        }
 
         @Override
         public void characterMoveEnd(final Character character) {

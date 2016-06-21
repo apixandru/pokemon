@@ -64,9 +64,7 @@ public final class CharacterSprites {
     }
 
     public void reset() {
-        for (final Animation animation : moving) {
-            animation.restart();
-        }
+        moving.forEach(Animation::restart);
     }
 
 }
