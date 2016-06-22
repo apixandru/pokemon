@@ -7,12 +7,10 @@ import com.apixandru.pokemon.model.Constants.MoveDirection;
 import com.apixandru.pokemon.model.object.Character;
 import com.apixandru.pokemon.model.object.Point;
 import com.apixandru.pokemon.slick2d.SlickPlayerSpriteProvider;
+import com.apixandru.pokemon.ui.CanUpdate;
+import com.apixandru.pokemon.ui.MoveInput;
 import com.github.apixandru.pokemon.ui.util.CanRender;
-import com.github.apixandru.pokemon.ui.util.CanUpdate;
-import com.github.apixandru.pokemon.ui.util.MoveInput;
-import com.github.apixandru.pokemon.ui.util.MoveInputAdapter;
 import org.newdawn.slick.Animation;
-import org.newdawn.slick.GameContainer;
 import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.Renderable;
@@ -27,7 +25,7 @@ import static com.apixandru.pokemon.ui.UiConstants.BLOCK_WIDTH;
  * @author Alexandru Bledea
  * @since Jun 3, 2015
  */
-public final class Player implements CanRender, CanUpdate {
+public final class Player implements CanRender, CanUpdate<Integer> {
 
     private final Vector2f offset = new Vector2f();
     private final Vector2f moveTo = new Vector2f();
@@ -46,9 +44,8 @@ public final class Player implements CanRender, CanUpdate {
     }
 
     @Override
-    public void update(final GameContainer container, final int delta) {
-        final MoveInput adapt = MoveInputAdapter.adapt(container.getInput());
-        final boolean nowMoving = adapt.isMove();
+    public void update(MoveInput moveInput, Integer delta) {
+        final boolean nowMoving = moveInput.isMove();
         boolean finishedWalking = true;
         if (moving) {
             getMovingAnimation().update(delta);
@@ -75,7 +72,7 @@ public final class Player implements CanRender, CanUpdate {
             }
         }
         if (finishedWalking && nowMoving) {
-            move(adapt);
+            move(moveInput);
         }
     }
 

@@ -1,7 +1,7 @@
 /**
  *
  */
-package com.github.apixandru.pokemon.ui.util;
+package com.apixandru.pokemon.ui;
 
 import com.apixandru.pokemon.model.Constants.MoveDirection;
 

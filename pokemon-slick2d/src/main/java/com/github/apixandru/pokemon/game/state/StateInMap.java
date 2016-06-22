@@ -12,6 +12,7 @@ import com.apixandru.pokemon.slick2d.SlickPlayerSpriteProvider;
 import com.github.apixandru.pokemon.ui.Player;
 import com.github.apixandru.pokemon.ui.PokemonTiledMap;
 import com.github.apixandru.pokemon.ui.util.Camera;
+import com.github.apixandru.pokemon.ui.util.MoveInputAdapter;
 import com.github.apixandru.pokemon.ui.util.map.MapManager;
 import com.github.apixandru.pokemon.ui.util.map.MapManagerImpl;
 import com.github.apixandru.pokemon.ui.util.sprites.CharacterSprites;
@@ -64,7 +65,7 @@ public class StateInMap extends BasicGameState {
 
     @Override
     public void update(final GameContainer container, final StateBasedGame game, final int delta) throws SlickException {
-        player.update(container, delta);
+        player.update(MoveInputAdapter.adapt(container.getInput()), delta);
 
     }
 
