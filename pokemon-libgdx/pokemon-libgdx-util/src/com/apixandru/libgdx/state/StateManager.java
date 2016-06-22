@@ -1,7 +1,8 @@
 package com.apixandru.libgdx.state;
 
+import com.apixandru.libgdx.util.GdxCanUpdate;
 import com.apixandru.libgdx.util.Renderable;
-import com.apixandru.libgdx.util.Updatable;
+import com.apixandru.pokemon.ui.MoveInput;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.Disposable;
 
@@ -12,13 +13,13 @@ import java.util.LinkedList;
  * @author Alexandru-Constantin Bledea
  * @since Jun 12, 2016
  */
-public class StateManager implements Updatable, Renderable, Disposable {
+public class StateManager implements GdxCanUpdate, Renderable, Disposable {
 
     private final Deque<AbstractState> states = new LinkedList<>();
 
     @Override
-    public void update(float delta) {
-        getCurrentState().update(delta);
+    public void update(MoveInput moveInput, Float delta) {
+        getCurrentState().update(moveInput, delta);
     }
 
     @Override

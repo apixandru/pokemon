@@ -1,5 +1,6 @@
 package com.apixandru.libgdx.util;
 
+import com.apixandru.pokemon.ui.MoveInput;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 
 import java.util.List;
@@ -11,7 +12,7 @@ import static java.util.Collections.unmodifiableList;
  * @author Alexandru-Constantin Bledea
  * @since Jun 13, 2016
  */
-public class Animation implements Updatable {
+public class Animation implements GdxCanUpdate {
 
     private final List<TextureRegion> textures;
 
@@ -28,7 +29,7 @@ public class Animation implements Updatable {
     }
 
     @Override
-    public void update(float delta) {
+    public void update(MoveInput moveInput, Float delta) {
         currentTime += delta;
         while (currentTime > duration) {
             currentTime -= duration;

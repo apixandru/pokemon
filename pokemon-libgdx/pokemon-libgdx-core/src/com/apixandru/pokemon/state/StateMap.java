@@ -4,6 +4,7 @@ import com.apixandru.libgdx.state.AbstractState;
 import com.apixandru.libgdx.state.StateManager;
 import com.apixandru.libgdx.util.Animation;
 import com.apixandru.pokemon.sprite.Sprites;
+import com.apixandru.pokemon.ui.MoveInput;
 import com.apixandru.pokemon.ui.UiConstants;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
@@ -30,8 +31,8 @@ public class StateMap extends AbstractState {
     }
 
     @Override
-    public void update(float delta) {
-        animation.update(delta);
+    public void update(MoveInput moveInput, Float delta) {
+        animation.update(moveInput, delta);
     }
 
 }

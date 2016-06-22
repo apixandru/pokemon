@@ -25,6 +25,7 @@ project(":pokemon-libgdx:pokemon-libgdx-desktop") {
 project(":pokemon-libgdx:pokemon-libgdx-util") {
     apply plugin: "java"
     dependencies {
+        compile project(":pokemon-ui")
         compile "com.badlogicgames.gdx:gdx:$gdxVersion"
     }
 }
@@ -32,7 +33,6 @@ project(":pokemon-libgdx:pokemon-libgdx-util") {
 project(":pokemon-libgdx:pokemon-libgdx-core") {
     apply plugin: "java"
     dependencies {
-        compile project(":pokemon-ui")
         compile project(":pokemon-libgdx:pokemon-libgdx-util")
         compile "com.badlogicgames.gdx:gdx:$gdxVersion"
         compile "com.badlogicgames.gdx:gdx-box2d:$gdxVersion"
