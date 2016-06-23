@@ -15,6 +15,7 @@ public class Sprites {
 
     public final Texture redSprites = loadTexture("pokemon-slick2d/resources/sprites/red.png");
     public final TextureRegion[][] tmp = TextureRegion.split(redSprites, BLOCK_WIDTH, BLOCK_HEIGHT);
-    public CharacterSprites sprites = new CharacterSprites(tmp);
+    public final CharacterSprites sprites = new CharacterSprites(tmp);
+    public final GdxPlayerSpriteProvider spriteProvider = new GdxPlayerSpriteProvider(sprites);
 
 }

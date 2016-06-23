@@ -3,10 +3,13 @@ package com.apixandru.pokemon.state;
 import com.apixandru.libgdx.state.AbstractState;
 import com.apixandru.libgdx.state.StateManager;
 import com.apixandru.libgdx.util.Animation;
+import com.apixandru.pokemon.model.Constants.MoveDirection;
 import com.apixandru.pokemon.sprite.Sprites;
 import com.apixandru.pokemon.ui.MoveInput;
-import com.apixandru.pokemon.ui.UiConstants;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
+
+import static com.apixandru.pokemon.model.Constants.MoveDirection.DOWN;
 
 /**
  * @author Alexandru-Constantin Bledea
@@ -15,7 +18,8 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 public class StateMap extends AbstractState {
 
     private final Sprites sprites = new Sprites();
-    private final Animation animation = sprites.sprites.moving.get(UiConstants.DIRECTION_RIGHT);
+    private MoveDirection moveDirection = DOWN;
+    private TextureRegion textureRegion;
 
     public StateMap(StateManager stateManager) {
         super(stateManager);
@@ -26,13 +30,21 @@ public class StateMap extends AbstractState {
     public void render(SpriteBatch spriteBatch) {
         spriteBatch.setProjectionMatrix(camera.combined);
         spriteBatch.begin();
-        spriteBatch.draw(animation.getCurrentFrame(), 0, 0);
+        spriteBatch.draw(textureRegion, 0, 0);
         spriteBatch.end();
     }
 
     @Override
     public void update(MoveInput moveInput, Float delta) {
-        animation.update(moveInput, delta);
+        if (moveInput.isMove()) {
+            MoveDirection moveDirection = moveInput.getMoveDirection();
+            this.moveDirection = moveDirection;
+            Animation moving = sprites.spriteProvider.getMoving(moveDirection);
+            moving.update(moveInput, delta);
+            textureRegion = moving.getCurrentFrame();
+        } else {
+            textureRegion = sprites.spriteProvider.getStanding(moveDirection);
+        }
     }
 
 }
