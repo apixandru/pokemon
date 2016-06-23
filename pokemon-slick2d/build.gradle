@@ -4,9 +4,6 @@ apply plugin: 'maven'
 group = 'com.github.apixandru.pokemon'
 version = '0.0.1-SNAPSHOT'
 
-sourceCompatibility = 1.8
-targetCompatibility = 1.8
-
 repositories {
     maven { url "http://repo.maven.apache.org/maven2" }
 }
