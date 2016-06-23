@@ -13,6 +13,8 @@ public interface MoveInput {
 
     MoveDirection getMoveDirection();
 
-    boolean isMove();
+    default boolean isMove() {
+        return null != getMoveDirection();
+    }
 
 }

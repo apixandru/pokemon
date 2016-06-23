@@ -41,9 +41,4 @@ public final class MoveInputAdapter implements MoveInput {
         return null;
     }
 
-    @Override
-    public boolean isMove() {
-        return null != getMoveDirection();
-    }
-
 }

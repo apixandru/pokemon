@@ -38,9 +38,4 @@ public final class GdxMoveInput implements MoveInput {
         return null;
     }
 
-    @Override
-    public boolean isMove() {
-        return null != getMoveDirection();
-    }
-
 }
