@@ -1,6 +1,6 @@
 package com.apixandru.libgdx.util;
 
-import com.apixandru.pokemon.ui.MoveInput;
+import com.apixandru.pokemon.model.input.MoveInput;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 
 import java.util.List;

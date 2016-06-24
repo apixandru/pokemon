@@ -4,8 +4,8 @@ import com.apixandru.libgdx.state.AbstractState;
 import com.apixandru.libgdx.state.StateManager;
 import com.apixandru.libgdx.util.Animation;
 import com.apixandru.pokemon.model.Constants.MoveDirection;
+import com.apixandru.pokemon.model.input.MoveInput;
 import com.apixandru.pokemon.sprite.Sprites;
-import com.apixandru.pokemon.ui.MoveInput;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 

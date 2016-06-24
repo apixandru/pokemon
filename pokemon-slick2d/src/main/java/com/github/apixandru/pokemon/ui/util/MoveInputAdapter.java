@@ -4,7 +4,7 @@
 package com.github.apixandru.pokemon.ui.util;
 
 import com.apixandru.pokemon.model.Constants;
-import com.apixandru.pokemon.ui.MoveInput;
+import com.apixandru.pokemon.model.input.MoveInput;
 import org.newdawn.slick.Input;
 
 

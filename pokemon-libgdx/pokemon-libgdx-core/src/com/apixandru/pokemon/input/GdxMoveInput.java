@@ -1,7 +1,7 @@
 package com.apixandru.pokemon.input;
 
 import com.apixandru.pokemon.model.Constants.MoveDirection;
-import com.apixandru.pokemon.ui.MoveInput;
+import com.apixandru.pokemon.model.input.MoveInput;
 
 import static com.apixandru.pokemon.model.Constants.MoveDirection.DOWN;
 import static com.apixandru.pokemon.model.Constants.MoveDirection.LEFT;

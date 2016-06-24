@@ -2,7 +2,7 @@ package com.apixandru.libgdx.state;
 
 import com.apixandru.libgdx.util.GdxCanUpdate;
 import com.apixandru.libgdx.util.Renderable;
-import com.apixandru.pokemon.ui.MoveInput;
+import com.apixandru.pokemon.model.input.MoveInput;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.Disposable;
 

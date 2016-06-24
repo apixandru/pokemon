@@ -4,11 +4,11 @@
 package com.github.apixandru.pokemon.ui;
 
 import com.apixandru.pokemon.model.Constants.MoveDirection;
+import com.apixandru.pokemon.model.input.MoveInput;
 import com.apixandru.pokemon.model.object.Character;
 import com.apixandru.pokemon.model.object.Point;
 import com.apixandru.pokemon.slick2d.SlickPlayerSpriteProvider;
 import com.apixandru.pokemon.ui.CanUpdate;
-import com.apixandru.pokemon.ui.MoveInput;
 import com.github.apixandru.pokemon.ui.util.CanRender;
 import org.newdawn.slick.Animation;
 import org.newdawn.slick.Graphics;

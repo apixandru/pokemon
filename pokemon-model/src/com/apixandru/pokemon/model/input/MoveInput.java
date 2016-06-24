@@ -1,7 +1,7 @@
 /**
  *
  */
-package com.apixandru.pokemon.ui;
+package com.apixandru.pokemon.model.input;
 
 import com.apixandru.pokemon.model.Constants.MoveDirection;
 
