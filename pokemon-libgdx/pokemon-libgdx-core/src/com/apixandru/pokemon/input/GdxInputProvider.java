@@ -2,6 +2,7 @@ package com.apixandru.pokemon.input;
 
 import com.apixandru.pokemon.model.input.Input;
 import com.apixandru.pokemon.model.input.InputProvider;
+import com.apixandru.pokemon.model.input.UserInput;
 import com.badlogic.gdx.Gdx;
 
 import java.util.Collections;
@@ -21,11 +22,11 @@ import static com.badlogic.gdx.Input.Keys.DPAD_UP;
  * @author Alexandru-Constantin Bledea
  * @since Jun 23, 2016
  */
-final class GdxInputProvider implements InputProvider {
+public final class GdxInputProvider implements InputProvider {
+
+    public static final UserInput USER_INPUT = new UserInput(new GdxInputProvider());
 
     private static final Map<Input, Integer> INPUT_MAPPER = createInputMap();
-
-    static final GdxInputProvider INSTANCE = new GdxInputProvider();
 
     private GdxInputProvider() {
     }

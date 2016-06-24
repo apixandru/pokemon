@@ -1,7 +1,7 @@
 package com.apixandru.pokemon;
 
 import com.apixandru.libgdx.state.StateManager;
-import com.apixandru.pokemon.input.GdxMoveInput;
+import com.apixandru.pokemon.input.GdxInputProvider;
 import com.apixandru.pokemon.state.StateMap;
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
@@ -29,7 +29,7 @@ public class Pokemon extends ApplicationAdapter {
         Gdx.gl.glClearColor(1, 1, 1, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
-        stateManager.update(GdxMoveInput.INSTANCE, Gdx.graphics.getDeltaTime());
+        stateManager.update(GdxInputProvider.USER_INPUT, Gdx.graphics.getDeltaTime());
         stateManager.render(spriteBatch);
 
     }
@@ -38,4 +38,5 @@ public class Pokemon extends ApplicationAdapter {
     public void dispose() {
         disposeAll(stateManager, spriteBatch);
     }
+
 }
