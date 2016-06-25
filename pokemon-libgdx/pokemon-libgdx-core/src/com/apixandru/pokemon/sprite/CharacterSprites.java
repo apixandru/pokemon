@@ -1,6 +1,6 @@
 package com.apixandru.pokemon.sprite;
 
-import com.apixandru.libgdx.util.Animation;
+import com.apixandru.libgdx.util.GdxAnimation;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 
 import java.util.List;
@@ -16,7 +16,7 @@ import static java.util.Arrays.asList;
 public final class CharacterSprites {
 
     public final List<TextureRegion> notMoving;
-    public final List<Animation> moving;
+    public final List<GdxAnimation> moving;
 
     CharacterSprites(final TextureRegion[][] spriteSheet) {
 
@@ -38,14 +38,14 @@ public final class CharacterSprites {
 
 
         this.moving = asList(animation(moveUp, sittingUp),
-                new Animation(.15f, moveRight, sittingRight),
+                new GdxAnimation(.15f, moveRight, sittingRight),
                 animation(moveDown, sittingDown),
-                new Animation(.15f, moveLeft, sittingLeft));
+                new GdxAnimation(.15f, moveLeft, sittingLeft));
 
     }
 
-    private static Animation animation(final TextureRegion frameMoving, final TextureRegion frameSitting) {
-        return new Animation(.15f, frameMoving, frameSitting, flip(frameMoving), frameSitting);
+    private static GdxAnimation animation(final TextureRegion frameMoving, final TextureRegion frameSitting) {
+        return new GdxAnimation(.15f, frameMoving, frameSitting, flip(frameMoving), frameSitting);
     }
 
     private static TextureRegion flip(final TextureRegion textureRegion) {
@@ -55,7 +55,7 @@ public final class CharacterSprites {
     }
 
     public void reset() {
-        for (final Animation animation : moving) {
+        for (final GdxAnimation animation : moving) {
             animation.reset();
         }
     }

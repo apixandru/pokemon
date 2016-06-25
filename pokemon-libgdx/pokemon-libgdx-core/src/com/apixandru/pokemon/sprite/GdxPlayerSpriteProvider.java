@@ -1,6 +1,6 @@
 package com.apixandru.pokemon.sprite;
 
-import com.apixandru.libgdx.util.Animation;
+import com.apixandru.libgdx.util.GdxAnimation;
 import com.apixandru.pokemon.model.Constants;
 import com.apixandru.pokemon.ui.PlayerSpriteProvider;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
@@ -9,7 +9,7 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
  * @author Alexandru-Constantin Bledea
  * @since Jun 22, 2016
  */
-public class GdxPlayerSpriteProvider implements PlayerSpriteProvider<TextureRegion, Animation> {
+public class GdxPlayerSpriteProvider implements PlayerSpriteProvider<TextureRegion, GdxAnimation> {
 
     private final CharacterSprites sprites;
 
@@ -18,7 +18,7 @@ public class GdxPlayerSpriteProvider implements PlayerSpriteProvider<TextureRegi
     }
 
     @Override
-    public Animation getMoving(Constants.MoveDirection moveDirection) {
+    public GdxAnimation getMoving(Constants.MoveDirection moveDirection) {
         // TODO remove ordinal() implementation detail
         return sprites.moving.get(moveDirection.ordinal());
     }

@@ -2,7 +2,7 @@ package com.apixandru.pokemon.state;
 
 import com.apixandru.libgdx.state.AbstractState;
 import com.apixandru.libgdx.state.StateManager;
-import com.apixandru.libgdx.util.Animation;
+import com.apixandru.libgdx.util.GdxAnimation;
 import com.apixandru.pokemon.model.Constants.MoveDirection;
 import com.apixandru.pokemon.model.input.MoveInput;
 import com.apixandru.pokemon.sprite.Sprites;
@@ -39,7 +39,7 @@ public class StateMap extends AbstractState {
         if (moveInput.isMove()) {
             MoveDirection moveDirection = moveInput.getMoveDirection();
             this.moveDirection = moveDirection;
-            Animation moving = sprites.spriteProvider.getMoving(moveDirection);
+            GdxAnimation moving = sprites.spriteProvider.getMoving(moveDirection);
             moving.update(moveInput, delta);
             textureRegion = moving.getCurrentFrame();
         } else {

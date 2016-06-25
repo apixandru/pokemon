@@ -12,7 +12,7 @@ import static java.util.Collections.unmodifiableList;
  * @author Alexandru-Constantin Bledea
  * @since Jun 13, 2016
  */
-public class Animation implements GdxCanUpdate {
+public class GdxAnimation implements GdxCanUpdate {
 
     private final List<TextureRegion> textures;
 
@@ -21,7 +21,7 @@ public class Animation implements GdxCanUpdate {
 
     private float currentTime;
 
-    public Animation(float frameDuration, TextureRegion... frames) {
+    public GdxAnimation(float frameDuration, TextureRegion... frames) {
         this.textures = unmodifiableList(asList(frames));
         this.frameDuration = frameDuration;
         this.duration = frameDuration * frames.length;
