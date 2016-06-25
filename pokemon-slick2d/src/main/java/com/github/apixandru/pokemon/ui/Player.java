@@ -11,7 +11,6 @@ import com.apixandru.pokemon.slick2d.SlickPlayerSpriteProvider;
 import com.apixandru.pokemon.ui.CanUpdate;
 import com.github.apixandru.pokemon.ui.util.CanRender;
 import org.newdawn.slick.Animation;
-import org.newdawn.slick.Graphics;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.Renderable;
 import org.newdawn.slick.geom.Vector2f;
@@ -89,7 +88,7 @@ public final class Player implements CanRender, CanUpdate<Integer> {
     }
 
     @Override
-    public void render(final Graphics g) {
+    public void render() {
         Renderable renderable;
         if (moving) {
             renderable = getMovingAnimation();

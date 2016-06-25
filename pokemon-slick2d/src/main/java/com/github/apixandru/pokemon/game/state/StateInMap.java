@@ -60,7 +60,7 @@ public class StateInMap extends BasicGameState {
     public void render(final GameContainer container, final StateBasedGame game, final Graphics g) throws SlickException {
         this.camera.translate(g, this.player.getPosition());
         this.actualMap.render(0, 0);
-        this.player.render(g);
+        this.player.render();
     }
 
     @Override
