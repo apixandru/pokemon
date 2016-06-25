@@ -6,6 +6,7 @@ package com.github.apixandru.pokemon.ui;
 import com.apixandru.pokemon.model.Constants.MoveDirection;
 import com.apixandru.pokemon.model.input.MoveInput;
 import com.apixandru.pokemon.model.object.Character;
+import com.apixandru.pokemon.model.object.FloatingPoint;
 import com.apixandru.pokemon.model.object.Point;
 import com.apixandru.pokemon.slick2d.SlickPlayerSpriteProvider;
 import com.apixandru.pokemon.ui.CanUpdate;
@@ -26,20 +27,18 @@ import static com.apixandru.pokemon.ui.UiConstants.BLOCK_WIDTH;
  */
 public final class Player implements CanRender, CanUpdate<Integer> {
 
-    private final Vector2f offset = new Vector2f();
-    private final Vector2f moveTo = new Vector2f();
-
     private final float speed = .07f;
     private final Character character;
-
     private final SlickPlayerSpriteProvider playerSpriteProvider;
-
+    private FloatingPoint offset;
+    private FloatingPoint moveTo;
     private boolean moving;
     private Point directionModifiers;
 
     public Player(final Character character, SlickPlayerSpriteProvider playerSpriteProvider) {
         this.character = character;
         this.playerSpriteProvider = playerSpriteProvider;
+        reset();
     }
 
     @Override
@@ -115,10 +114,8 @@ public final class Player implements CanRender, CanUpdate<Integer> {
     public void reset() {
         this.playerSpriteProvider.reset();
         this.moving = false;
-        this.offset.x = 0;
-        this.offset.y = 0;
-        this.moveTo.x = 0;
-        this.moveTo.y = 0;
+        this.offset = new FloatingPoint();
+        this.moveTo = new FloatingPoint();
     }
 
 }
