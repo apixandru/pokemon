@@ -14,10 +14,10 @@ import com.github.apixandru.pokemon.ui.util.CanRender;
 import org.newdawn.slick.Animation;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.Renderable;
-import org.newdawn.slick.geom.Vector2f;
 
 import static com.apixandru.pokemon.model.Constants.getDirectionModifier;
 import static com.apixandru.pokemon.model.Constants.getDirectionModifierUnsigned;
+import static com.apixandru.pokemon.model.object.FloatingPoint.ZERO;
 import static com.apixandru.pokemon.ui.UiConstants.BLOCK_HEIGHT;
 import static com.apixandru.pokemon.ui.UiConstants.BLOCK_WIDTH;
 
@@ -30,8 +30,10 @@ public final class Player implements CanRender, CanUpdate<Integer> {
     private final float speed = .07f;
     private final Character character;
     private final SlickPlayerSpriteProvider playerSpriteProvider;
+
     private FloatingPoint offset;
     private FloatingPoint moveTo;
+
     private boolean moving;
     private Point directionModifiers;
 
@@ -51,17 +53,14 @@ public final class Player implements CanRender, CanUpdate<Integer> {
             final float changeX = speed * delta;
             final float changeY = speed * delta;
 
-            offset.x += directionModifiers.x * changeX;
-            offset.y += directionModifiers.y * changeY;
+            offset = offset.add(directionModifiers.x * changeX, directionModifiers.y * changeY);
 
-            moveTo.x -= changeX;
-            moveTo.y -= changeY;
+            moveTo = moveTo.add(-changeX, -changeY);
 
             finishedWalking = moveTo.x <= 0 && moveTo.y <= 0;
 
             if (finishedWalking) {
-                offset.x = 0;
-                offset.y = 0;
+                offset = ZERO;
                 character.moveEnd();
                 if (!nowMoving) {
                     getMovingAnimation().restart();
@@ -79,8 +78,7 @@ public final class Player implements CanRender, CanUpdate<Integer> {
 
         if (character.moveBegin(moveDirection)) {
             Point directionPoint = getDirectionModifierUnsigned(moveDirection);
-            moveTo.x = directionPoint.x * BLOCK_WIDTH;
-            moveTo.y = directionPoint.y * BLOCK_HEIGHT;
+            moveTo = new FloatingPoint(directionPoint.x * BLOCK_WIDTH, directionPoint.y * BLOCK_HEIGHT);
         }
         directionModifiers = getDirectionModifier(moveDirection);
         moving = true;
@@ -94,7 +92,7 @@ public final class Player implements CanRender, CanUpdate<Integer> {
         } else {
             renderable = getStandingImage();
         }
-        final Vector2f position = getPosition();
+        final FloatingPoint position = getPosition();
         renderable.draw(position.x, position.y);
     }
 
@@ -106,16 +104,18 @@ public final class Player implements CanRender, CanUpdate<Integer> {
         return playerSpriteProvider.getStanding(character.moveDirection);
     }
 
-    public Vector2f getPosition() {
+    public FloatingPoint getPosition() {
         Point currentLocation = character.getCurrentLocation();
-        return new Vector2f(currentLocation.x * BLOCK_WIDTH + offset.x, currentLocation.y * BLOCK_HEIGHT + offset.y);
+        float currentX = currentLocation.x * BLOCK_WIDTH + offset.x;
+        float currentY = currentLocation.y * BLOCK_HEIGHT + offset.y;
+        return new FloatingPoint(currentX, currentY);
     }
 
     public void reset() {
         this.playerSpriteProvider.reset();
         this.moving = false;
-        this.offset = new FloatingPoint();
-        this.moveTo = new FloatingPoint();
+        this.offset = ZERO;
+        this.moveTo = ZERO;
     }
 
 }

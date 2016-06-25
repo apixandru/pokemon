@@ -1,7 +1,7 @@
 package com.github.apixandru.pokemon.ui.util;
 
+import com.apixandru.pokemon.model.object.FloatingPoint;
 import org.newdawn.slick.Graphics;
-import org.newdawn.slick.geom.Vector2f;
 
 /**
  * @author Alexandru Bledea
@@ -23,7 +23,7 @@ public final class Camera {
         return visibleRange / 2 - position;
     }
 
-    public void translate(final Graphics graphics, final Vector2f position) {
+    public void translate(final Graphics graphics, final FloatingPoint position) {
         final float x = compute(position.x, this.visibleWidth);
         final float y = compute(position.y, this.visibleHeight);
         graphics.scale(scale, scale);
