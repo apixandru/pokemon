@@ -1,6 +1,8 @@
 package com.apixandru.libgdx.util;
 
 import com.apixandru.pokemon.model.input.MoveInput;
+import com.apixandru.pokemon.model.object.FloatingPoint;
+import com.apixandru.pokemon.ui.render.Animation;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 
 import java.util.List;
@@ -12,7 +14,7 @@ import static java.util.Collections.unmodifiableList;
  * @author Alexandru-Constantin Bledea
  * @since Jun 13, 2016
  */
-public class GdxAnimation implements GdxCanUpdate {
+public class GdxAnimation implements GdxCanUpdate, Animation<GdxRenderer, Float> {
 
     private final List<TextureRegion> textures;
 
@@ -42,6 +44,11 @@ public class GdxAnimation implements GdxCanUpdate {
 
     public void reset() {
         currentTime = 0;
+    }
+
+    @Override
+    public void render(GdxRenderer renderer, FloatingPoint floatingPoint) {
+        renderer.render(getCurrentFrame(), floatingPoint.x, floatingPoint.y);
     }
 
 }
