@@ -3,6 +3,8 @@
  */
 package com.github.apixandru.pokemon.ui.util.sprites;
 
+import com.apixandru.pokemon.slick2d.render.SlickAnimation;
+import com.apixandru.pokemon.slick2d.render.SlickImage;
 import org.newdawn.slick.Animation;
 import org.newdawn.slick.Image;
 import org.newdawn.slick.SlickException;
@@ -24,8 +26,8 @@ import static com.apixandru.pokemon.ui.SpriteConstants.SITTING_UP;
  */
 public final class CharacterSprites {
 
-    public final List<Image> notMoving;
-    public final List<Animation> moving;
+    public final List<SlickImage> notMoving;
+    public final List<SlickAnimation> moving;
 
     private CharacterSprites(final SpriteSheet spriteSheet) {
         final Image sittingUp = spriteSheet.getSprite(0, SITTING_UP);
@@ -39,16 +41,17 @@ public final class CharacterSprites {
         final Image moveDown = spriteSheet.getSprite(0, MOVING_DOWN);
 
         this.notMoving = Arrays.asList(
-                sittingUp,
-                sittingRight,
-                sittingDown,
-                sittingLeft);
+                new SlickImage(sittingUp),
+                new SlickImage(sittingRight),
+                new SlickImage(sittingDown),
+                new SlickImage(sittingLeft));
 
 
-        this.moving = Arrays.asList(animation(moveUp, sittingUp),
-                new Animation(new Image[]{moveRight, sittingRight}, 150, false),
-                animation(moveDown, sittingDown),
-                new Animation(new Image[]{moveLeft, sittingLeft}, 150, false));
+        this.moving = Arrays.asList(
+                new SlickAnimation(animation(moveUp, sittingUp)),
+                new SlickAnimation(new Animation(new Image[]{moveRight, sittingRight}, 150, false)),
+                new SlickAnimation(animation(moveDown, sittingDown)),
+                new SlickAnimation(new Animation(new Image[]{moveLeft, sittingLeft}, 150, false)));
     }
 
     private static Animation animation(final Image frameMoving, final Image frameSitting) {
@@ -64,7 +67,7 @@ public final class CharacterSprites {
     }
 
     public void reset() {
-        moving.forEach(Animation::restart);
+        moving.forEach(SlickAnimation::reset);
     }
 
 }

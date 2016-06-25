@@ -21,13 +21,13 @@ public final class SlickPlayerSpriteProvider implements PlayerSpriteProvider<Ima
     @Override
     public Animation getMoving(final MoveDirection moveDirection) {
         // TODO remove ordinal() implementation detail
-        return sprites.moving.get(moveDirection.ordinal());
+        return sprites.moving.get(moveDirection.ordinal()).animation;
     }
 
     @Override
     public Image getStanding(final MoveDirection moveDirection) {
         // TODO remove ordinal() implementation detail
-        return sprites.notMoving.get(moveDirection.ordinal());
+        return sprites.notMoving.get(moveDirection.ordinal()).image;
     }
 
     @Override

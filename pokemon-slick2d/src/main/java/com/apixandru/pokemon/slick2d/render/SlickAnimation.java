@@ -10,7 +10,7 @@ import com.apixandru.pokemon.ui.render.Animation;
  */
 public class SlickAnimation implements Animation<SlickRenderer, Integer> {
 
-    private final org.newdawn.slick.Animation animation;
+    public final org.newdawn.slick.Animation animation;
 
     public SlickAnimation(org.newdawn.slick.Animation animation) {
         this.animation = animation;
