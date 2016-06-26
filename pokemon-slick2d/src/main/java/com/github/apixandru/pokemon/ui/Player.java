@@ -13,7 +13,7 @@ import com.apixandru.pokemon.slick2d.render.SlickAnimation;
 import com.apixandru.pokemon.slick2d.render.SlickImage;
 import com.apixandru.pokemon.slick2d.render.SlickRenderer;
 import com.apixandru.pokemon.ui.CanUpdate;
-import com.github.apixandru.pokemon.ui.util.CanRender;
+import com.apixandru.pokemon.ui.render.CanRender;
 
 import static com.apixandru.pokemon.model.Constants.getDirectionModifier;
 import static com.apixandru.pokemon.model.Constants.getDirectionModifierUnsigned;
@@ -25,7 +25,7 @@ import static com.apixandru.pokemon.ui.UiConstants.BLOCK_WIDTH;
  * @author Alexandru Bledea
  * @since Jun 3, 2015
  */
-public final class Player implements CanRender, CanUpdate<Integer> {
+public final class Player implements CanRender<SlickRenderer>, CanUpdate<Integer> {
 
     private final float speed = .07f;
     private final Character character;
@@ -85,14 +85,14 @@ public final class Player implements CanRender, CanUpdate<Integer> {
     }
 
     @Override
-    public void render() {
-        com.apixandru.pokemon.ui.render.CanRender<SlickRenderer> renderable;
+    public void render(SlickRenderer renderer, FloatingPoint floatingPoint) {
+        CanRender<SlickRenderer> renderable;
         if (moving) {
             renderable = getMovingAnimation();
         } else {
             renderable = getStandingImage();
         }
-        renderable.render(null, getPosition());
+        renderable.render(renderer, getPosition());
     }
 
     private SlickAnimation getMovingAnimation() {

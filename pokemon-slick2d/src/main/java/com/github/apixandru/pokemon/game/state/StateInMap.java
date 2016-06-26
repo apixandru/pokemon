@@ -5,11 +5,13 @@ package com.github.apixandru.pokemon.game.state;
 
 import com.apixandru.pokemon.model.MapEventListener;
 import com.apixandru.pokemon.model.object.Character;
+import com.apixandru.pokemon.model.object.FloatingPoint;
 import com.apixandru.pokemon.model.object.Point;
 import com.apixandru.pokemon.model.object.SpawnPoint;
 import com.apixandru.pokemon.model.object.WarpPoint;
 import com.apixandru.pokemon.slick2d.SlickPlayerSpriteProvider;
 import com.apixandru.pokemon.slick2d.input.SlickInputProvider;
+import com.apixandru.pokemon.slick2d.render.SlickRenderer;
 import com.github.apixandru.pokemon.ui.Player;
 import com.github.apixandru.pokemon.ui.PokemonTiledMap;
 import com.github.apixandru.pokemon.ui.util.Camera;
@@ -60,7 +62,7 @@ public class StateInMap extends BasicGameState {
     public void render(final GameContainer container, final StateBasedGame game, final Graphics g) throws SlickException {
         this.camera.translate(g, this.player.getPosition());
         this.actualMap.render(0, 0);
-        this.player.render();
+        this.player.render(new SlickRenderer(), FloatingPoint.ZERO);
     }
 
     @Override
