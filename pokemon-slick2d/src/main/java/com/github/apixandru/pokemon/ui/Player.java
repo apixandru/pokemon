@@ -9,11 +9,11 @@ import com.apixandru.pokemon.model.object.Character;
 import com.apixandru.pokemon.model.object.FloatingPoint;
 import com.apixandru.pokemon.model.object.Point;
 import com.apixandru.pokemon.slick2d.SlickPlayerSpriteProvider;
+import com.apixandru.pokemon.slick2d.render.SlickAnimation;
+import com.apixandru.pokemon.slick2d.render.SlickImage;
+import com.apixandru.pokemon.slick2d.render.SlickRenderer;
 import com.apixandru.pokemon.ui.CanUpdate;
 import com.github.apixandru.pokemon.ui.util.CanRender;
-import org.newdawn.slick.Animation;
-import org.newdawn.slick.Image;
-import org.newdawn.slick.Renderable;
 
 import static com.apixandru.pokemon.model.Constants.getDirectionModifier;
 import static com.apixandru.pokemon.model.Constants.getDirectionModifierUnsigned;
@@ -48,7 +48,7 @@ public final class Player implements CanRender, CanUpdate<Integer> {
         final boolean nowMoving = moveInput.isMove();
         boolean finishedWalking = true;
         if (moving) {
-            getMovingAnimation().update(delta);
+            getMovingAnimation().update(moveInput, delta);
 
             final float changeX = speed * delta;
             final float changeY = speed * delta;
@@ -63,7 +63,7 @@ public final class Player implements CanRender, CanUpdate<Integer> {
                 offset = ZERO;
                 character.moveEnd();
                 if (!nowMoving) {
-                    getMovingAnimation().restart();
+                    getMovingAnimation().reset();
                     moving = false;
                 }
             }
@@ -86,21 +86,20 @@ public final class Player implements CanRender, CanUpdate<Integer> {
 
     @Override
     public void render() {
-        Renderable renderable;
+        com.apixandru.pokemon.ui.render.CanRender<SlickRenderer> renderable;
         if (moving) {
             renderable = getMovingAnimation();
         } else {
             renderable = getStandingImage();
         }
-        final FloatingPoint position = getPosition();
-        renderable.draw(position.x, position.y);
+        renderable.render(null, getPosition());
     }
 
-    private Animation getMovingAnimation() {
+    private SlickAnimation getMovingAnimation() {
         return playerSpriteProvider.getMoving(character.moveDirection);
     }
 
-    private Image getStandingImage() {
+    private SlickImage getStandingImage() {
         return playerSpriteProvider.getStanding(character.moveDirection);
     }
 

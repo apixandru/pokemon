@@ -9,7 +9,7 @@ import com.apixandru.pokemon.ui.render.Image;
  */
 public class SlickImage implements Image<SlickRenderer> {
 
-    public final org.newdawn.slick.Image image;
+    private final org.newdawn.slick.Image image;
 
     public SlickImage(org.newdawn.slick.Image image) {
         this.image = image;

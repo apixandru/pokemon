@@ -1,16 +1,16 @@
 package com.apixandru.pokemon.slick2d;
 
 import com.apixandru.pokemon.model.Constants.MoveDirection;
+import com.apixandru.pokemon.slick2d.render.SlickAnimation;
+import com.apixandru.pokemon.slick2d.render.SlickImage;
 import com.apixandru.pokemon.ui.PlayerSpriteProvider;
 import com.github.apixandru.pokemon.ui.util.sprites.CharacterSprites;
-import org.newdawn.slick.Animation;
-import org.newdawn.slick.Image;
 
 /**
  * @author Alexandru-Constantin Bledea
  * @since Jun 19, 2016
  */
-public final class SlickPlayerSpriteProvider implements PlayerSpriteProvider<Image, Animation> {
+public final class SlickPlayerSpriteProvider implements PlayerSpriteProvider<SlickImage, SlickAnimation> {
 
     private final CharacterSprites sprites;
 
@@ -19,15 +19,15 @@ public final class SlickPlayerSpriteProvider implements PlayerSpriteProvider<Ima
     }
 
     @Override
-    public Animation getMoving(final MoveDirection moveDirection) {
+    public SlickAnimation getMoving(final MoveDirection moveDirection) {
         // TODO remove ordinal() implementation detail
-        return sprites.moving.get(moveDirection.ordinal()).animation;
+        return sprites.moving.get(moveDirection.ordinal());
     }
 
     @Override
-    public Image getStanding(final MoveDirection moveDirection) {
+    public SlickImage getStanding(final MoveDirection moveDirection) {
         // TODO remove ordinal() implementation detail
-        return sprites.notMoving.get(moveDirection.ordinal()).image;
+        return sprites.notMoving.get(moveDirection.ordinal());
     }
 
     @Override
