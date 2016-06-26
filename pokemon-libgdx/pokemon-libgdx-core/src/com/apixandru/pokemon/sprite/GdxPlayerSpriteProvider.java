@@ -2,6 +2,7 @@ package com.apixandru.pokemon.sprite;
 
 import com.apixandru.libgdx.util.GdxAnimation;
 import com.apixandru.libgdx.util.GdxImage;
+import com.apixandru.libgdx.util.GdxRenderer;
 import com.apixandru.pokemon.model.Constants;
 import com.apixandru.pokemon.ui.PlayerSpriteProvider;
 
@@ -9,7 +10,7 @@ import com.apixandru.pokemon.ui.PlayerSpriteProvider;
  * @author Alexandru-Constantin Bledea
  * @since Jun 22, 2016
  */
-public class GdxPlayerSpriteProvider implements PlayerSpriteProvider<GdxImage, GdxAnimation> {
+public class GdxPlayerSpriteProvider implements PlayerSpriteProvider<GdxRenderer, GdxAnimation> {
 
     private final CharacterSprites sprites;
 

@@ -3,6 +3,7 @@ package com.apixandru.pokemon.slick2d;
 import com.apixandru.pokemon.model.Constants.MoveDirection;
 import com.apixandru.pokemon.slick2d.render.SlickAnimation;
 import com.apixandru.pokemon.slick2d.render.SlickImage;
+import com.apixandru.pokemon.slick2d.render.SlickRenderer;
 import com.apixandru.pokemon.ui.PlayerSpriteProvider;
 import com.github.apixandru.pokemon.ui.util.sprites.CharacterSprites;
 
@@ -10,7 +11,7 @@ import com.github.apixandru.pokemon.ui.util.sprites.CharacterSprites;
  * @author Alexandru-Constantin Bledea
  * @since Jun 19, 2016
  */
-public final class SlickPlayerSpriteProvider implements PlayerSpriteProvider<SlickImage, SlickAnimation> {
+public final class SlickPlayerSpriteProvider implements PlayerSpriteProvider<SlickRenderer, SlickAnimation> {
 
     private final CharacterSprites sprites;
 
