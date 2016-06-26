@@ -10,7 +10,7 @@ import com.badlogic.gdx.graphics.g2d.TextureRegion;
  */
 public class GdxImage implements Image<GdxRenderer> {
 
-    private final TextureRegion image;
+    public final TextureRegion image;
 
     public GdxImage(TextureRegion image) {
         this.image = image;

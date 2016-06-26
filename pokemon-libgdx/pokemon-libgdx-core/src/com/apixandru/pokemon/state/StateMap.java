@@ -43,7 +43,7 @@ public class StateMap extends AbstractState {
             moving.update(moveInput, delta);
             textureRegion = moving.getCurrentFrame();
         } else {
-            textureRegion = sprites.spriteProvider.getStanding(moveDirection);
+            textureRegion = sprites.spriteProvider.getStanding(moveDirection).image;
         }
     }
 

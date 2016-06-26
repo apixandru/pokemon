@@ -1,6 +1,7 @@
 package com.apixandru.pokemon.sprite;
 
 import com.apixandru.libgdx.util.GdxAnimation;
+import com.apixandru.libgdx.util.GdxImage;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 
 import java.util.List;
@@ -15,7 +16,7 @@ import static java.util.Arrays.asList;
 
 public final class CharacterSprites {
 
-    public final List<TextureRegion> notMoving;
+    public final List<GdxImage> notMoving;
     public final List<GdxAnimation> moving;
 
     CharacterSprites(final TextureRegion[][] spriteSheet) {
@@ -31,10 +32,10 @@ public final class CharacterSprites {
         final TextureRegion moveDown = spriteSheet[MOVING_DOWN][0];
 
         this.notMoving = asList(
-                sittingUp,
-                sittingRight,
-                sittingDown,
-                sittingLeft);
+                new GdxImage(sittingUp),
+                new GdxImage(sittingRight),
+                new GdxImage(sittingDown),
+                new GdxImage(sittingLeft));
 
 
         this.moving = asList(animation(moveUp, sittingUp),
