@@ -11,7 +11,7 @@ import com.github.apixandru.pokemon.ui.util.sprites.CharacterSprites;
  * @author Alexandru-Constantin Bledea
  * @since Jun 19, 2016
  */
-public final class SlickPlayerSpriteProvider implements PlayerSpriteProvider<SlickRenderer, SlickAnimation> {
+public final class SlickPlayerSpriteProvider implements PlayerSpriteProvider<SlickRenderer, Integer> {
 
     private final CharacterSprites sprites;
 

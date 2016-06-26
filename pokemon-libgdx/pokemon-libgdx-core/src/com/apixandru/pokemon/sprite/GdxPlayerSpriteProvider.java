@@ -10,7 +10,7 @@ import com.apixandru.pokemon.ui.PlayerSpriteProvider;
  * @author Alexandru-Constantin Bledea
  * @since Jun 22, 2016
  */
-public class GdxPlayerSpriteProvider implements PlayerSpriteProvider<GdxRenderer, GdxAnimation> {
+public class GdxPlayerSpriteProvider implements PlayerSpriteProvider<GdxRenderer, Float> {
 
     private final CharacterSprites sprites;
 

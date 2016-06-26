@@ -9,9 +9,9 @@ import com.apixandru.pokemon.ui.render.Renderer;
  * @author Alexandru-Constantin Bledea
  * @since Jun 19, 2016
  */
-public interface PlayerSpriteProvider<R extends Renderer, M extends Animation<R, ?>> {
+public interface PlayerSpriteProvider<R extends Renderer, D extends Number> {
 
-    M getMoving(MoveDirection moveDirection);
+    Animation<R, D> getMoving(MoveDirection moveDirection);
 
     Image<R> getStanding(MoveDirection moveDirection);
 
