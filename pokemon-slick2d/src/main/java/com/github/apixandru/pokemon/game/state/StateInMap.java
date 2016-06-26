@@ -12,7 +12,7 @@ import com.apixandru.pokemon.model.object.WarpPoint;
 import com.apixandru.pokemon.slick2d.SlickPlayerSpriteProvider;
 import com.apixandru.pokemon.slick2d.input.SlickInputProvider;
 import com.apixandru.pokemon.slick2d.render.SlickRenderer;
-import com.github.apixandru.pokemon.ui.Player;
+import com.apixandru.pokemon.ui.object.Player;
 import com.github.apixandru.pokemon.ui.PokemonTiledMap;
 import com.github.apixandru.pokemon.ui.util.Camera;
 import com.github.apixandru.pokemon.ui.util.map.MapManager;
@@ -34,7 +34,7 @@ import static com.apixandru.pokemon.model.Constants.SCALE;
  */
 public class StateInMap extends BasicGameState {
 
-    public Player player;
+    public Player<SlickRenderer, Integer> player;
     private PokemonTiledMap actualMap;
     private Camera camera;
 
@@ -53,7 +53,7 @@ public class StateInMap extends BasicGameState {
         final Character character = new Character(new Point(3, 6));
         character.setCurrentMap(actualMap.getModel().asCharacterMoveListener());
 
-        this.player = new Player(character, new SlickPlayerSpriteProvider(redSprites));
+        this.player = new Player<>(character, new SlickPlayerSpriteProvider(redSprites));
 
         this.camera = new Camera(container.getWidth(), container.getHeight(), SCALE);
     }

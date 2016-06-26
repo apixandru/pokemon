@@ -1,19 +1,16 @@
-/**
- *
- */
-package com.github.apixandru.pokemon.ui;
+package com.apixandru.pokemon.ui.object;
 
-import com.apixandru.pokemon.model.Constants.MoveDirection;
+import com.apixandru.pokemon.model.Constants;
 import com.apixandru.pokemon.model.input.MoveInput;
 import com.apixandru.pokemon.model.object.Character;
 import com.apixandru.pokemon.model.object.FloatingPoint;
 import com.apixandru.pokemon.model.object.Point;
-import com.apixandru.pokemon.slick2d.SlickPlayerSpriteProvider;
-import com.apixandru.pokemon.slick2d.render.SlickAnimation;
-import com.apixandru.pokemon.slick2d.render.SlickImage;
-import com.apixandru.pokemon.slick2d.render.SlickRenderer;
 import com.apixandru.pokemon.ui.CanUpdate;
+import com.apixandru.pokemon.ui.PlayerSpriteProvider;
+import com.apixandru.pokemon.ui.render.Animation;
 import com.apixandru.pokemon.ui.render.CanRender;
+import com.apixandru.pokemon.ui.render.Image;
+import com.apixandru.pokemon.ui.render.Renderer;
 
 import static com.apixandru.pokemon.model.Constants.getDirectionModifier;
 import static com.apixandru.pokemon.model.Constants.getDirectionModifierUnsigned;
@@ -22,14 +19,14 @@ import static com.apixandru.pokemon.ui.UiConstants.BLOCK_HEIGHT;
 import static com.apixandru.pokemon.ui.UiConstants.BLOCK_WIDTH;
 
 /**
- * @author Alexandru Bledea
- * @since Jun 3, 2015
+ * @author Alexandru-Constantin Bledea
+ * @since Jun 26, 2016
  */
-public final class Player implements CanRender<SlickRenderer>, CanUpdate<Integer> {
+public final class Player<R extends Renderer, D extends Number> implements CanRender<R>, CanUpdate<D> {
 
     private final float speed = .07f;
     private final Character character;
-    private final SlickPlayerSpriteProvider playerSpriteProvider;
+    private final PlayerSpriteProvider<R, D> playerSpriteProvider;
 
     private FloatingPoint offset;
     private FloatingPoint moveTo;
@@ -37,21 +34,21 @@ public final class Player implements CanRender<SlickRenderer>, CanUpdate<Integer
     private boolean moving;
     private Point directionModifiers;
 
-    public Player(final Character character, SlickPlayerSpriteProvider playerSpriteProvider) {
+    public Player(final Character character, PlayerSpriteProvider<R, D> playerSpriteProvider) {
         this.character = character;
         this.playerSpriteProvider = playerSpriteProvider;
         reset();
     }
 
     @Override
-    public void update(MoveInput moveInput, Integer delta) {
+    public void update(MoveInput moveInput, D delta) {
         final boolean nowMoving = moveInput.isMove();
         boolean finishedWalking = true;
         if (moving) {
             getMovingAnimation().update(moveInput, delta);
 
-            final float changeX = speed * delta;
-            final float changeY = speed * delta;
+            final float changeX = speed * delta.floatValue(); // use float value?
+            final float changeY = speed * delta.floatValue();
 
             offset = offset.add(directionModifiers.x * changeX, directionModifiers.y * changeY);
 
@@ -74,7 +71,7 @@ public final class Player implements CanRender<SlickRenderer>, CanUpdate<Integer
     }
 
     private void move(final MoveInput adapt) {
-        MoveDirection moveDirection = adapt.getMoveDirection();
+        Constants.MoveDirection moveDirection = adapt.getMoveDirection();
 
         if (character.moveBegin(moveDirection)) {
             Point directionPoint = getDirectionModifierUnsigned(moveDirection);
@@ -85,8 +82,8 @@ public final class Player implements CanRender<SlickRenderer>, CanUpdate<Integer
     }
 
     @Override
-    public void render(SlickRenderer renderer, FloatingPoint floatingPoint) {
-        CanRender<SlickRenderer> renderable;
+    public void render(R renderer, FloatingPoint floatingPoint) {
+        CanRender<R> renderable;
         if (moving) {
             renderable = getMovingAnimation();
         } else {
@@ -95,11 +92,11 @@ public final class Player implements CanRender<SlickRenderer>, CanUpdate<Integer
         renderable.render(renderer, getPosition());
     }
 
-    private SlickAnimation getMovingAnimation() {
+    private Animation<R, D> getMovingAnimation() {
         return playerSpriteProvider.getMoving(character.moveDirection);
     }
 
-    private SlickImage getStandingImage() {
+    private Image<R> getStandingImage() {
         return playerSpriteProvider.getStanding(character.moveDirection);
     }
 
