@@ -12,7 +12,7 @@ public class GdxRenderer implements Renderer {
 
     private final SpriteBatch spriteBatch;
 
-    GdxRenderer(SpriteBatch spriteBatch) {
+    public GdxRenderer(SpriteBatch spriteBatch) {
         this.spriteBatch = spriteBatch;
     }
 
