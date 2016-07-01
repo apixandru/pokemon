@@ -2,9 +2,7 @@ package com.apixandru.pokemon.state;
 
 import com.apixandru.libgdx.state.AbstractState;
 import com.apixandru.libgdx.state.StateManager;
-import com.apixandru.libgdx.util.GdxAnimation;
 import com.apixandru.libgdx.util.GdxRenderer;
-import com.apixandru.pokemon.model.Constants.MoveDirection;
 import com.apixandru.pokemon.model.input.MoveInput;
 import com.apixandru.pokemon.model.object.Character;
 import com.apixandru.pokemon.model.object.FloatingPoint;
@@ -13,9 +11,6 @@ import com.apixandru.pokemon.model.object.WorldMap;
 import com.apixandru.pokemon.sprite.Sprites;
 import com.apixandru.pokemon.ui.object.Player;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.graphics.g2d.TextureRegion;
-
-import static com.apixandru.pokemon.model.Constants.MoveDirection.DOWN;
 
 /**
  * @author Alexandru-Constantin Bledea
@@ -24,8 +19,6 @@ import static com.apixandru.pokemon.model.Constants.MoveDirection.DOWN;
 public class StateMap extends AbstractState {
 
     private final Sprites sprites = new Sprites();
-    private MoveDirection moveDirection = DOWN;
-    private TextureRegion textureRegion;
 
     private final Player<GdxRenderer, Float> player;
 
@@ -54,24 +47,12 @@ public class StateMap extends AbstractState {
         spriteBatch.setProjectionMatrix(camera.combined);
         spriteBatch.begin();
         player.render(new GdxRenderer(spriteBatch), FloatingPoint.ZERO);
-        spriteBatch.draw(textureRegion, 0, 0);
         spriteBatch.end();
     }
 
     @Override
     public void update(MoveInput moveInput, Float delta) {
-
         player.update(moveInput, delta);
-
-        if (moveInput.isMove()) {
-            MoveDirection moveDirection = moveInput.getMoveDirection();
-            this.moveDirection = moveDirection;
-            GdxAnimation moving = sprites.spriteProvider.getMoving(moveDirection);
-            moving.update(moveInput, delta);
-            textureRegion = moving.getCurrentFrame();
-        } else {
-            textureRegion = sprites.spriteProvider.getStanding(moveDirection).image;
-        }
     }
 
 }
