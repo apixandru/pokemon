@@ -53,7 +53,7 @@ public class StateInMap extends BasicGameState {
         final Character character = new Character(new Point(3, 6));
         character.setCurrentMap(actualMap.getModel().asCharacterMoveListener());
 
-        this.player = new Player<>(character, new SlickPlayerSpriteProvider(redSprites));
+        this.player = new Player<>(character, new SlickPlayerSpriteProvider(redSprites), .07F);
 
         this.camera = new Camera(container.getWidth(), container.getHeight(), SCALE);
     }

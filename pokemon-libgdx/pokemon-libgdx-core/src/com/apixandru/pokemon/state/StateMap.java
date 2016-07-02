@@ -27,7 +27,7 @@ public class StateMap extends AbstractState {
         camera.setToOrtho(false, 166, 133);
 
         final Character character = new Character(new Point(3, 6));
-        this.player = new Player<>(character, sprites.spriteProvider);
+        this.player = new Player<>(character, sprites.spriteProvider, 36F);
         character.setCurrentMap(new WorldMap() {
             @Override
             public void characterMoveEnd(Character character) {

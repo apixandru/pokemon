@@ -24,7 +24,8 @@ import static com.apixandru.pokemon.ui.UiConstants.BLOCK_WIDTH;
  */
 public final class Player<R extends Renderer, D extends Number> implements CanRender<R>, CanUpdate<D> {
 
-    private final float speed = .07f;
+    private final float speed;
+
     private final Character character;
     private final PlayerSpriteProvider<R, D> playerSpriteProvider;
 
@@ -34,9 +35,10 @@ public final class Player<R extends Renderer, D extends Number> implements CanRe
     private boolean moving;
     private Point directionModifiers;
 
-    public Player(final Character character, PlayerSpriteProvider<R, D> playerSpriteProvider) {
+    public Player(final Character character, PlayerSpriteProvider<R, D> playerSpriteProvider, float speed) {
         this.character = character;
         this.playerSpriteProvider = playerSpriteProvider;
+        this.speed = speed;
         reset();
     }
 
