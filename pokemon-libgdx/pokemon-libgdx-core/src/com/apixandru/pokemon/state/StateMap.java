@@ -11,6 +11,10 @@ import com.apixandru.pokemon.model.object.WorldMap;
 import com.apixandru.pokemon.sprite.Sprites;
 import com.apixandru.pokemon.ui.object.Player;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.maps.tiled.TiledMap;
+import com.badlogic.gdx.maps.tiled.TiledMapRenderer;
+import com.badlogic.gdx.maps.tiled.TmxMapLoader;
+import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 
 /**
  * @author Alexandru-Constantin Bledea
@@ -22,10 +26,14 @@ public class StateMap extends AbstractState {
 
     private final Player<GdxRenderer, Float> player;
 
+    private final TmxMapLoader loader = new TmxMapLoader();
+    private final TiledMapRenderer tiledMapRenderer;
+
     public StateMap(StateManager stateManager) {
         super(stateManager);
         camera.setToOrtho(false, 166, 133);
-
+        TiledMap load = loader.load("pokemon-slick2d/resources/maps/pallet_town/ash_house_level1.tmx");
+        tiledMapRenderer = new OrthogonalTiledMapRenderer(load);
         final Character character = new Character(new Point(3, 6));
         this.player = new Player<>(character, sprites.spriteProvider, 36F);
         character.setCurrentMap(new WorldMap() {
@@ -45,6 +53,8 @@ public class StateMap extends AbstractState {
     @Override
     public void render(SpriteBatch spriteBatch) {
         spriteBatch.setProjectionMatrix(camera.combined);
+        tiledMapRenderer.setView(camera);
+        tiledMapRenderer.render();
         spriteBatch.begin();
         player.render(new GdxRenderer(spriteBatch), FloatingPoint.ZERO);
         spriteBatch.end();
