@@ -22,6 +22,7 @@ public final class Character {
 
     public Character(final Point location) {
         setCurrentLocation(location);
+        destination = location;
     }
 
     public boolean moveBegin(final MoveDirection moveDirection) {
