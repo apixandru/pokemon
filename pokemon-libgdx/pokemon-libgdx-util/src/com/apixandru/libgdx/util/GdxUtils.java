@@ -25,7 +25,7 @@ public final class GdxUtils {
 
     public static Texture loadTexture(String location) {
         FileHandle fileHandle = Gdx.files.internal(location);
-        return new Texture(fileHandle, LuminanceAlpha, false);
+        return new Texture(fileHandle, false);
     }
 
 }
